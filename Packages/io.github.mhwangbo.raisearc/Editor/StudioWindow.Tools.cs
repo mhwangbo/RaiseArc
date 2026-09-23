@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using PrincessStudio.Core;
 using PrincessStudio.Unity;
+using RaiseArc.Core;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -242,7 +243,13 @@ namespace PrincessStudio.Editor
             }
             if (state.PendingEventId.Length > 0)
             {
-                var ev = p.events.Find(e => e.id == state.PendingEventId);
+                var authoredEvent = p.events.Find(e => e.id == state.PendingEventId);
+                if (authoredEvent == null)
+                {
+                    view.Add(StyledLabel("Pending event is missing from the current content.", "notice"));
+                    return;
+                }
+                var ev = RaiseArcFlowReuse.Expand(p, authoredEvent);
                 var step = ev.presentation.Find(x => x.id == state.PresentationStepId);
                 if (step != null)
                 {
@@ -263,6 +270,11 @@ namespace PrincessStudio.Editor
                 foreach (var id in preview.AvailableChoices())
                 {
                     var choice = (step == null ? ev.choices : step.choices).Find(c => c.id == id);
+                    if (choice == null)
+                    {
+                        view.Add(StyledLabel("Pending choice is missing from the current content: " + id, "notice"));
+                        continue;
+                    }
                     view.Add(Button(PreviewText(p, choice.nameKey), () => Safe(() => { preview.Choose(id); Render(); })));
                 }
                 return;

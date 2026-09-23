@@ -445,7 +445,7 @@ namespace PrincessStudio.Core
                 {
                     if (Observations != null)
                         for (var i = observationStart; i < Observations.Entries.Count; i++)
-                            if (Observations.Entries[i].kind == "Effect" || Observations.Entries[i].kind == "ValueChange") Observations.Entries[i].outcome = "Discarded";
+                            if (Observations.Entries[i].kind == "Effect" || Observations.Entries[i].kind == "ValueChange" || Observations.Entries[i].kind == "RandomEffect") Observations.Entries[i].outcome = "Discarded";
                     continue;
                 }
                 next = candidate;

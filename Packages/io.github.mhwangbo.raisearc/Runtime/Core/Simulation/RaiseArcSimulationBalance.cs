@@ -48,6 +48,8 @@ namespace RaiseArc.Analysis
                 row = new BalanceLedgerRow { key = key, kind = o.kind, sourceId = o.id, ownerId = owner ?? "", target = o.target ?? "", outcome = o.outcome ?? "",
                     nameKey = (index.Find(owner ?? "") as Definition)?.nameKey ?? "", firstDay = o.day, firstRun = record.run,
                     firstRecord = record.recordId, firstBefore = o.before, firstAfter = o.after };
+                if (o.kind == "Condition") row.attribution = "Rule condition probe; a probe may not commit a state change";
+                else if (o.kind == "ActivityBlocked") row.attribution = "Rejected activity attempt; no state change";
                 row.nameEn = project.translations.Find(t => t.key == row.nameKey && t.locale == "en")?.text ?? row.nameKey;
                 row.nameKo = project.translations.Find(t => t.key == row.nameKey && t.locale == "ko")?.text ?? row.nameKey;
                 Report.ledger.Add(row); ledger.Add(key, row); Report.retainedBytes += 512 + key.Length * 2;
