@@ -9,4 +9,4 @@ For character, background, or activity images, import licensed files into your o
 
 Voice is optional. Import an `AudioClip`, assign its GUID to a dialogue line and locale through Studio or `SetDialogueVoice`, and test playback after Load/Restart and language changes. An empty voice GUID means silence. The host owns the session; a screen should not keep stale clip references after reconnecting.
 
-For Korean text, the candidate template includes an OFL font with its license notice. Its binary provenance is still a release gate. For other languages, choose your own licensed font. Build Addressables content and inspect the target Windows player before shipping localized assets. Text length checks and glyph audits do not replace real layout review.
+For Korean text, the candidate template includes an OFL font and license matched to the official upstream tag. For other languages, choose your own licensed font. Build Addressables content and inspect the target Windows player before shipping localized assets. Text length checks and glyph audits do not replace real layout review.
