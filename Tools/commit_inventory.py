@@ -9,6 +9,42 @@ ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = "Packages/io.github.mhwangbo.raisearc/"
 REVIEW = ROOT / "review"
 FOCUSED_METHODS = set("""
+Editor/Graph/RaiseArcBalancePanel.cs
+Editor/Graph/RaiseArcEndingTestPanel.cs
+Editor/Integration/RaiseArcEndingReplayJobs.cs
+Editor/Localization/LocalizationTableBridge.cs
+Editor/Localization/RaiseArcGameScreenBuild.cs
+Editor/Localization/RaiseArcGameSetupWindow.cs
+Editor/Shared/StudioText.cs
+Runtime/Composer/ForestSampleEndpoint.cs
+Runtime/Composer/RaiseArcGiftExtension.cs
+Runtime/Composer/RaiseArcIntegrationScreen.cs
+Runtime/Composer/RaiseArcOutingModule.cs
+Runtime/Composer/SampleGameController.Template.cs
+Runtime/Composer/SampleGameController.cs
+Runtime/Core/Authoring/AuthoringService.cs
+Runtime/Core/Authoring/ContentIndex.cs
+Runtime/Core/Authoring/GraphProjection.cs
+Runtime/Core/Authoring/PresentationAuthoring.cs
+Runtime/Core/Authoring/RaiseArcActivityCopy.cs
+Runtime/Core/Content/EventSequence.cs
+Runtime/Core/Content/PresentationDefinition.cs
+Runtime/Core/Content/ProjectDefinition.cs
+Runtime/Core/Content/RaiseArcActivityRules.cs
+Runtime/Core/Content/RaiseArcReusableRules.cs
+Runtime/Core/Modules/Contracts.cs
+Runtime/Core/Modules/RaiseArcExtensionDefinition.cs
+Runtime/Core/Simulation/RaiseArcActivityAvailability.cs
+Runtime/Core/Simulation/RaiseArcBalanceLedger.cs
+Runtime/Core/Simulation/RaiseArcSimulationBalance.cs
+Runtime/Core/Simulation/RaiseArcSimulationContracts.cs
+Runtime/Core/Simulation/RuleEngine.cs
+Runtime/Unity/PresentationSkin.cs
+Runtime/Unity/PresentationStage.cs
+Runtime/Unity/RaiseArcComposedScreen.cs
+Runtime/Unity/RaiseArcExtensionAsset.cs
+Runtime/Unity/RaiseArcGameScreenSettings.cs
+Runtime/Unity/RaiseArcScreenComposition.cs
 Runtime/Core/Authoring/WorkbenchAuthoring.cs
 Runtime/Core/Content/RaiseArcFlowReuse.cs
 Runtime/Core/Content/RaiseArcGamePlan.cs
