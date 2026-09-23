@@ -9,6 +9,10 @@ ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = "Packages/io.github.mhwangbo.raisearc/"
 REVIEW = ROOT / "review"
 FOCUSED_METHODS = set("""
+Editor/Graph/Tests/RaiseArcScreenCompositionTests.cs
+Editor/Graph/Tests/RaiseArcTimePlanTests.cs
+Editor/Integration/RaiseArcScreenComposer.cs
+Editor/Integration/RaiseArcTimePlanEditor.cs
 Editor/Graph/RaiseArcBalancePanel.cs
 Editor/Graph/RaiseArcEndingTestPanel.cs
 Editor/Integration/RaiseArcEndingReplayJobs.cs
