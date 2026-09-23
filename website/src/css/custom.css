@@ -1,0 +1,3 @@
+:root { --ifm-color-primary: #6843a5; --ifm-color-primary-dark: #593690; --ifm-color-primary-darker: #503181; --ifm-color-primary-light: #7957b1; --ifm-color-primary-lighter: #886abb; }
+html[data-theme='dark'] { --ifm-color-primary: #b99cef; }
+.markdown { max-width: 74ch; }
