@@ -25,7 +25,10 @@ namespace RaiseArc.Editor
         public static void OpenMenu() => Open(Selection.activeObject as GameProjectAsset);
         public static void Open(GameProjectAsset asset)
         {
-            var w = GetWindow<BasicGameSetup>(typeof(SceneView)); w.project = asset; w.screenDraft = null; w.background = w.character = null; w.lastBuild = ""; w.titleContent = new GUIContent("RaiseArc · Make a game");
+            var w = GetWindow<BasicGameSetup>(typeof(SceneView));
+            if (w.HasUnsavedScreen() && w.project != asset) { w.Show(); if (w.status != null) w.status.text = T("Apply the screen before switching games.", "게임을 바꾸기 전에 화면 설정을 적용하세요."); return; }
+            if (w.project != asset) { w.project = asset; w.screenDraft = null; w.background = w.character = null; w.lastBuild = ""; }
+            w.titleContent = new GUIContent("RaiseArc · Make a game");
             w.minSize = new Vector2(480, 330); w.CreateGUI(); w.Show();
         }
         public void CreateGUI() => DrawSetup();

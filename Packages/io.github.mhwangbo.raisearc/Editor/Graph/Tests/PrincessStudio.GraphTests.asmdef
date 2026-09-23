@@ -1,1 +1,1 @@
-{"name":"PrincessStudio.GraphTests","references":["PrincessStudio.Core","PrincessStudio.Unity","PrincessStudio.Editor","PrincessStudio.Editor.Graph"],"includePlatforms":["Editor"],"optionalUnityReferences":["TestAssemblies"]}
+{"name":"PrincessStudio.GraphTests","references":["PrincessStudio.Core","PrincessStudio.Unity","PrincessStudio.Editor","PrincessStudio.Editor.Graph","PrincessStudio.Localization.Editor","Unity.Localization","Unity.Localization.Editor"],"includePlatforms":["Editor"],"optionalUnityReferences":["TestAssemblies"]}

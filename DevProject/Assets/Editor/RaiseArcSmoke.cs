@@ -50,7 +50,8 @@ namespace RaiseArc.DevProject
             foreach (var test in new[]
             {
                 ("RaiseArc.Editor.Tests.TimePlanTests", "UnsavedTimeRulesSurviveUndoRefreshAndRejectProjectSwitch"),
-                ("RaiseArc.Editor.Tests.ScreenCompositionTests", "UnsavedLayoutSurvivesReloadAndRejectsSettingsSwitch")
+                ("RaiseArc.Editor.Tests.ScreenCompositionTests", "UnsavedLayoutSurvivesReloadAndRejectsSettingsSwitch"),
+                ("RaiseArc.Editor.Tests.ScreenCompositionTests", "BasicSetupPreservesUnsavedScreenAcrossUndoRefreshAndProjectSwitch")
             })
             {
                 var type = Type.GetType(test.Item1 + ", PrincessStudio.GraphTests")
@@ -59,6 +60,26 @@ namespace RaiseArc.DevProject
                 catch (TargetInvocationException error) { throw error.InnerException ?? error; }
                 UnityEngine.Debug.Log("RAISEARC_REGRESSION_PASS " + test.Item2);
             }
+        }
+        public static void RunGraphFixtureRegression()
+        {
+            var project = RaiseArc.Editor.Graph.GraphExampleDefinition.Create();
+            var report = new PrincessStudio.Core.AuthoringService(project, new UnityProjectCodec()).ValidateProject();
+            if (report.HasErrors) throw new InvalidOperationException(report.Summary);
+            var session = new PrincessStudio.Core.GameSession(project);
+            session.PerformActivity("study");
+            if (session.State.PendingEventId != "invitation") throw new InvalidOperationException("Invitation did not trigger.");
+            session.AdvancePresentation("invitation.line1");
+            session.AdvancePresentation("invitation.line2");
+            session.Choose("accept");
+            if (session.State.Flags["festival"] != 1) throw new InvalidOperationException("Invitation choice did not commit its flag.");
+            var type = Type.GetType("PrincessStudio.Editor.Graph.Tests.KoreanWorkbenchTests, PrincessStudio.GraphTests")
+                ?? throw new InvalidOperationException("Graph test assembly is unavailable.");
+            var method = type.GetMethod("ShowcaseBranchesCompleteWithScholarship");
+            if (method == null || method.ReturnType != typeof(void)) throw new InvalidOperationException("Expected a synchronous NUnit Test method.");
+            try { method.Invoke(Activator.CreateInstance(type), null); }
+            catch (TargetInvocationException error) { throw error.InnerException ?? error; }
+            UnityEngine.Debug.Log("RAISEARC_DIRECT_CHECK_PASS GraphFixtureAndShowcaseBranches");
         }
     }
 }

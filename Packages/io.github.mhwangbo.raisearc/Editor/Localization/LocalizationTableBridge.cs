@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using PrincessStudio.Core;
@@ -29,12 +30,14 @@ namespace PrincessStudio.Editor
             Directory.CreateDirectory(root);
             AssetDatabase.Refresh();
             var settings = LocalizationEditorSettings.ActiveLocalizationSettings;
+            var createdSettings = settings == null;
             if (settings == null)
             {
                 settings = ScriptableObject.CreateInstance<LocalizationSettings>();
                 AssetDatabase.CreateAsset(settings, root + "/LocalizationSettings.asset");
                 LocalizationEditorSettings.ActiveLocalizationSettings = settings;
             }
+            var createdLocales = new List<Locale>();
             foreach (var code in p.locales)
             {
                 var locale = LocalizationEditorSettings.GetLocale(code);
@@ -43,37 +46,28 @@ namespace PrincessStudio.Editor
                     locale = Locale.CreateLocale(code);
                     AssetDatabase.CreateAsset(locale, root + "/" + code + ".asset");
                     LocalizationEditorSettings.AddLocale(locale);
+                    createdLocales.Add(locale);
                 }
             }
+            // Locale assets and LocalizationSettings are shared by every game in this Unity project.
+            // Synchronizing one game's tables must not rewrite another game's locale policy.
             var fallback = LocalizationEditorSettings.GetLocale(p.fallbackLocale);
-            foreach (var code in p.locales)
+            foreach (var locale in createdLocales)
             {
-                var locale = LocalizationEditorSettings.GetLocale(code);
                 if (locale != fallback)
                 {
-                    var metadata = locale.Metadata.GetMetadata<FallbackLocale>();
-                    if (metadata == null)
-                    {
-                        metadata = new FallbackLocale();
-                        locale.Metadata.AddMetadata(metadata);
-                    }
-                    metadata.Locale = fallback;
+                    var metadata = new FallbackLocale { Locale = fallback };
+                    locale.Metadata.AddMetadata(metadata);
                     EditorUtility.SetDirty(locale);
                 }
-                else
-                {
-                    var old = locale.Metadata.GetMetadata<FallbackLocale>();
-                    if (old != null)
-                    {
-                        locale.Metadata.RemoveMetadata(old);
-                        EditorUtility.SetDirty(locale);
-                    }
-                }
             }
-            settings.SetSelectedLocale(LocalizationEditorSettings.GetLocale(p.defaultLocale));
-            var selectors = settings.GetStartupLocaleSelectors();
-            selectors.RemoveAll(s => s is SpecificLocaleSelector);
-            selectors.Insert(0, new SpecificLocaleSelector { LocaleId = new LocaleIdentifier(p.defaultLocale) });
+            if (createdSettings)
+            {
+                settings.SetSelectedLocale(LocalizationEditorSettings.GetLocale(p.defaultLocale));
+                var selectors = settings.GetStartupLocaleSelectors();
+                selectors.Insert(0, new SpecificLocaleSelector { LocaleId = new LocaleIdentifier(p.defaultLocale) });
+                EditorUtility.SetDirty(settings);
+            }
             var tableName = "Princess." + p.id;
             var strings = LocalizationEditorSettings.GetStringTableCollection(tableName) ?? LocalizationEditorSettings.CreateStringTableCollection(tableName, root);
             foreach (var code in p.locales)
@@ -121,7 +115,6 @@ namespace PrincessStudio.Editor
             }
             EditorUtility.SetDirty(assets);
             EditorUtility.SetDirty(assets.SharedData);
-            EditorUtility.SetDirty(settings);
             LocalizationEditorSettings.EditorEvents.RaiseCollectionModified(null, strings);
             LocalizationEditorSettings.EditorEvents.RaiseCollectionModified(null, assets);
             AssetDatabase.SaveAssets();

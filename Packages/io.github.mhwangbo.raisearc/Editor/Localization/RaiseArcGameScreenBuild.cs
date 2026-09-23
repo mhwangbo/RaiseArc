@@ -78,7 +78,7 @@ namespace RaiseArc.Editor
                 }
             }
             AssetDatabase.SaveAssetIfDirty(skin);
-            screenRevision = saved.Revision; background = character = activityImage = null;
+            screenRevision = saved.Revision; screenBaseline = JsonUtility.ToJson(screenDraft); background = character = activityImage = null;
             CreateGUI(); status.text = T("Applied screen revision ", "화면 설정 저장 · revision ") + screenRevision;
         }
         private void OpenGameScene()

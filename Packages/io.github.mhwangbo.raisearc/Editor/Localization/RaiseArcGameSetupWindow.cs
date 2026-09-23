@@ -21,6 +21,7 @@ namespace RaiseArc.Editor
         [SerializeField] private GameProgression newProgression;
         [SerializeField] private string lastBuild = "";
         private GameScreenDefinition screenDraft;
+        private string screenBaseline;
         private int screenRevision;
         private string imageLocale = "";
         private string activityImageId = "";
@@ -30,7 +31,17 @@ namespace RaiseArc.Editor
         public static void MakeGame() => Open(Selection.activeObject as GameProjectAsset);
         private void OnEnable() { Undo.undoRedoPerformed += ReloadSetup; }
         private void OnDisable() { Undo.undoRedoPerformed -= ReloadSetup; }
-        private void ReloadSetup() { screenDraft = null; CreateGUI(); }
+        private bool HasUnsavedScreen()
+        {
+            if (project == null || screenDraft == null) return false;
+            if (background != null || character != null || activityImage != null) return true;
+            return JsonUtility.ToJson(screenDraft) != screenBaseline;
+        }
+        private void ReloadSetup()
+        {
+            if (HasUnsavedScreen()) { if (status != null) status.text = T("Apply the screen before reloading or switching games.", "다시 읽거나 게임을 바꾸기 전에 화면 설정을 적용하세요."); return; }
+            screenDraft = null; CreateGUI();
+        }
         private void DrawSetup()
         {
             var root = rootVisualElement; var offset = root.Q<ScrollView>()?.scrollOffset ?? Vector2.zero;
@@ -39,7 +50,7 @@ namespace RaiseArc.Editor
             scroll.schedule.Execute(() => scroll.scrollOffset = offset);
             scroll.Add(new Label(T("Make your raising game", "나의 육성 게임 만들기")) { style = { fontSize = 23, marginTop = 12, marginBottom = 12 } });
             var projectField = new ObjectField(T("Open an existing Game Project", "기존 게임 프로젝트 열기")) { objectType = typeof(GameProjectAsset), allowSceneObjects = false, value = project };
-            projectField.RegisterValueChangedCallback(e => { project = e.newValue as GameProjectAsset; screenDraft = null; background = character = null; lastBuild = ""; CreateGUI(); }); scroll.Add(projectField);
+            projectField.RegisterValueChangedCallback(e => { if (HasUnsavedScreen()) { projectField.SetValueWithoutNotify(project); status.text = T("Apply the screen before switching games.", "게임을 바꾸기 전에 화면 설정을 적용하세요."); return; } project = e.newValue as GameProjectAsset; screenDraft = null; background = character = null; lastBuild = ""; CreateGUI(); }); scroll.Add(projectField);
             status = new Label { style = { whiteSpace = WhiteSpace.Normal, marginTop = 12, color = new Color(.95f,.65f,.3f) } }; root.Add(status);
             void Button(string en, string ko, Action action) => scroll.Add(new UnityEngine.UIElements.Button(() => Run(action)) { text = T(en, ko) });
             if (project == null)
@@ -60,17 +71,17 @@ namespace RaiseArc.Editor
                     row.Add(new UnityEngine.UIElements.Button(() => { newGame.stats.Remove(stat); CreateGUI(); }) { text = T("Remove stat", "능력치 빼기") });
                 }
                 Button("Add stat", "능력치 추가", () => { newGame.stats.Add(new NewGameStat { name = T("New stat", "새 능력치") }); CreateGUI(); });
-                Button("Create my game", "내 게임 만들기", () => { project = GameCreation.Create(newGame); screenDraft = new GameScreenDefinition { progression = newProgression }; screenRevision = 0; Selection.activeObject = project; CreateGUI(); });
+                Button("Create my game", "내 게임 만들기", () => { project = GameCreation.Create(newGame); screenBaseline = JsonUtility.ToJson(new GameScreenDefinition()); screenDraft = new GameScreenDefinition { progression = newProgression }; screenRevision = 0; Selection.activeObject = project; CreateGUI(); });
                 StudioText.ApplyFont(root); return;
             }
             var p = project.Read(); var saved = GameScreenAuthoring.Find(project);
-            if (screenDraft == null) { screenDraft = saved != null ? saved.Read() : new GameScreenDefinition(); screenRevision = saved != null ? saved.Revision : 0; }
+            if (screenDraft == null) { screenDraft = saved != null ? saved.Read() : new GameScreenDefinition(); screenBaseline = JsonUtility.ToJson(screenDraft); screenRevision = saved != null ? saved.Revision : 0; }
             scroll.Add(new Label(AssetDatabase.GetAssetPath(project)));
             scroll.Add(new Label(T("1 · Make the content yours", "1 · 내 게임 콘텐츠 작성")) { style = { fontSize = 19, marginTop = 16 } });
             scroll.Add(new HelpBox(T("Edit in Studio, then Apply changes / Save game settings. These buttons open the same Game Project. Stop a running game before editing; start a new session to use saved rule changes.", "Studio에서 편집한 뒤 변경 적용 / 게임 설정 저장을 누르세요. 아래 버튼은 같은 게임 프로젝트를 엽니다. 실행 중에는 Stop으로 멈춘 뒤 편집하고, 저장한 규칙은 새 게임 세션에서 확인하세요."), HelpBoxMessageType.Info));
             foreach (var page in new[] { "Overview", "Character", "Stats & states", "Activities", "Events", "Endings", "Localization" })
             { var target = page; Button("Edit " + page, StudioText.T(page) + " 편집", () => StudioWindow.OpenProject(project, target)); }
-            Button("Create another game (keep this one)", "다른 게임 새로 만들기 (기존 게임 보존)", () => { project = null; screenDraft = null; background = character = null; CreateGUI(); });
+            Button("Create another game (keep this one)", "다른 게임 새로 만들기 (기존 게임 보존)", () => { if (HasUnsavedScreen()) { status.text = T("Apply the screen before switching games.", "게임을 바꾸기 전에 화면 설정을 적용하세요."); return; } project = null; screenDraft = null; background = character = null; CreateGUI(); });
             scroll.Add(new Label(T("2 · Choose your screen", "2 · 화면 구성 선택")) { style = { fontSize = 19, marginTop = 16 } });
             Choice(scroll, "Progression", "진행 방식", new[] { T("Activity selection", "활동 선택"), T("Schedule planning", "일정 편성") }, (int)screenDraft.progression, x => screenDraft.progression = (GameProgression)x);
             Choice(scroll, "Layout", "배치", new[] { T("Information on left", "정보 왼쪽"), T("Information on right", "정보 오른쪽"), T("Compact / stacked", "작은 화면 / 세로 배치") }, (int)screenDraft.layout, x => screenDraft.layout = (GameScreenLayout)x);
