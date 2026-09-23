@@ -38,7 +38,7 @@ namespace RaiseArc.Editor.Tests
         {
             var previousLanguage = StudioText.Language;
             var asset = ScriptableObject.CreateInstance<GameProjectAsset>();
-            asset.Write(new UnityProjectCodec().FromJson(File.ReadAllText("Assets/PrincessStudio/Samples/Data/SimulationExample.json")));
+            asset.Write(RaiseArc.Editor.Graph.GraphExampleDefinition.Create());
             var path = AssetDatabase.GenerateUniqueAssetPath("Assets/SimulationWindowTest.asset"); AssetDatabase.CreateAsset(asset, path);
             var window = ScriptableObject.CreateInstance<SimulationWindow>();
             window.Show();

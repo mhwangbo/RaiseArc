@@ -33,7 +33,7 @@ namespace PrincessStudio.Editor.Graph.Tests
         [Test] public void ShowcaseBranchesCompleteWithScholarship()
         {
             var codec = new UnityProjectCodec();
-            var project = codec.FromJson(File.ReadAllText("Assets/PrincessStudio/Samples/Showcase/RoyalEvening.json"));
+            var project = GraphShowcaseBuilder.Definition();
             var api = new AuthoringService(project, codec);
             foreach (var branch in new[] { "court", "study", "help" })
             {

@@ -55,7 +55,17 @@ namespace PrincessStudio.Editor.Graph
         public static void Open(GameProjectAsset project)
         {
             var window = GetWindow<GraphWorkbenchWindow>(); window.titleContent = new GUIContent("RaiseArc · Workbench"); window.minSize = new Vector2(1080, 680);
-            window.asset = project; window.Show(); window.Reload();
+            if (window.api != null && window.asset == project) { window.Show(); return; }
+            if (window.api != null)
+            {
+                if (!window.LeaveInspector()) { window.Show(); return; }
+                if (window.changes != null && window.changes.edits.Count > 0 &&
+                    !StudioText.Dialog("Pending changes", "Discard the current change set and switch projects?", "Discard", "Cancel"))
+                { window.Show(); return; }
+            }
+            window.asset = project; window.preset = null; window.trace = null; window.traceChoices.Clear();
+            window.history.Clear(); window.selectedId = window.eventId = "";
+            window.Show(); window.Reload();
         }
         private void OnEnable() { Undo.undoRedoPerformed += OnUndo; EditorApplication.update += Poll; }
         private void OnDisable() { Undo.undoRedoPerformed -= OnUndo; EditorApplication.update -= Poll; }
@@ -151,7 +161,11 @@ namespace PrincessStudio.Editor.Graph
         {
             trace = null; tracePlayback?.Stop();
             if (center == null) return;
-            if (asset == null) { center.Clear(); center.Add(new HelpBox(StudioText.T("Select a GameProjectAsset to start."), HelpBoxMessageType.Info)); RefreshSaveStatus(); return; }
+            if (asset == null)
+            {
+                api = null; changes = null; preview = null; project = null; index = null; layout = null; draftJson = ""; inspectorDirty = false;
+                center.Clear(); center.Add(new HelpBox(StudioText.T("Select a GameProjectAsset to start."), HelpBoxMessageType.Info)); RefreshSaveStatus(); return;
+            }
             api = new AuthoringService(asset.Read(), codec, asset.CreateExtensions()); changes = api.BeginChangeSet(); preview = null; project = api.Snapshot();
             draftJson = JsonUtility.ToJson(changes);
             if (!project.locales.Contains(locale)) locale = project.defaultLocale;

@@ -10,13 +10,12 @@ namespace PrincessStudio.Editor.Graph
 {
     public static class GraphShowcaseBuilder
     {
-        public const string AssetPath = "Assets/PrincessStudio/Samples/Showcase/RoyalEvening.asset";
         public const string EventId = "royal-evening";
-        public static void OpenSample() { StudioText.Language = "ko"; GraphWorkbenchWindow.Open(AssetDatabase.LoadAssetAtPath<GameProjectAsset>(AssetPath) ?? Create()); }
-        public static GameProjectAsset Create()
+        public static void OpenSample() { StudioText.Language = "ko"; GraphWorkbenchWindow.Open(Create()); }
+        public static ProjectDefinition Definition()
         {
             var codec = new UnityProjectCodec();
-            var p = codec.FromJson(File.ReadAllText("Assets/PrincessStudio/Samples/Data/PresentationDemo.json"));
+            var p = RaiseArc.Editor.Graph.GraphExampleDefinition.Create();
             p.id = "royal-evening-showcase"; p.defaultLocale = "ko"; p.fallbackLocale = "en";
             string Text(string key, string ko, string en)
             {
@@ -72,12 +71,17 @@ namespace PrincessStudio.Editor.Graph
             p.events.Add(e);
             var api = new AuthoringService(p, codec); var report = api.ValidateProject();
             if (report.HasErrors) throw new System.InvalidOperationException(report.Summary);
-            Directory.CreateDirectory(Path.GetDirectoryName(AssetPath)); AssetDatabase.Refresh();
-            var asset = AssetDatabase.LoadAssetAtPath<GameProjectAsset>(AssetPath);
-            if (asset == null) { asset = ScriptableObject.CreateInstance<GameProjectAsset>(); AssetDatabase.CreateAsset(asset, AssetPath); }
-            asset.Write(api.Snapshot()); EditorUtility.SetDirty(asset);
-            File.WriteAllText("Assets/PrincessStudio/Samples/Showcase/RoyalEvening.json", codec.ToJson(api.Snapshot()));
-            var guid = AssetDatabase.AssetPathToGUID(AssetPath); Directory.CreateDirectory("Assets/PrincessStudioWorkbench/Layouts"); AssetDatabase.Refresh();
+            return api.Snapshot();
+        }
+        public static GameProjectAsset Create()
+        {
+            var definition = Definition();
+            const string folder = "Assets/RaiseArcGames/GraphShowcase";
+            Directory.CreateDirectory(folder); AssetDatabase.Refresh();
+            var assetPath = AssetDatabase.GenerateUniqueAssetPath(folder + "/RoyalEvening.asset");
+            var asset = ScriptableObject.CreateInstance<GameProjectAsset>();
+            asset.Write(definition); AssetDatabase.CreateAsset(asset, assetPath);
+            var guid = AssetDatabase.AssetPathToGUID(assetPath); Directory.CreateDirectory("Assets/PrincessStudioWorkbench/Layouts"); AssetDatabase.Refresh();
             var layoutPath = "Assets/PrincessStudioWorkbench/Layouts/" + guid + ".asset";
             var layout = AssetDatabase.LoadAssetAtPath<GraphLayoutAsset>(layoutPath);
             if (layout == null) { layout = ScriptableObject.CreateInstance<GraphLayoutAsset>(); AssetDatabase.CreateAsset(layout, layoutPath); }
@@ -88,13 +92,13 @@ namespace PrincessStudio.Editor.Graph
                 ["royal.court"] = new Vector2(4, 0), ["royal.study"] = new Vector2(4, 1), ["royal.help"] = new Vector2(4, 2),
                 ["royal.merge"] = new Vector2(5, 1), ["royal.memories"] = new Vector2(6, 1), ["royal.epilogue"] = new Vector2(7, 1), [EventSequence.End] = new Vector2(7, 2)
             };
-            foreach (var node in GraphProjection.Build(api.Snapshot(), EventId, "ko").nodes)
+            foreach (var node in GraphProjection.Build(definition, EventId, "ko").nodes)
             {
                 var entry = layout.Get(EventId, node.id, 0); var position = positions[node.id];
                 entry.x = 20 + position.x * 224; entry.y = 35 + position.y * 300; entry.color = new Color(.105f, .17f, .235f);
             }
             EditorUtility.SetDirty(layout);
-            var templatePath = AssetPath.Replace(".asset", ".layout.asset");
+            var templatePath = assetPath.Replace(".asset", ".layout.asset");
             var template = AssetDatabase.LoadAssetAtPath<GraphLayoutAsset>(templatePath);
             if (template == null) AssetDatabase.CreateAsset(Object.Instantiate(layout), templatePath);
             else { EditorUtility.CopySerialized(layout, template); EditorUtility.SetDirty(template); }

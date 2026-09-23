@@ -23,7 +23,7 @@ namespace PrincessStudio.Editor.Graph.Tests
         [SetUp] public void Setup()
         {
             asset = ScriptableObject.CreateInstance<GameProjectAsset>();
-            asset.Write(codec.FromJson(File.ReadAllText("Assets/PrincessStudio/Samples/Data/PresentationDemo.json")));
+            asset.Write(RaiseArc.Editor.Graph.GraphExampleDefinition.Create());
             AssetDatabase.CreateAsset(asset, AssetPath);
             layoutPath = "Assets/PrincessStudioWorkbench/Layouts/" + AssetDatabase.AssetPathToGUID(AssetPath) + ".asset";
             GraphWorkbenchWindow.Open(asset); window = EditorWindow.GetWindow<GraphWorkbenchWindow>(); window.CreateGUI();
@@ -35,6 +35,18 @@ namespace PrincessStudio.Editor.Graph.Tests
         }
         private object Field(string name) => typeof(GraphWorkbenchWindow).GetField(name, BindingFlags.Instance | BindingFlags.NonPublic).GetValue(window);
         private void Call(string name, params object[] args) => typeof(GraphWorkbenchWindow).GetMethod(name, BindingFlags.Instance | BindingFlags.NonPublic).Invoke(window, args);
+        [Test] public void ReopeningSameProjectKeepsPendingDraft()
+        {
+            Call("Stage", new GraphEdit { operation = "CreateNode", eventId = "invitation", node = new PresentationStep
+                { id = "reopen-draft", nameKey = "sequence.event", kind = PresentationStepKind.Image, nextStepId = EventSequence.End } });
+            var changes = (AuthoringChangeSet)Field("changes");
+            Assert.That(changes.edits.Count, Is.GreaterThan(0));
+            var revision = asset.Revision;
+            GraphWorkbenchWindow.Open(asset);
+            Assert.That(Field("changes"), Is.SameAs(changes));
+            Assert.That(((ProjectDefinition)Field("project")).events.Find(e => e.id == "invitation").presentation.Any(s => s.id == "reopen-draft"), Is.True);
+            Assert.That(asset.Revision, Is.EqualTo(revision));
+        }
         [UnityTest] public IEnumerator TerminalChoiceWireCanDisconnectUndoInsertSaveAndResume()
         {
             window.position = new Rect(0, 0, 1600, 1000); Call("Navigate", "invitation", true);
