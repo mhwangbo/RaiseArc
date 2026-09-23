@@ -8,7 +8,7 @@ title: 엔딩 경로와 경제 변경 검사
 1. Studio에서 엔딩을 선택해 **Find a path to the saved ending**을 엽니다. 목표 엔딩과 필요하면 활동 제한을 정합니다.
 2. **Find path / rerun test**를 실행합니다. 목표 통과 여부와 중단 이유를 따로 읽고 실제 돈·능력치 변화가 있는 경로를 확인합니다. **Verify replay**로 입력을 다시 실행합니다.
 3. **Save test definition**과 **Preserve result and original content**를 실행하고 결과 ID를 적습니다. 보존 결과는 원래 콘텐츠와 런타임 fingerprint에 속합니다.
-4. Studio에서 한 활동 비용을 올려 저장합니다. 테스트를 다시 실행해 기존 경로의 차이를 비교하고, 예산과 제한 안에서 대체 경로를 찾습니다.
-5. 비교 결과를 내보낸 뒤 다시 열어 결과 ID, 콘텐츠 식별, 실제 반영 변화량, 목표 판정, 재현 상태를 확인합니다. 옛 런타임이 없으면 정확 재현은 미지원으로 표시돼야 합니다.
+4. Studio에서 한 활동 비용을 올려 저장합니다. 저장된 엔딩 테스트의 **Recheck inputs on current candidate**로 옛 경로를 현재 콘텐츠에 다시 적용합니다. 보존한 원본과 목표 판정·실제 반영된 돈의 차이를 비교하고, 예산과 제한 안에서 대체 경로를 찾습니다.
+5. 엔딩 테스트 화면에는 비교 파일 내보내기가 없습니다. 반복 플레이 표본을 비교하려면 별도의 **Balance test**에서 같은 게임의 테스트를 저장하고 후보마다 실행·보존한 다음 **Compare preserved candidates → Export comparison…**을 사용합니다. **Open comparison file…**로 JSON을 다시 열어 결과 ID와 후보 식별을 확인합니다. 이 표본은 고정 엔딩 경로와 별개 증거입니다. 옛 런타임이 없으면 정확 재현은 미지원으로 표시돼야 합니다.
 
-결과는 Unity 프로젝트 루트의 `RaiseArcAnalysisResults`에 있습니다. 플레이어 세이브가 아니므로 보존하려면 별도로 백업하세요. 새 패키지에서 내보내기·재열기 전체 절차 검증은 남았습니다.
+결과는 Unity 프로젝트 루트의 `RaiseArcAnalysisResults`에 있습니다. 플레이어 세이브가 아니므로 보존하려면 별도로 백업하세요. 새 패키지에서 밸런스 비교 내보내기·재열기 전체 절차 검증은 남았습니다.
