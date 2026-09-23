@@ -1,15 +1,43 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using NUnit.Framework;
 using PrincessStudio.Unity;
 using RaiseArc.Unity;
 using UnityEngine;
+using UnityEditor.UIElements;
+using UnityEngine.UIElements;
 
 namespace RaiseArc.Editor.Tests
 {
     public sealed class ScreenCompositionTests
     {
+        [Test]
+        public void UnsavedLayoutSurvivesReloadAndRejectsSettingsSwitch()
+        {
+            var project = ScriptableObject.CreateInstance<GameProjectAsset>(); project.Write(GameCreation.Build(new NewGameDefinition()));
+            var first = ScriptableObject.CreateInstance<RaiseArcGameScreenSettings>();
+            var second = ScriptableObject.CreateInstance<RaiseArcGameScreenSettings>();
+            var definition = new GameScreenDefinition { compositionPreview = true, parts = ScreenComposition.WeeklyStarter() };
+            first.Write(project, null, definition); second.Write(project, null, definition);
+            var window = ScriptableObject.CreateInstance<ScreenComposer>();
+            var flags = BindingFlags.Instance | BindingFlags.NonPublic;
+            try
+            {
+                typeof(ScreenComposer).GetField("settings", flags).SetValue(window, first);
+                window.Show(); window.CreateGUI();
+                var draft = (GameScreenDefinition)typeof(ScreenComposer).GetField("draft", flags).GetValue(window);
+                draft.parts[0].bounds.x += 12;
+                typeof(ScreenComposer).GetMethod("Changed", flags).Invoke(window, null);
+                typeof(ScreenComposer).GetMethod("Reload", flags).Invoke(window, null);
+                Assert.That(typeof(ScreenComposer).GetField("draft", flags).GetValue(window), Is.SameAs(draft));
+                window.rootVisualElement.Q<ObjectField>().value = second;
+                Assert.That(typeof(ScreenComposer).GetField("settings", flags).GetValue(window), Is.SameAs(first));
+                Assert.That(draft.parts[0].bounds.x, Is.EqualTo(definition.parts[0].bounds.x + 12));
+            }
+            finally { window.Close(); UnityEngine.Object.DestroyImmediate(first); UnityEngine.Object.DestroyImmediate(second); UnityEngine.Object.DestroyImmediate(project); }
+        }
         [Test]
         public void OldDefinitionDoesNotEnableComposition()
         {

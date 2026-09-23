@@ -26,7 +26,7 @@ namespace RaiseArc.Editor
         public static void Open() => GetWindow<ScreenComposer>(typeof(SceneView)).Show();
 
         public static void OpenSettings(RaiseArcGameScreenSettings value)
-        { var w = GetWindow<ScreenComposer>(typeof(SceneView)); w.settings = value; w.CreateGUI(); w.Show(); }
+        { var w = GetWindow<ScreenComposer>(typeof(SceneView)); if (w.dirty && w.settings != value) { w.Show(); if (w.status != null) w.status.text = "Save the layout before switching settings. / 설정을 바꾸기 전에 화면을 저장하세요."; return; } w.settings = value; w.CreateGUI(); w.Show(); }
 
         public void CreateGUI()
         {
@@ -36,7 +36,7 @@ namespace RaiseArc.Editor
             var toolbar = new Toolbar(); rootVisualElement.Add(toolbar);
             var asset = new ObjectField("Screen settings") { objectType = typeof(RaiseArcGameScreenSettings), value = settings };
             asset.style.width = 340;
-            asset.RegisterValueChangedCallback(e => { settings = e.newValue as RaiseArcGameScreenSettings; Reload(); }); toolbar.Add(asset);
+            asset.RegisterValueChangedCallback(e => { if (dirty) { asset.SetValueWithoutNotify(settings); status.text = "Save the layout before switching settings. / 설정을 바꾸기 전에 화면을 저장하세요."; return; } settings = e.newValue as RaiseArcGameScreenSettings; Reload(); }); toolbar.Add(asset);
             toolbar.Add(new ToolbarButton(Reload) { text = "Reload / 다시 읽기" });
             toolbar.Add(new ToolbarButton(Save) { text = "Save layout / 화면 저장" });
             var tools = new Toolbar(); rootVisualElement.Add(tools);
@@ -52,13 +52,15 @@ namespace RaiseArc.Editor
             var body = new VisualElement(); body.style.flexDirection = FlexDirection.Row; body.style.flexGrow = 1; rootVisualElement.Add(body);
             canvas = new VisualElement(); canvas.style.flexGrow = 1; canvas.style.minWidth = 680; body.Add(canvas);
             inspector = new ScrollView(); inspector.style.width = 320; inspector.style.paddingLeft = inspector.style.paddingRight = 10; body.Add(inspector);
-            Reload();
+            if (dirty && draft != null) { Render(); Inspect(); }
+            else Reload();
         }
         private void OnEnable() { Undo.undoRedoPerformed += Reload; }
         private void OnDisable() { Undo.undoRedoPerformed -= Reload; }
         private void Reload()
         {
             if (canvas == null) return;
+            if (dirty) { status.text = "Save the layout before reloading. / 다시 읽기 전에 화면을 저장하세요."; return; }
             if (settings == null) { canvas.Clear(); inspector.Clear(); status.text = "Create a basic game screen first, then select its ScreenSettings asset. / 기본 게임 화면을 만든 뒤 ScreenSettings 에셋을 선택하세요."; return; }
             draft = settings.Read(); revision = settings.Revision; dirty = false;
             if (draft.parts.Count == 0) { draft.parts = ScreenComposition.WeeklyStarter(); dirty = true; }

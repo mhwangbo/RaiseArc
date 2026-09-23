@@ -45,5 +45,20 @@ namespace RaiseArc.DevProject
             catch (TargetInvocationException error) { throw error.InnerException ?? error; }
             UnityEngine.Debug.Log("RAISEARC_REGRESSION_PASS SwitchingStudioProjectStopsTheOldMcpTarget");
         }
+        public static void RunDraftRegression()
+        {
+            foreach (var test in new[]
+            {
+                ("RaiseArc.Editor.Tests.TimePlanTests", "UnsavedTimeRulesSurviveUndoRefreshAndRejectProjectSwitch"),
+                ("RaiseArc.Editor.Tests.ScreenCompositionTests", "UnsavedLayoutSurvivesReloadAndRejectsSettingsSwitch")
+            })
+            {
+                var type = Type.GetType(test.Item1 + ", PrincessStudio.GraphTests")
+                    ?? throw new InvalidOperationException("Test assembly is unavailable: " + test.Item1);
+                try { type.GetMethod(test.Item2).Invoke(Activator.CreateInstance(type), null); }
+                catch (TargetInvocationException error) { throw error.InnerException ?? error; }
+                UnityEngine.Debug.Log("RAISEARC_REGRESSION_PASS " + test.Item2);
+            }
+        }
     }
 }

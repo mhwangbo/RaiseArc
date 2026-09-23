@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using NUnit.Framework;
 using PrincessStudio.Core;
 using PrincessStudio.Unity;
@@ -9,11 +10,36 @@ using RaiseArc.Core;
 using RaiseArc.Unity;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEditor.UIElements;
 
 namespace RaiseArc.Editor.Tests
 {
     public sealed class TimePlanTests
     {
+        [Test] public void UnsavedTimeRulesSurviveUndoRefreshAndRejectProjectSwitch()
+        {
+            var first = ScriptableObject.CreateInstance<GameProjectAsset>(); first.Write(Weekly());
+            var second = ScriptableObject.CreateInstance<GameProjectAsset>(); second.Write(Weekly());
+            var window = ScriptableObject.CreateInstance<TimePlanEditor>();
+            var flags = BindingFlags.Instance | BindingFlags.NonPublic;
+            try
+            {
+                typeof(TimePlanEditor).GetField("asset", flags).SetValue(window, first);
+                window.Show();
+                window.CreateGUI();
+                var planningDays = window.rootVisualElement.Q<IntegerField>();
+                var changed = planningDays.value + 1;
+                planningDays.value = changed;
+                var draft = (ProjectDefinition)typeof(TimePlanEditor).GetField("draft", flags).GetValue(window);
+                Assert.That(draft.time.planningDays, Is.EqualTo(changed));
+                window.CreateGUI(); // same refresh path used by Unity Undo/Redo
+                Assert.That(typeof(TimePlanEditor).GetField("draft", flags).GetValue(window), Is.SameAs(draft));
+                window.rootVisualElement.Q<ObjectField>().value = second;
+                Assert.That(typeof(TimePlanEditor).GetField("asset", flags).GetValue(window), Is.SameAs(first));
+                Assert.That(draft.time.planningDays, Is.EqualTo(changed));
+            }
+            finally { window.Close(); UnityEngine.Object.DestroyImmediate(first); UnityEngine.Object.DestroyImmediate(second); }
+        }
         public static ProjectDefinition Weekly()
         {
             var p = GameCreation.Build(new NewGameDefinition { durationDays = 7 });
