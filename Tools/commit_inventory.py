@@ -139,7 +139,8 @@ def main() -> None:
             prior[cells[-1]] = cells[0]
     rows = []
     for path, digest in sorted(source_hashes.items()):
-        status = "focused-method-read" if path in FOCUSED_METHODS else prior.get(path, "inventory-and-automated-scan-only")
+        recorded = prior.get(path, "inventory-and-automated-scan-only")
+        status = "focused-source-read" if recorded == "focused-source-read" else "focused-method-read" if path in FOCUSED_METHODS else recorded
         rows.append((status, digest, path))
     write_tsv(REVIEW / "source-review-status.tsv", rows)
     print(f"Committed package: {len(inventory)} files; {len(rows)} C#/Python sources")
