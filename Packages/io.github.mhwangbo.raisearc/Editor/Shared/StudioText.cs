@@ -13,7 +13,7 @@ namespace PrincessStudio.Editor
     public static class StudioText
     {
         private const string Preference = "PrincessStudio.Editor.Language";
-        private const string CatalogPath = "Assets/PrincessStudio/Editor/UI/EditorTranslations.json";
+        private const string CatalogPath = "Packages/io.github.mhwangbo.raisearc/Editor/UI/EditorTranslations.json";
         [Serializable] public sealed class Entry { public string key, en, ko; }
         [Serializable] private sealed class Catalog { public List<Entry> entries = new List<Entry>(); }
         private static Dictionary<string, Entry> byEnglish, byKey;
@@ -24,7 +24,10 @@ namespace PrincessStudio.Editor
         private static void Load()
         {
             if (byEnglish != null) return;
-            var catalog = File.Exists(CatalogPath) ? JsonUtility.FromJson<Catalog>(File.ReadAllText(CatalogPath)) : new Catalog();
+            var source = AssetDatabase.LoadAssetAtPath<TextAsset>(CatalogPath);
+            if (source == null) throw new FileNotFoundException("RaiseArc editor translation catalog is missing", CatalogPath);
+            var catalog = JsonUtility.FromJson<Catalog>(source.text);
+            if (catalog?.entries == null) throw new InvalidDataException("RaiseArc editor translation catalog is invalid: " + CatalogPath);
             byEnglish = new Dictionary<string, Entry>(StringComparer.Ordinal); byKey = new Dictionary<string, Entry>(StringComparer.Ordinal);
             foreach (var entry in catalog.entries)
             {
