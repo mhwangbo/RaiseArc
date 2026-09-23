@@ -69,21 +69,33 @@ namespace RaiseArc.UI
         }
         private IEnumerator ContinuePlan()
         {
-            yield return null;
-            while (Host.Wait == SessionWait.Paused && Host.ScheduleCursor < Host.Schedule.Count)
+            try
             {
-                Host.Resume();
-                if (Host.Wait != SessionWait.Paused || Host.ScheduleCursor >= Host.Schedule.Count) break;
-                if (planFeedbackSeconds > 0) yield return new WaitForSecondsRealtime(planFeedbackSeconds);
-                else yield return null;
+                yield return null;
+                while (Host.Wait == SessionWait.Paused && Host.ScheduleCursor < Host.Schedule.Count)
+                {
+                    Host.Resume();
+                    if (Host.Wait != SessionWait.Paused || Host.ScheduleCursor >= Host.Schedule.Count) break;
+                    if (planFeedbackSeconds > 0) yield return new WaitForSecondsRealtime(planFeedbackSeconds);
+                    else yield return null;
+                }
             }
-            planRun = null;
-            Changed?.Invoke();
+            finally
+            {
+                if (planRun != null)
+                {
+                    planRun = null;
+                    Changed?.Invoke();
+                }
+            }
         }
         public void StopPlanRun()
         {
             if (planRun == null) return;
-            StopCoroutine(planRun); planRun = null; Changed?.Invoke();
+            var running = planRun;
+            planRun = null;
+            StopCoroutine(running);
+            Changed?.Invoke();
         }
         public void Load() { StopPlanRun(); voice?.Stop(); Host.Load(saveSlot); }
         public void Restart() { StopPlanRun(); voice?.Stop(); Host.Restart(seed); }
