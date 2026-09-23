@@ -28,20 +28,41 @@ def git(*args: str) -> bytes:
 
 def main() -> int:
     objects = git("rev-list", "--objects", "--all").decode().splitlines()
+    paths = {}
+    oids = []
+    for entry in objects:
+        oid, _, path = entry.partition(" ")
+        oids.append(oid)
+        paths[oid] = path
+    batch = subprocess.Popen(
+        ["git", "-c", f"safe.directory={ROOT.as_posix()}", "cat-file", "--batch"],
+        cwd=ROOT, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+    )
+    data, _ = batch.communicate(("\n".join(oids) + "\n").encode())
+    if batch.returncode != 0:
+        raise SystemExit("git cat-file --batch failed")
     examined = 0
     binary = []
     findings = []
-    for entry in objects:
-        oid, _, path = entry.partition(" ")
-        if git("cat-file", "-t", oid) != b"blob\n":
+    offset = 0
+    for expected_oid in oids:
+        end = data.index(b"\n", offset)
+        oid, kind, size = data[offset:end].split()
+        if oid.decode() != expected_oid:
+            raise SystemExit("Git batch object order changed")
+        offset = end + 1
+        length = int(size)
+        content = data[offset:offset + length]
+        offset += length + 1
+        if kind != b"blob":
             continue
-        data = git("cat-file", "blob", oid)
+        path = paths[expected_oid]
         examined += 1
-        if b"\0" in data:
-            binary.append(path or oid)
+        if b"\0" in content:
+            binary.append(path or expected_oid)
         for name, pattern in PATTERNS.items():
-            if pattern.search(data):
-                findings.append((name, path or oid))
+            if pattern.search(content):
+                findings.append((name, path or expected_oid))
     print(f"Scanned {examined} reachable blobs; binary blobs: {len(binary)}; matches: {len(findings)}")
     for name, path in findings:
         print(f"MATCH {name}: {path}")
