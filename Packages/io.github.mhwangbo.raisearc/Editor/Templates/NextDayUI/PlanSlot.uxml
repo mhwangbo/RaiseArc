@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="NativeGame.uss" />
+    <ui:Button name="select-slot" class="slot-button">
+        <ui:Label name="slot-date" text="1" class="slot-date" picking-mode="Ignore" />
+        <ui:Label name="slot-period" text="Morning" class="slot-period" picking-mode="Ignore" />
+        <ui:Label name="slot-activity" text="Empty" class="slot-activity" picking-mode="Ignore" />
+    </ui:Button>
+</ui:UXML>

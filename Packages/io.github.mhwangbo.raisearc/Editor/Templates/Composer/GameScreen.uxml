@@ -1,0 +1,22 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <Style src="GameScreen.uss" />
+    <ui:VisualElement name="game-shell" class="game-shell">
+        <ui:VisualElement class="game-header">
+            <ui:VisualElement name="title-slot" class="game-title" />
+            <ui:VisualElement name="language-slot" class="game-language" />
+        </ui:VisualElement>
+        <ui:VisualElement class="game-body">
+            <ui:ScrollView class="game-sidebar">
+                <ui:VisualElement name="summary-slot" />
+                <ui:VisualElement name="stats-slot" />
+                <ui:VisualElement name="status-slot" />
+                <ui:VisualElement name="toolbar-slot" class="game-toolbar" />
+            </ui:ScrollView>
+            <ui:VisualElement class="game-main">
+                <ui:VisualElement name="stage-slot" class="game-stage" />
+                <ui:ScrollView name="story-slot" class="game-story" />
+                <ui:ScrollView name="actions-slot" class="game-actions" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

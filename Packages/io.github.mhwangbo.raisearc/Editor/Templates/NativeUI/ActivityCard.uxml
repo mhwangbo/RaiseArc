@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="NativeGame.uss" />
+    <ui:Button name="place-activity" class="activity-card">
+        <ui:Image name="activity-image" class="activity-image" picking-mode="Ignore" />
+        <ui:VisualElement class="activity-copy" picking-mode="Ignore">
+            <ui:Label name="activity-name" text="Study" class="card-title" />
+            <ui:Label name="activity-description" text="Learn and improve Wisdom." class="description" />
+            <ui:VisualElement class="card-facts"><ui:Label name="cost-label" text="Cost" /><ui:Label name="activity-cost" text="5" class="fact-value" /><ui:Label name="duration-label" text="Time slots" /><ui:Label name="activity-duration" text="1" class="fact-value" /></ui:VisualElement>
+        </ui:VisualElement>
+    </ui:Button>
+</ui:UXML>

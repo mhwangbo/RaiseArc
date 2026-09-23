@@ -1,0 +1,3368 @@
+{
+  "entries": [
+    {"key":"All categories","en":"All categories","ko":"모든 활동 종류"},
+    {"key":"Default activity check frequency","en":"Default activity check frequency","ko":"활동 판정 주기 기본값"},
+    {"key":"Success check frequency","en":"Success check frequency","ko":"성공 판정 주기"},
+    {"key":"ProjectDefault","en":"Use project default","ko":"프로젝트 기본값 따르기"},
+    {"key":"OncePerActivity","en":"Once per activity","ko":"실행당 한 번"},
+    {"key":"OncePerDay","en":"Once per day","ko":"매일"},
+    {"key":"Success effects","en":"Success effects","ko":"성공 효과"},
+    {"key":"Failure effects","en":"Failure effects","ko":"실패 효과"},
+    {"key":"Additional success effects","en":"Additional success effects","ko":"단계별 추가 성공 효과"},
+    {"key":"Random integer range","en":"Random integer range","ko":"정수 범위에서 무작위로 적용"},
+    {"key":"Minimum amount (inclusive)","en":"Minimum amount (inclusive)","ko":"최솟값 (포함)"},
+    {"key":"Maximum amount (inclusive)","en":"Maximum amount (inclusive)","ko":"최댓값 (포함)"},
+    {"key":"Custom category ID (blank uses Category)","en":"Custom category ID (blank uses Category)","ko":"사용자 활동 종류 ID (비우면 기본 분류 사용)"},
+    {"key":"Activity image localization key","en":"Activity image localization key","ko":"활동 이미지 현지화 키"},
+    {"key":"Success probability","en":"Success probability","ko":"성공·발생 확률"},
+    {"key":"Use success probability","en":"Use success probability","ko":"확률 판정 사용"},
+    {"key":"Base success (%)","en":"Base success (%)","ko":"기본 확률 (%)"},
+    {"key":"Bonus starts above","en":"Bonus starts above","ko":"추가 확률이 붙는 능력치 기준"},
+    {"key":"Percentage points per stat point","en":"Percentage points per stat point","ko":"능력치 1당 추가 확률 (%p)"},
+    {"key":"+ Stat bonus","en":"+ Stat bonus","ko":"+ 능력치 확률 보정"},
+    {"key":"Activity progression","en":"Activity progression","ko":"활동 숙련도와 단계"},
+    {"key":"Track activity experience","en":"Track activity experience","ko":"활동 경험치 기록"},
+    {"key":"Experience per success","en":"Experience per success","ko":"성공 1회당 경험치"},
+    {"key":"Experience per failure","en":"Experience per failure","ko":"실패 1회당 경험치"},
+    {"key":"Required experience","en":"Required experience","ko":"필요 경험치"},
+    {"key":"Success bonus (%)","en":"Success bonus (%)","ko":"추가 성공 확률 (%p)"},
+    {"key":"Move up","en":"Move up","ko":"위로"},
+    {"key":"Move down","en":"Move down","ko":"아래로"},
+    {"key":"+ Activity level","en":"+ Activity level","ko":"+ 활동 단계"},
+    {"key":"Activity references (saved content)","en":"Activity references (saved content)","ko":"활동 사용처 (저장된 콘텐츠)"},
+    {"key":"No incoming references.","en":"No incoming references.","ko":"이 활동을 참조하는 항목이 없습니다."},
+    {"key":"Project default follows Overview. Cost, income and effects apply once per check. Daily activities pause for events and resume afterwards; insufficient money or unmet entry conditions stops the remaining days.","en":"Project default follows Overview. Cost, income and effects apply once per check. Daily activities pause for events and resume afterwards; insufficient money or unmet entry conditions stops the remaining days.","ko":"프로젝트 기본값은 개요에서 설정합니다. 비용·수입·효과는 판정 1회 기준입니다. 매일 판정하는 활동은 이벤트 종료 후 이어서 진행하며, 비용이 부족하거나 시작 조건이 충족되지 않으면 남은 일정을 중단합니다."},
+    {"key":"Entry conditions decide whether an activity can start. Success chance = base + positive stat excess × bonus + level bonus, clamped to 0–100%. Failure still consumes time and cost; income and success effects are skipped.","en":"Entry conditions decide whether an activity can start. Success chance = base + positive stat excess × bonus + level bonus, clamped to 0–100%. Failure still consumes time and cost; income and success effects are skipped.","ko":"시작 조건은 활동 가능 여부를 결정합니다. 성공률은 기본 확률 + 기준을 초과한 능력치 × 보정값 + 단계 보너스이며, 0~100%로 제한됩니다. 실패해도 시간과 비용은 소비하지만 수입과 성공 효과는 적용하지 않습니다."},
+    {"key":"The last eligible level in this list applies. Experience and conditions must both match. Use 0 experience for stat-only unlocks, or no conditions for experience-only growth. Level effects are added to successful activity effects; new experience affects the next check.","en":"The last eligible level in this list applies. Experience and conditions must both match. Use 0 experience for stat-only unlocks, or no conditions for experience-only growth. Level effects are added to successful activity effects; new experience affects the next check.","ko":"목록에서 경험치와 조건을 모두 충족하는 마지막 단계를 적용합니다. 필요 경험치가 0이면 능력치 조건만, 조건이 없으면 경험치만 사용합니다. 단계 효과는 성공 효과에 더해지며, 새로 얻은 경험치는 다음 판정부터 반영됩니다."},
+    {"key":"Event probability is checked after its entry conditions. A skipped event can be tried on the next time advance. Direct shared-flow calls bypass the trigger probability.","en":"Event probability is checked after its entry conditions. A skipped event can be tried on the next time advance. Direct shared-flow calls bypass the trigger probability.","ko":"이벤트 시작 조건을 통과한 뒤 발생 확률을 판정합니다. 발생하지 않은 이벤트는 다음 시간 진행 때 다시 판정할 수 있습니다. 공유 흐름을 직접 호출할 때에는 발생 확률을 적용하지 않습니다."},
+    { "key": "Name", "en": "Name", "ko": "이름" },
+    { "key": "Description", "en": "Description", "ko": "설명" },
+    { "key": "IDs and localization keys", "en": "IDs and localization keys", "ko": "ID와 현지화 키" },
+    { "key": "Content language", "en": "Content language", "ko": "콘텐츠 언어" },
+    { "key": "Name and description use Localization. Apply changes to save; sync Unity tables before playing.", "en": "Name and description use Localization. Apply changes to save; sync Unity tables before playing.", "ko": "이름과 설명은 현지화 데이터입니다. 변경 사항 적용으로 저장한 뒤, 플레이 전에 현지화 화면에서 Unity 테이블을 동기화하세요." },
+{"key":"game.settings.unsaved","en":"Game settings have not been saved. Save before starting a new test.","ko":"게임 설정이 아직 저장되지 않았습니다. 새 테스트를 시작하기 전에 저장하세요."},
+{"key":"game.settings.saved-duration","en":"Saved game duration (days)","ko":"저장된 게임 기간 (일)"},
+{"key":"game.settings.save","en":"Save game settings","ko":"게임 설정 저장"},
+{"key":"game.settings.help","en":"Save settings before leaving this page. Saving starts a fresh Test play session; an already running Game view needs Stop, then Play.","ko":"이 페이지를 떠나기 전에 설정을 저장하세요. 저장하면 테스트 플레이가 초기화됩니다. 실행 중인 Game 뷰는 Stop 후 Play를 눌러야 합니다."},
+{"key":"game.settings.title","en":"Unsaved game settings","ko":"저장하지 않은 게임 설정"},
+{"key":"game.screen.create","en":"Create basic game screen","ko":"기본 게임 화면 만들기"},
+{"key":"game.screen.help","en":"Start with one background and one finished character image. Advanced appearance layers below are optional.","ko":"배경 한 장과 완성된 캐릭터 한 장으로 시작하세요. 아래 고급 외형 레이어 설정은 선택 사항입니다."},
+{"key":"game.test.help","en":"Test play checks saved rules inside Studio. To play the illustrated game, use Create basic game screen, then Unity Play.","ko":"테스트 플레이는 Studio 안에서 저장된 규칙을 점검합니다. 그림이 있는 실제 게임은 기본 게임 화면 만들기 후 Unity Play로 실행하세요."},
+{"key":"game.test.stale","en":"The saved project changed. Reload saved settings and start a new test session.","ko":"저장된 프로젝트가 변경됐습니다. 저장된 설정을 다시 읽어 새 테스트를 시작하세요."},
+{"key":"game.test.reload","en":"Reload saved settings","ko":"저장된 설정 다시 읽기"},
+{"key":"game.test.elapsed","en":"Elapsed days / game duration","ko":"경과 일수 / 게임 기간"},
+{"key":"game.test.revision","en":"Saved revision","ko":"저장 리비전"},
+{"key":"game.test.ended","en":"Game ended","ko":"게임 종료"},
+{"key":"game.test.waiting","en":"Waiting for event dialogue or a choice; activities are paused.","ko":"이벤트 대사 또는 선택을 기다리고 있습니다. 활동 진행은 일시 중지됩니다."},
+{"key":"game.test.timing","en":"Choose an activity to advance time. Endings are checked at the game duration, after pending events finish.","ko":"활동을 선택하면 시간이 흐릅니다. 게임 기간에 도달하고 대기 중인 이벤트를 마치면 엔딩을 판정합니다."},
+    {
+      "key": "editor.0001",
+      "en": "Overview",
+      "ko": "개요"
+    },
+    {
+      "key": "editor.0002",
+      "en": "Character",
+      "ko": "주인공"
+    },
+    {
+      "key": "editor.0003",
+      "en": "Stats & states",
+      "ko": "능력치·상태"
+    },
+    {
+      "key": "editor.0004",
+      "en": "Activities",
+      "ko": "활동"
+    },
+    {
+      "key": "editor.0005",
+      "en": "Schedule",
+      "ko": "일정"
+    },
+    {
+      "key": "editor.0006",
+      "en": "Events",
+      "ko": "이벤트"
+    },
+    {
+      "key": "editor.0007",
+      "en": "Actors",
+      "ko": "인물"
+    },
+    {
+      "key": "editor.0008",
+      "en": "Appearance profiles",
+      "ko": "외형 프로필"
+    },
+    {
+      "key": "editor.0009",
+      "en": "Appearance rules",
+      "ko": "외형 규칙"
+    },
+    {
+      "key": "editor.0010",
+      "en": "Stage slots",
+      "ko": "무대 슬롯"
+    },
+    {
+      "key": "editor.0011",
+      "en": "Game screen",
+      "ko": "게임 화면"
+    },
+    {
+      "key": "editor.0012",
+      "en": "Relationships",
+      "ko": "관계 보기"
+    },
+    {
+      "key": "editor.0013",
+      "en": "Items & flags",
+      "ko": "아이템·플래그"
+    },
+    {
+      "key": "editor.0014",
+      "en": "Endings",
+      "ko": "엔딩"
+    },
+    {
+      "key": "editor.0015",
+      "en": "Growth",
+      "ko": "성장"
+    },
+    {
+      "key": "editor.0016",
+      "en": "Modules",
+      "ko": "외부 모듈"
+    },
+    {
+      "key": "editor.0017",
+      "en": "Localization",
+      "ko": "현지화"
+    },
+    {
+      "key": "editor.0018",
+      "en": "Validation",
+      "ko": "검증"
+    },
+    {
+      "key": "editor.0019",
+      "en": "LLM commands",
+      "ko": "LLM·MCP"
+    },
+    {
+      "key": "editor.0020",
+      "en": "Test play",
+      "ko": "테스트 플레이"
+    },
+    {
+      "key": "editor.0021",
+      "en": "New project",
+      "ko": "새 프로젝트"
+    },
+    {
+      "key": "editor.0022",
+      "en": "Open sample",
+      "ko": "샘플 열기"
+    },
+    {
+      "key": "editor.0023",
+      "en": "Import JSON",
+      "ko": "JSON 가져오기"
+    },
+    {
+      "key": "editor.0024",
+      "en": "Export JSON",
+      "ko": "JSON 내보내기"
+    },
+    {
+      "key": "editor.0025",
+      "en": "Graph Workbench",
+      "ko": "그래프 워크벤치"
+    },
+    {
+      "key": "editor.0026",
+      "en": "LIFE SIMULATION AUTHORING",
+      "ko": "육성 게임 제작 도구"
+    },
+    {
+      "key": "editor.0027",
+      "en": "Create a life. Shape a story.",
+      "ko": "성장을 설계하고, 이야기를 만드세요."
+    },
+    {
+      "key": "editor.0028",
+      "en": "Your next story starts here",
+      "ko": "새로운 이야기가 시작됩니다"
+    },
+    {
+      "key": "editor.0029",
+      "en": "Build characters, schedules and branching lives from one workspace.",
+      "ko": "하나의 작업공간에서 인물과 일정, 선택에 따라 달라지는 삶을 만드세요."
+    },
+    {
+      "key": "editor.0030",
+      "en": "Create a project",
+      "ko": "프로젝트 만들기"
+    },
+    {
+      "key": "editor.0031",
+      "en": "Explore the included sample",
+      "ko": "기본 샘플 둘러보기"
+    },
+    {
+      "key": "editor.0032",
+      "en": "Ready",
+      "ko": "준비됨"
+    },
+    {
+      "key": "editor.0033",
+      "en": "A complete life, one decision at a time",
+      "ko": "하나의 선택이 한 사람의 삶을 만듭니다"
+    },
+    {
+      "key": "editor.0034",
+      "en": "Plan the next chapter",
+      "ko": "다음 이야기를 계획하세요"
+    },
+    {
+      "key": "editor.0035",
+      "en": "Start with your character and stats. Build activities, connect story events, then explore the possible futures in Test play.",
+      "ko": "주인공과 능력치부터 설정하세요. 활동과 이벤트를 연결한 뒤 테스트 플레이에서 다양한 미래를 확인하세요."
+    },
+    {
+      "key": "editor.0036",
+      "en": "ACTIVITIES",
+      "ko": "활동"
+    },
+    {
+      "key": "editor.0037",
+      "en": "STORY EVENTS",
+      "ko": "이벤트"
+    },
+    {
+      "key": "editor.0038",
+      "en": "ENDINGS",
+      "ko": "엔딩"
+    },
+    {
+      "key": "editor.0039",
+      "en": "LANGUAGES",
+      "ko": "언어"
+    },
+    {
+      "key": "editor.0040",
+      "en": "Apply changes",
+      "ko": "변경 적용"
+    },
+    {
+      "key": "editor.save.no-changes",
+      "en": "No changes to save.",
+      "ko": "저장할 변경 사항이 없습니다."
+    },
+    {
+      "key": "editor.0041",
+      "en": "Apply settings",
+      "ko": "설정 적용"
+    },
+    {
+      "key": "editor.0042",
+      "en": "Apply glossary",
+      "ko": "용어집 적용"
+    },
+    {
+      "key": "editor.0043",
+      "en": "Apply translations",
+      "ko": "번역 적용"
+    },
+    {
+      "key": "editor.0044",
+      "en": "Apply asset mappings",
+      "ko": "에셋 연결 적용"
+    },
+    {
+      "key": "editor.0045",
+      "en": "Save language settings",
+      "ko": "언어 설정 저장"
+    },
+    {
+      "key": "editor.0046",
+      "en": "Refresh project",
+      "ko": "프로젝트 새로고침"
+    },
+    {
+      "key": "editor.0047",
+      "en": "Project ID",
+      "ko": "프로젝트 ID"
+    },
+    {
+      "key": "editor.0048",
+      "en": "Stable ID",
+      "ko": "고유 ID"
+    },
+    {
+      "key": "editor.0049",
+      "en": "Name key",
+      "ko": "이름 번역 키"
+    },
+    {
+      "key": "editor.0050",
+      "en": "Description key",
+      "ko": "설명 번역 키"
+    },
+    {
+      "key": "editor.0051",
+      "en": "Starting age",
+      "ko": "시작 나이"
+    },
+    {
+      "key": "editor.0052",
+      "en": "Starting money",
+      "ko": "시작 자금"
+    },
+    {
+      "key": "editor.0053",
+      "en": "Days per month",
+      "ko": "월별 일수"
+    },
+    {
+      "key": "editor.0054",
+      "en": "Months per year",
+      "ko": "연간 개월 수"
+    },
+    {
+      "key": "editor.0055",
+      "en": "Game duration (days)",
+      "ko": "게임 기간(일)"
+    },
+    {
+      "key": "editor.0056",
+      "en": "Default locale",
+      "ko": "기본 언어"
+    },
+    {
+      "key": "editor.0057",
+      "en": "Fallback locale",
+      "ko": "대체 언어"
+    },
+    {
+      "key": "editor.0058",
+      "en": "Enabled locales",
+      "ko": "지원 언어"
+    },
+    {
+      "key": "editor.0059",
+      "en": "Initial",
+      "ko": "초깃값"
+    },
+    {
+      "key": "editor.0060",
+      "en": "Minimum",
+      "ko": "최솟값"
+    },
+    {
+      "key": "editor.0061",
+      "en": "Maximum",
+      "ko": "최댓값"
+    },
+    {
+      "key": "editor.0062",
+      "en": "Status / condition",
+      "ko": "상태·컨디션"
+    },
+    {
+      "key": "editor.0063",
+      "en": "Category",
+      "ko": "종류"
+    },
+    {
+      "key": "editor.0064",
+      "en": "Duration (days)",
+      "ko": "기간(일)"
+    },
+    {
+      "key": "editor.0065",
+      "en": "Cost",
+      "ko": "비용"
+    },
+    {
+      "key": "editor.0066",
+      "en": "Income",
+      "ko": "수입"
+    },
+    {
+      "key": "editor.0067",
+      "en": "Module ID",
+      "ko": "모듈 ID"
+    },
+    {
+      "key": "editor.0068",
+      "en": "Scene path",
+      "ko": "장면 경로"
+    },
+    {
+      "key": "editor.0069",
+      "en": "Scene",
+      "ko": "장면"
+    },
+    {
+      "key": "editor.0070",
+      "en": "Period (7 / 30 days)",
+      "ko": "일정 기간(7일 / 30일)"
+    },
+    {
+      "key": "editor.0071",
+      "en": "Ordered activity IDs",
+      "ko": "활동 순서"
+    },
+    {
+      "key": "editor.0072",
+      "en": "Priority",
+      "ko": "우선순위"
+    },
+    {
+      "key": "editor.0073",
+      "en": "Once only",
+      "ko": "한 번만 실행"
+    },
+    {
+      "key": "editor.0074",
+      "en": "Conditions • all must match",
+      "ko": "조건 · 모두 충족해야 함"
+    },
+    {
+      "key": "editor.0075",
+      "en": "Effects • applied in order",
+      "ko": "효과 · 위에서부터 적용"
+    },
+    {
+      "key": "editor.0076",
+      "en": "+ Condition",
+      "ko": "+ 조건 추가"
+    },
+    {
+      "key": "editor.0077",
+      "en": "+ Effect",
+      "ko": "+ 효과 추가"
+    },
+    {
+      "key": "editor.0078",
+      "en": "+ Choice",
+      "ko": "+ 선택지 추가"
+    },
+    {
+      "key": "editor.0079",
+      "en": "+ Branch choice",
+      "ko": "+ 분기 선택지"
+    },
+    {
+      "key": "editor.0080",
+      "en": "+ Add flag",
+      "ko": "+ 플래그 추가"
+    },
+    {
+      "key": "editor.0081",
+      "en": "+ Relationship stage",
+      "ko": "+ 관계 단계"
+    },
+    {
+      "key": "editor.0082",
+      "en": "+ Local condition",
+      "ko": "+ 인물 상태"
+    },
+    {
+      "key": "editor.0083",
+      "en": "+ Visible actor",
+      "ko": "+ 표시 인물"
+    },
+    {
+      "key": "editor.0084",
+      "en": "+ Image layer",
+      "ko": "+ 이미지 레이어"
+    },
+    {
+      "key": "editor.0085",
+      "en": "+ Sprite resource",
+      "ko": "+ 스프라이트 리소스"
+    },
+    {
+      "key": "editor.0086",
+      "en": "+ Localized asset",
+      "ko": "+ 언어별 에셋"
+    },
+    {
+      "key": "editor.0087",
+      "en": "+ Map location",
+      "ko": "+ 맵 위치"
+    },
+    {
+      "key": "editor.0088",
+      "en": "+ Enemy",
+      "ko": "+ 적"
+    },
+    {
+      "key": "editor.0089",
+      "en": "+ Encounter / reward",
+      "ko": "+ 조우·보상"
+    },
+    {
+      "key": "editor.0090",
+      "en": "+ Term",
+      "ko": "+ 용어"
+    },
+    {
+      "key": "editor.0091",
+      "en": "Remove",
+      "ko": "삭제"
+    },
+    {
+      "key": "editor.0092",
+      "en": "Remove choice",
+      "ko": "선택지 삭제"
+    },
+    {
+      "key": "editor.0093",
+      "en": "Remove actor",
+      "ko": "인물 제거"
+    },
+    {
+      "key": "editor.0094",
+      "en": "Remove binding",
+      "ko": "연결 제거"
+    },
+    {
+      "key": "editor.0095",
+      "en": "Remove image",
+      "ko": "이미지 제거"
+    },
+    {
+      "key": "editor.0096",
+      "en": "Remove step",
+      "ko": "단계 삭제"
+    },
+    {
+      "key": "editor.0097",
+      "en": "Remove location",
+      "ko": "위치 삭제"
+    },
+    {
+      "key": "editor.0098",
+      "en": "Remove enemy",
+      "ko": "적 삭제"
+    },
+    {
+      "key": "editor.0099",
+      "en": "Remove encounter",
+      "ko": "조우 삭제"
+    },
+    {
+      "key": "editor.0100",
+      "en": "Delete entry",
+      "ko": "항목 삭제"
+    },
+    {
+      "key": "editor.0101",
+      "en": "Create your first entry to begin.",
+      "ko": "첫 항목을 만들어 시작하세요."
+    },
+    {
+      "key": "editor.0102",
+      "en": "Text is managed in Localization. Apply changes before switching entries.",
+      "ko": "표시 문구는 현지화에서 관리합니다. 다른 항목으로 이동하기 전에 변경을 적용하세요."
+    },
+    {
+      "key": "editor.0103",
+      "en": "Minimum age",
+      "ko": "최소 나이"
+    },
+    {
+      "key": "editor.0104",
+      "en": "Maximum stack",
+      "ko": "최대 보유 수량"
+    },
+    {
+      "key": "editor.0105",
+      "en": "Initially enabled",
+      "ko": "처음부터 활성화"
+    },
+    {
+      "key": "editor.0106",
+      "en": "Threshold",
+      "ko": "기준값"
+    },
+    {
+      "key": "editor.0107",
+      "en": "Comparison",
+      "ko": "비교 방식"
+    },
+    {
+      "key": "editor.0108",
+      "en": "Operation",
+      "ko": "연산"
+    },
+    {
+      "key": "editor.0109",
+      "en": "Amount",
+      "ko": "수치"
+    },
+    {
+      "key": "editor.0110",
+      "en": "Value",
+      "ko": "값"
+    },
+    {
+      "key": "editor.0111",
+      "en": "Key",
+      "ko": "키"
+    },
+    {
+      "key": "editor.0112",
+      "en": "Target: global value (no reference required)",
+      "ko": "전역 값 · 참조 대상이 필요하지 않습니다"
+    },
+    {
+      "key": "editor.0113",
+      "en": "Target: ",
+      "ko": "대상: "
+    },
+    {
+      "key": "editor.0114",
+      "en": "Extension key (SDK)",
+      "ko": "확장 키(SDK)"
+    },
+    {
+      "key": "editor.0115",
+      "en": "Subject (default = protagonist)",
+      "ko": "대상 인물(기본: 주인공)"
+    },
+    {
+      "key": "editor.0116",
+      "en": "Character / relationship",
+      "ko": "주인공·관계"
+    },
+    {
+      "key": "editor.0117",
+      "en": "Starting age (NPC)",
+      "ko": "시작 나이(NPC)"
+    },
+    {
+      "key": "editor.0118",
+      "en": "Days since birthday at start",
+      "ko": "시작 시 생일로부터 지난 일수"
+    },
+    {
+      "key": "editor.0119",
+      "en": "Fixed NPC age",
+      "ko": "NPC 나이 고정"
+    },
+    {
+      "key": "editor.0120",
+      "en": "Local condition",
+      "ko": "인물 상태"
+    },
+    {
+      "key": "editor.0121",
+      "en": "Appearance profile",
+      "ko": "외형 프로필"
+    },
+    {
+      "key": "editor.0122",
+      "en": "Appearance asset key",
+      "ko": "외형 에셋 키"
+    },
+    {
+      "key": "editor.0123",
+      "en": "Body / portrait",
+      "ko": "몸·초상화"
+    },
+    {
+      "key": "editor.0124",
+      "en": "Hair",
+      "ko": "헤어"
+    },
+    {
+      "key": "editor.0125",
+      "en": "Outfit",
+      "ko": "의상"
+    },
+    {
+      "key": "editor.0126",
+      "en": "Expression",
+      "ko": "표정"
+    },
+    {
+      "key": "editor.0127",
+      "en": "Layer",
+      "ko": "레이어"
+    },
+    {
+      "key": "editor.0128",
+      "en": "Stage slot",
+      "ko": "무대 슬롯"
+    },
+    {
+      "key": "editor.0129",
+      "en": "Stage key",
+      "ko": "슬롯 키"
+    },
+    {
+      "key": "editor.0130",
+      "en": "Scale",
+      "ko": "배율"
+    },
+    {
+      "key": "editor.0131",
+      "en": "Horizontal center (0–1)",
+      "ko": "가로 중심(0–1)"
+    },
+    {
+      "key": "editor.0132",
+      "en": "Width (0–1)",
+      "ko": "너비(0–1)"
+    },
+    {
+      "key": "editor.0133",
+      "en": "Height (0–1)",
+      "ko": "높이(0–1)"
+    },
+    {
+      "key": "editor.0134",
+      "en": "Left (0–1)",
+      "ko": "왼쪽 위치(0–1)"
+    },
+    {
+      "key": "editor.0135",
+      "en": "Top (0–1)",
+      "ko": "위쪽 위치(0–1)"
+    },
+    {
+      "key": "editor.0136",
+      "en": "Opacity (0–1)",
+      "ko": "불투명도(0–1)"
+    },
+    {
+      "key": "editor.0137",
+      "en": "Resource key",
+      "ko": "리소스 키"
+    },
+    {
+      "key": "editor.0138",
+      "en": "Sprite resource",
+      "ko": "스프라이트 리소스"
+    },
+    {
+      "key": "editor.0139",
+      "en": "Sprite",
+      "ko": "스프라이트"
+    },
+    {
+      "key": "editor.0140",
+      "en": "Actor",
+      "ko": "인물"
+    },
+    {
+      "key": "editor.0141",
+      "en": "Speaker",
+      "ko": "화자"
+    },
+    {
+      "key": "editor.0142",
+      "en": "Step kind",
+      "ko": "단계 종류"
+    },
+    {
+      "key": "editor.0143",
+      "en": "Dialogue localization key",
+      "ko": "대사 번역 키"
+    },
+    {
+      "key": "editor.0144",
+      "en": "Next step (default = list order)",
+      "ko": "다음 단계(기본: 목록 순서)"
+    },
+    {
+      "key": "editor.0145",
+      "en": "Event sequence · dialogue / images / choices",
+      "ko": "이벤트 흐름 · 대사 / 이미지 / 선택지"
+    },
+    {
+      "key": "editor.0146",
+      "en": "End event",
+      "ko": "이벤트 종료"
+    },
+    {
+      "key": "editor.0147",
+      "en": "Keep at least one option without conditions so the player can always continue.",
+      "ko": "플레이어가 진행할 수 있도록 조건 없는 선택지를 하나 이상 두세요."
+    },
+    {
+      "key": "editor.0148",
+      "en": "The first step is the entry. Empty next = list order. End event skips terminal choices. Each stage channel independently replaces, keeps or clears its previous content.",
+      "ko": "첫 단계부터 시작합니다. 다음 단계가 비어 있으면 목록 순서로 진행합니다. 이벤트 종료는 마지막 선택지를 건너뜁니다. 배경·인물·이미지는 각각 교체·유지·비우기를 설정합니다."
+    },
+    {
+      "key": "editor.0149",
+      "en": "A protagonist-linked actor uses the game's protagonist age. Local conditions are independent of global stats.",
+      "ko": "주인공과 연결된 인물은 주인공 나이를 사용합니다. 인물 상태는 전역 능력치와 별도로 관리됩니다."
+    },
+    {
+      "key": "editor.0150",
+      "en": "Uses this actor's age.",
+      "ko": "이 인물의 나이를 사용합니다."
+    },
+    {
+      "key": "editor.0151",
+      "en": "Create actors and stage slots first.",
+      "ko": "인물과 무대 슬롯을 먼저 만드세요."
+    },
+    {
+      "key": "editor.0152",
+      "en": "Create an actor first.",
+      "ko": "인물을 먼저 만드세요."
+    },
+    {
+      "key": "editor.0153",
+      "en": "Create an appearance profile first.",
+      "ko": "외형 프로필을 먼저 만드세요."
+    },
+    {
+      "key": "editor.0154",
+      "en": "Import character / NPCs (keeps existing growth)",
+      "ko": "주인공·NPC 가져오기(기존 성장 설정 유지)"
+    },
+    {
+      "key": "editor.0155",
+      "en": "Scene is not enabled in Build Settings.",
+      "ko": "빌드 설정에서 장면이 활성화되지 않았습니다."
+    },
+    {
+      "key": "editor.0156",
+      "en": "Allowed stats",
+      "ko": "변경 허용 능력치"
+    },
+    {
+      "key": "editor.0157",
+      "en": "Allowed items",
+      "ko": "변경 허용 아이템"
+    },
+    {
+      "key": "editor.0158",
+      "en": "Allowed NPCs",
+      "ko": "변경 허용 NPC"
+    },
+    {
+      "key": "editor.0159",
+      "en": "Allowed flags",
+      "ko": "변경 허용 플래그"
+    },
+    {
+      "key": "editor.0160",
+      "en": "Maximum elapsed days",
+      "ko": "최대 경과 일수"
+    },
+    {
+      "key": "editor.0161",
+      "en": "Maximum total per value",
+      "ko": "항목별 최대 변화량"
+    },
+    {
+      "key": "editor.0162",
+      "en": "Connections",
+      "ko": "연결 위치"
+    },
+    {
+      "key": "editor.0163",
+      "en": "Encounter IDs",
+      "ko": "조우 ID"
+    },
+    {
+      "key": "editor.0164",
+      "en": "Enemy IDs",
+      "ko": "적 ID"
+    },
+    {
+      "key": "editor.0165",
+      "en": "Map / event text key",
+      "ko": "맵·이벤트 문구 키"
+    },
+    {
+      "key": "editor.0166",
+      "en": "Map X",
+      "ko": "맵 X"
+    },
+    {
+      "key": "editor.0167",
+      "en": "Map Y",
+      "ko": "맵 Y"
+    },
+    {
+      "key": "editor.0168",
+      "en": "Health",
+      "ko": "체력"
+    },
+    {
+      "key": "editor.0169",
+      "en": "Attack",
+      "ko": "공격력"
+    },
+    {
+      "key": "editor.0170",
+      "en": "Difficulty",
+      "ko": "난이도"
+    },
+    {
+      "key": "editor.0171",
+      "en": "Choose a location.",
+      "ko": "위치를 선택하세요."
+    },
+    {
+      "key": "editor.0172",
+      "en": "Choose…",
+      "ko": "선택…"
+    },
+    {
+      "key": "editor.0173",
+      "en": "Clear / default",
+      "ko": "비우기·기본값"
+    },
+    {
+      "key": "editor.0174",
+      "en": "No matching entries. Create the target in its catalog first.",
+      "ko": "일치하는 항목이 없습니다. 해당 분류에서 대상을 먼저 만드세요."
+    },
+    {
+      "key": "editor.0175",
+      "en": "Search name / ID",
+      "ko": "이름·ID 검색"
+    },
+    {
+      "key": "editor.0176",
+      "en": "Open",
+      "ko": "열기"
+    },
+    {
+      "key": "editor.0177",
+      "en": "Language",
+      "ko": "언어"
+    },
+    {
+      "key": "editor.0178",
+      "en": "Locale",
+      "ko": "언어"
+    },
+    {
+      "key": "editor.0179",
+      "en": "Locale (empty = shared)",
+      "ko": "언어(비워 두면 공통)"
+    },
+    {
+      "key": "editor.0180",
+      "en": "Text",
+      "ko": "문구"
+    },
+    {
+      "key": "editor.0181",
+      "en": "Text key",
+      "ko": "문구 키"
+    },
+    {
+      "key": "editor.0182",
+      "en": "Translation",
+      "ko": "번역"
+    },
+    {
+      "key": "editor.0183",
+      "en": "Draft / review required",
+      "ko": "초안 · 검토 필요"
+    },
+    {
+      "key": "editor.0184",
+      "en": "Generate missing keys",
+      "ko": "누락된 키 생성"
+    },
+    {
+      "key": "editor.0185",
+      "en": "Filter keys",
+      "ko": "키 검색"
+    },
+    {
+      "key": "editor.0186",
+      "en": "Export CSV",
+      "ko": "CSV 내보내기"
+    },
+    {
+      "key": "editor.0187",
+      "en": "Import CSV",
+      "ko": "CSV 가져오기"
+    },
+    {
+      "key": "editor.0188",
+      "en": "Sync Unity tables",
+      "ko": "Unity 테이블 동기화"
+    },
+    {
+      "key": "editor.0189",
+      "en": "Check localized assets",
+      "ko": "언어별 에셋 검사"
+    },
+    {
+      "key": "editor.0190",
+      "en": "Locale assets • fonts / portraits / audio",
+      "ko": "언어별 에셋 · 폰트 / 초상화 / 음성"
+    },
+    {
+      "key": "editor.0191",
+      "en": "Asset",
+      "ko": "에셋"
+    },
+    {
+      "key": "editor.0192",
+      "en": "Terminology / glossary",
+      "ko": "용어집"
+    },
+    {
+      "key": "editor.0193",
+      "en": "Source term",
+      "ko": "원문 용어"
+    },
+    {
+      "key": "editor.0194",
+      "en": "Target locale",
+      "ko": "대상 언어"
+    },
+    {
+      "key": "editor.0195",
+      "en": "Required translation",
+      "ko": "지정 번역"
+    },
+    {
+      "key": "editor.0196",
+      "en": "New term",
+      "ko": "새 용어"
+    },
+    {
+      "key": "editor.0197",
+      "en": "Unity String and Asset tables synchronized.",
+      "ko": "Unity 문자열·에셋 테이블을 동기화했습니다."
+    },
+    {
+      "key": "editor.0198",
+      "en": "Check project",
+      "ko": "프로젝트 검사"
+    },
+    {
+      "key": "editor.0199",
+      "en": "Validate project",
+      "ko": "프로젝트 검증"
+    },
+    {
+      "key": "editor.0200",
+      "en": "Simulate 32 lives",
+      "ko": "32회 인생 시뮬레이션"
+    },
+    {
+      "key": "editor.0201",
+      "en": "Export report",
+      "ko": "보고서 내보내기"
+    },
+    {
+      "key": "editor.0202",
+      "en": "Audit locale",
+      "ko": "검사 언어"
+    },
+    {
+      "key": "editor.0203",
+      "en": "Layout probe",
+      "ko": "레이아웃 검사"
+    },
+    {
+      "key": "editor.0204",
+      "en": "Target font",
+      "ko": "검사 폰트"
+    },
+    {
+      "key": "editor.0205",
+      "en": "Text box width",
+      "ko": "텍스트 상자 너비"
+    },
+    {
+      "key": "editor.0206",
+      "en": "Text box height",
+      "ko": "텍스트 상자 높이"
+    },
+    {
+      "key": "editor.0207",
+      "en": "Measure text and glyphs",
+      "ko": "문구 길이·글리프 검사"
+    },
+    {
+      "key": "editor.0208",
+      "en": "Reachability: contradictory bounds are errors. Random simulation is evidence, not an exhaustive proof. UI clipping and glyphs must be checked at target resolution.",
+      "ko": "도달성: 모순된 조건 범위는 오류입니다. 무작위 시뮬레이션은 모든 경로에 대한 증명이 아닙니다. 대상 해상도에서 문구 잘림과 글리프를 확인하세요."
+    },
+    {
+      "key": "editor.0209",
+      "en": "Paste a structured command from your LLM client. Changes use the same authoring service and Unity Undo as this editor.",
+      "ko": "LLM 클라이언트의 구조화된 명령을 붙여넣으세요. 이 편집기와 동일한 Authoring API 및 Unity 실행 취소를 사용합니다."
+    },
+    {
+      "key": "editor.0210",
+      "en": "Enable local MCP",
+      "ko": "로컬 MCP 활성화"
+    },
+    {
+      "key": "editor.0211",
+      "en": "Stop MCP connection",
+      "ko": "MCP 연결 종료"
+    },
+    {
+      "key": "editor.0212",
+      "en": "Execute command",
+      "ko": "명령 실행"
+    },
+    {
+      "key": "editor.0213",
+      "en": "not connected",
+      "ko": "연결 안 됨"
+    },
+    {
+      "key": "editor.0214",
+      "en": "Test your story",
+      "ko": "이야기 테스트"
+    },
+    {
+      "key": "editor.0215",
+      "en": "Continue",
+      "ko": "계속"
+    },
+    {
+      "key": "editor.0216",
+      "en": "Restart",
+      "ko": "다시 시작"
+    },
+    {
+      "key": "editor.0217",
+      "en": "Save preview",
+      "ko": "테스트 저장"
+    },
+    {
+      "key": "editor.0218",
+      "en": "Load preview",
+      "ko": "테스트 불러오기"
+    },
+    {
+      "key": "editor.0219",
+      "en": "Preview saved.",
+      "ko": "테스트 상태를 저장했습니다."
+    },
+    {
+      "key": "editor.0220",
+      "en": "Preview loaded.",
+      "ko": "테스트 상태를 불러왔습니다."
+    },
+    {
+      "key": "editor.0221",
+      "en": "Preview state is temporary and never written to the project or a save slot.",
+      "ko": "테스트 상태는 임시 데이터이며 프로젝트나 게임 저장 슬롯에 기록되지 않습니다."
+    },
+    {
+      "key": "editor.0222",
+      "en": "Scene activities run in Play Mode through ModuleRunner. This preview exercises core activities and choices.",
+      "ko": "장면 활동은 플레이 모드에서 ModuleRunner로 실행합니다. 여기서는 기본 활동과 선택지를 테스트합니다."
+    },
+    {
+      "key": "editor.0223",
+      "en": "Screen skin",
+      "ko": "화면 스킨"
+    },
+    {
+      "key": "editor.0224",
+      "en": "Create skin",
+      "ko": "스킨 만들기"
+    },
+    {
+      "key": "editor.0225",
+      "en": "Create presentation skin",
+      "ko": "연출 스킨 만들기"
+    },
+    {
+      "key": "editor.0226",
+      "en": "Save skin / refresh preview",
+      "ko": "스킨 저장·미리보기 갱신"
+    },
+    {
+      "key": "editor.0227",
+      "en": "Export game screen prefab",
+      "ko": "게임 화면 프리팹 내보내기"
+    },
+    {
+      "key": "editor.0228",
+      "en": "Create game screen",
+      "ko": "게임 화면 만들기"
+    },
+    {
+      "key": "editor.0229",
+      "en": "Background",
+      "ko": "배경"
+    },
+    {
+      "key": "editor.0230",
+      "en": "Accent",
+      "ko": "강조색"
+    },
+    {
+      "key": "editor.0231",
+      "en": "Stage height (180–720)",
+      "ko": "무대 높이(180–720)"
+    },
+    {
+      "key": "editor.0232",
+      "en": "Preview day",
+      "ko": "미리보기 날짜"
+    },
+    {
+      "key": "editor.0233",
+      "en": "Sequence preview",
+      "ko": "시퀀스 미리보기"
+    },
+    {
+      "key": "editor.0234",
+      "en": "Sprite resources · common canvas/pivot required",
+      "ko": "스프라이트 리소스 · 동일한 캔버스·피벗 필요"
+    },
+    {
+      "key": "editor.0235",
+      "en": "Select a skin to map appearance keys to Sprite assets and preview the runtime stage.",
+      "ko": "스킨을 선택해 외형 키에 스프라이트를 연결하고 실제 무대를 미리 확인하세요."
+    },
+    {
+      "key": "editor.0236",
+      "en": "Sequence preview follows the first structural path to the step; it does not apply choice effects. Use Test play to exercise a specific branch.",
+      "ko": "시퀀스 미리보기는 해당 단계로 이어지는 첫 경로를 사용하며 선택지 효과를 적용하지 않습니다. 특정 분기는 테스트 플레이에서 확인하세요."
+    },
+    {
+      "key": "editor.0237",
+      "en": "The current project, skin and localization will be connected automatically.",
+      "ko": "현재 프로젝트·스킨·현지화가 자동으로 연결됩니다."
+    },
+    {
+      "key": "editor.0238",
+      "en": "Game screen prefab created. Drag it into your scene and enter Play Mode.",
+      "ko": "게임 화면 프리팹을 만들었습니다. 장면에 배치한 뒤 플레이 모드로 실행하세요."
+    },
+    {
+      "key": "editor.0239",
+      "en": "Create or select a project first.",
+      "ko": "프로젝트를 만들거나 선택하세요."
+    },
+    {
+      "key": "editor.0240",
+      "en": "Install Unity Localization 1.5 or newer using Package Manager.",
+      "ko": "패키지 관리자에서 Unity Localization 1.5 이상을 설치하세요."
+    },
+    {
+      "key": "editor.0241",
+      "en": "Install Unity Localization and create the presentation sample first.",
+      "ko": "Unity Localization을 설치하고 연출 샘플을 먼저 만드세요."
+    },
+    {
+      "key": "editor.0242",
+      "en": "RaiseArc UI assets are missing.",
+      "ko": "RaiseArc UI 에셋을 찾을 수 없습니다."
+    },
+    {
+      "key": "editor.0243",
+      "en": "Graph Workbench editor adapter is not installed.",
+      "ko": "그래프 워크벤치 편집 어댑터가 설치되지 않았습니다."
+    },
+    {
+      "key": "editor.0244",
+      "en": "Project changed externally. Refresh before applying this draft.",
+      "ko": "프로젝트가 외부에서 변경됐습니다. 초안을 적용하기 전에 새로고침하세요."
+    },
+    {
+      "key": "editor.0245",
+      "en": "Project changed externally. Refresh before sending a command.",
+      "ko": "프로젝트가 외부에서 변경됐습니다. 명령을 보내기 전에 새로고침하세요."
+    },
+    {
+      "key": "editor.0246",
+      "en": "Create RaiseArc project",
+      "ko": "RaiseArc 프로젝트 만들기"
+    },
+    {
+      "key": "editor.0247",
+      "en": "Choose where to save your game data.",
+      "ko": "게임 데이터를 저장할 위치를 선택하세요."
+    },
+    {
+      "key": "editor.0248",
+      "en": "Copy sample project",
+      "ko": "샘플 프로젝트 복사"
+    },
+    {
+      "key": "editor.0249",
+      "en": "A separate editable project will be created.",
+      "ko": "별도의 편집 가능한 프로젝트가 만들어집니다."
+    },
+    {
+      "key": "editor.0250",
+      "en": "Import project JSON",
+      "ko": "프로젝트 JSON 가져오기"
+    },
+    {
+      "key": "editor.0251",
+      "en": "Export project JSON",
+      "ko": "프로젝트 JSON 내보내기"
+    },
+    {
+      "key": "editor.0252",
+      "en": "Export translations",
+      "ko": "번역 내보내기"
+    },
+    {
+      "key": "editor.0253",
+      "en": "Import translations",
+      "ko": "번역 가져오기"
+    },
+    {
+      "key": "editor.0254",
+      "en": "Export validation",
+      "ko": "검증 결과 내보내기"
+    },
+    {
+      "key": "editor.0255",
+      "en": "Recovered backup save.",
+      "ko": "백업 저장 데이터를 복구했습니다."
+    },
+    {
+      "key": "editor.0256",
+      "en": "Move earlier",
+      "ko": "앞으로 이동"
+    },
+    {
+      "key": "editor.0257",
+      "en": "Move backward",
+      "ko": "뒤로 이동"
+    },
+    {
+      "key": "editor.0258",
+      "en": "Flow",
+      "ko": "흐름"
+    },
+    {
+      "key": "editor.0259",
+      "en": "Table",
+      "ko": "표"
+    },
+    {
+      "key": "editor.0260",
+      "en": "This flow",
+      "ko": "현재 흐름"
+    },
+    {
+      "key": "editor.0261",
+      "en": "CONTENT EXPLORER",
+      "ko": "콘텐츠 탐색기"
+    },
+    {
+      "key": "editor.0262",
+      "en": "Content",
+      "ko": "콘텐츠"
+    },
+    {
+      "key": "editor.0263",
+      "en": "Type",
+      "ko": "유형"
+    },
+    {
+      "key": "editor.0264",
+      "en": "New event",
+      "ko": "새 이벤트"
+    },
+    {
+      "key": "editor.0265",
+      "en": "Favorites",
+      "ko": "즐겨찾기"
+    },
+    {
+      "key": "editor.0266",
+      "en": "Recent",
+      "ko": "최근 항목"
+    },
+    {
+      "key": "editor.0267",
+      "en": "Auto layout",
+      "ko": "자동 정렬"
+    },
+    {
+      "key": "editor.0268",
+      "en": "Play from selection",
+      "ko": "선택부터 실행"
+    },
+    {
+      "key": "editor.0269",
+      "en": "Classic editor",
+      "ko": "기본 편집기"
+    },
+    {
+      "key": "editor.0270",
+      "en": "Problems",
+      "ko": "문제"
+    },
+    {
+      "key": "editor.0271",
+      "en": "References",
+      "ko": "참조"
+    },
+    {
+      "key": "editor.0272",
+      "en": "Trace",
+      "ko": "실행 추적"
+    },
+    {
+      "key": "editor.0273",
+      "en": "Changes",
+      "ko": "변경 사항"
+    },
+    {
+      "key": "editor.0274",
+      "en": "+ Node",
+      "ko": "+ 노드"
+    },
+    {
+      "key": "editor.0275",
+      "en": "Clipboard",
+      "ko": "복사·붙여넣기"
+    },
+    {
+      "key": "editor.0276",
+      "en": "Copy selected node / dialogue block",
+      "ko": "선택 노드·대화 블록 복사"
+    },
+    {
+      "key": "editor.0277",
+      "en": "Paste nodes",
+      "ko": "노드 붙여넣기"
+    },
+    {
+      "key": "editor.0278",
+      "en": "Copy entire flow",
+      "ko": "전체 흐름 복사"
+    },
+    {
+      "key": "editor.0279",
+      "en": "Paste flow",
+      "ko": "흐름 붙여넣기"
+    },
+    {
+      "key": "editor.0280",
+      "en": "Focus selection",
+      "ko": "선택 항목으로 이동"
+    },
+    {
+      "key": "editor.0281",
+      "en": "Select a GameProjectAsset to start.",
+      "ko": "프로젝트 에셋을 선택하세요."
+    },
+    {
+      "key": "editor.0282",
+      "en": "Ctrl/Cmd+P: all content · Ctrl/Cmd+F: current flow",
+      "ko": "Ctrl/Cmd+P: 전체 검색 · Ctrl/Cmd+F: 현재 흐름 검색"
+    },
+    {
+      "key": "editor.0283",
+      "en": "Sprite resources used by the inspector",
+      "ko": "오른쪽 편집 패널에서 사용할 스프라이트 리소스"
+    },
+    {
+      "key": "editor.0284",
+      "en": "Entry",
+      "ko": "시작"
+    },
+    {
+      "key": "editor.0285",
+      "en": "Dialogue Block",
+      "ko": "대화 블록"
+    },
+    {
+      "key": "editor.0286",
+      "en": "Dialogue",
+      "ko": "대화"
+    },
+    {
+      "key": "editor.0287",
+      "en": "Image",
+      "ko": "이미지"
+    },
+    {
+      "key": "editor.0288",
+      "en": "Presentation",
+      "ko": "연출"
+    },
+    {
+      "key": "editor.0289",
+      "en": "Choice",
+      "ko": "선택지"
+    },
+    {
+      "key": "editor.0290",
+      "en": "Condition",
+      "ko": "조건 분기"
+    },
+    {
+      "key": "editor.0291",
+      "en": "Effect",
+      "ko": "효과"
+    },
+    {
+      "key": "editor.0292",
+      "en": "Merge",
+      "ko": "합류"
+    },
+    {
+      "key": "editor.0293",
+      "en": "End",
+      "ko": "종료"
+    },
+    {
+      "key": "editor.0294",
+      "en": "Start",
+      "ko": "시작"
+    },
+    {
+      "key": "editor.0295",
+      "en": "Next",
+      "ko": "다음"
+    },
+    {
+      "key": "editor.0296",
+      "en": "True",
+      "ko": "충족"
+    },
+    {
+      "key": "editor.0297",
+      "en": "False",
+      "ko": "미충족"
+    },
+    {
+      "key": "editor.0298",
+      "en": "Terminal choices",
+      "ko": "마지막 선택지"
+    },
+    {
+      "key": "editor.0299",
+      "en": "Return to life simulation",
+      "ko": "육성 화면으로 복귀"
+    },
+    {
+      "key": "editor.0300",
+      "en": "● Input / select",
+      "ko": "● 입력 · 선택"
+    },
+    {
+      "key": "editor.0301",
+      "en": "Connect: click an output, then the target's Input. Drag node headers to arrange. Layout changes do not edit game content.",
+      "ko": "연결: 출력 → 대상 노드의 입력을 클릭하세요. 제목을 드래그하면 위치를 바꿀 수 있습니다. 배치는 게임 데이터와 별도로 저장됩니다."
+    },
+    {
+      "key": "editor.0302",
+      "en": "Stage edits",
+      "ko": "변경 세트에 담기"
+    },
+    {
+      "key": "editor.0303",
+      "en": "Discard edits",
+      "ko": "편집 취소"
+    },
+    {
+      "key": "editor.0304",
+      "en": "Identity",
+      "ko": "기본 정보"
+    },
+    {
+      "key": "editor.0305",
+      "en": "Flow settings",
+      "ko": "흐름 설정"
+    },
+    {
+      "key": "editor.0306",
+      "en": "Conditions",
+      "ko": "조건"
+    },
+    {
+      "key": "editor.0307",
+      "en": "Effects",
+      "ko": "효과"
+    },
+    {
+      "key": "editor.0308",
+      "en": "Layout only · note / group / color",
+      "ko": "그래프 배치 · 메모 / 그룹 / 색상"
+    },
+    {
+      "key": "editor.0309",
+      "en": "Note",
+      "ko": "메모"
+    },
+    {
+      "key": "editor.0310",
+      "en": "Group",
+      "ko": "그룹"
+    },
+    {
+      "key": "editor.0311",
+      "en": "Collapsed",
+      "ko": "접기"
+    },
+    {
+      "key": "editor.0312",
+      "en": "Color",
+      "ko": "색상"
+    },
+    {
+      "key": "editor.0313",
+      "en": "Localization · all languages",
+      "ko": "현지화 · 모든 언어"
+    },
+    {
+      "key": "editor.0314",
+      "en": "Review deletion impact…",
+      "ko": "삭제 영향 확인…"
+    },
+    {
+      "key": "editor.0315",
+      "en": "Used by",
+      "ko": "이 항목을 사용하는 곳"
+    },
+    {
+      "key": "editor.0316",
+      "en": "Uses",
+      "ko": "이 항목이 사용하는 것"
+    },
+    {
+      "key": "editor.0317",
+      "en": "Apply reviewed changes",
+      "ko": "검토한 변경 적용"
+    },
+    {
+      "key": "editor.0318",
+      "en": "Discard change set / refresh",
+      "ko": "변경 세트 취소·새로고침"
+    },
+    {
+      "key": "editor.0319",
+      "en": "No content validation issues.",
+      "ko": "콘텐츠 검증 오류가 없습니다."
+    },
+    {
+      "key": "editor.0320",
+      "en": "Edit all languages in the selected node's Localization section. Graph structure is shared across languages.",
+      "ko": "선택 항목의 현지화 섹션에서 모든 언어를 편집합니다. 그래프 구조는 언어 간에 공유됩니다."
+    },
+    {
+      "key": "editor.0321",
+      "en": "Selection",
+      "ko": "선택 항목"
+    },
+    {
+      "key": "editor.0322",
+      "en": "Default / none",
+      "ko": "기본값·없음"
+    },
+    {
+      "key": "editor.0323",
+      "en": "None / inherit",
+      "ko": "없음·상속"
+    },
+    {
+      "key": "editor.0324",
+      "en": "List order",
+      "ko": "목록 순서"
+    },
+    {
+      "key": "editor.0325",
+      "en": "+ Dialogue line",
+      "ko": "+ 대사 추가"
+    },
+    {
+      "key": "editor.0326",
+      "en": "Pending changes",
+      "ko": "미적용 변경"
+    },
+    {
+      "key": "editor.0327",
+      "en": "Discard the current change set and switch projects?",
+      "ko": "현재 변경 세트를 취소하고 프로젝트를 바꿀까요?"
+    },
+    {
+      "key": "editor.0328",
+      "en": "Unstaged inspector edits",
+      "ko": "변경 세트에 담지 않은 편집"
+    },
+    {
+      "key": "editor.0329",
+      "en": "Keep these edits in the change set before navigating?",
+      "ko": "이동하기 전에 편집 내용을 변경 세트에 담을까요?"
+    },
+    {
+      "key": "editor.0330",
+      "en": "Keep",
+      "ko": "유지"
+    },
+    {
+      "key": "editor.0331",
+      "en": "Cancel",
+      "ko": "취소"
+    },
+    {
+      "key": "editor.0332",
+      "en": "Discard",
+      "ko": "취소하고 버리기"
+    },
+    {
+      "key": "editor.0333",
+      "en": "Stage deletion",
+      "ko": "삭제를 변경 세트에 담기"
+    },
+    {
+      "key": "editor.0334",
+      "en": "Draft updated. Review Changes, then Apply.",
+      "ko": "변경 세트를 갱신했습니다. 변경 사항을 검토한 뒤 적용하세요."
+    },
+    {
+      "key": "editor.0335",
+      "en": "Changes applied. Undo/Redo is available.",
+      "ko": "변경을 적용했습니다. 실행 취소·다시 실행이 가능합니다."
+    },
+    {
+      "key": "editor.0336",
+      "en": "Stage or discard the current inspector edits before editing another selection.",
+      "ko": "다른 항목을 편집하기 전에 현재 편집을 변경 세트에 담거나 취소하세요."
+    },
+    {
+      "key": "editor.0337",
+      "en": "Revision conflict: project changed externally. Draft retained; discard and reload before applying.",
+      "ko": "리비전 충돌: 프로젝트가 외부에서 변경됐습니다. 초안은 유지됩니다. 적용 전에 초안을 취소하고 새로고침하세요."
+    },
+    {
+      "key": "editor.0338",
+      "en": "Flow copied; paste duplicates it with new IDs.",
+      "ko": "흐름을 복사했습니다. 붙여넣으면 새 ID로 복제합니다."
+    },
+    {
+      "key": "editor.0339",
+      "en": "Select an executable node; use Clipboard / Copy entire flow for Entry or End.",
+      "ko": "실행 노드를 선택하세요. 시작·종료 노드는 전체 흐름 복사를 사용하세요."
+    },
+    {
+      "key": "editor.0340",
+      "en": "Node clipboard exceeds 256 KiB.",
+      "ko": "복사한 노드가 256 KiB를 초과합니다."
+    },
+    {
+      "key": "editor.0341",
+      "en": "Clipboard requires 1–256 steps.",
+      "ko": "1~256개의 단계를 복사할 수 있습니다."
+    },
+    {
+      "key": "editor.0342",
+      "en": "Fix draft validation errors before running a trace.",
+      "ko": "실행 추적 전에 변경 세트의 검증 오류를 수정하세요."
+    },
+    {
+      "key": "editor.0343",
+      "en": "Selected-node presets supply state after preceding steps. Entry starts evaluate triggers and apply entry effects; later-node starts do not replay earlier effects.",
+      "ko": "상태 프리셋은 앞 단계가 끝난 시점의 값입니다. 시작 노드는 진입 조건·효과를 평가하고, 중간 노드는 이전 효과를 다시 적용하지 않습니다."
+    },
+    {
+      "key": "editor.0344",
+      "en": "Test state preset",
+      "ko": "테스트 상태 프리셋"
+    },
+    {
+      "key": "editor.0345",
+      "en": "Elapsed days",
+      "ko": "경과 일수"
+    },
+    {
+      "key": "editor.0346",
+      "en": "Money",
+      "ko": "돈"
+    },
+    {
+      "key": "editor.0347",
+      "en": "Run from selected node",
+      "ko": "선택 노드부터 실행"
+    },
+    {
+      "key": "editor.0348",
+      "en": "Focus node",
+      "ko": "노드로 이동"
+    },
+    {
+      "key": "editor.0349",
+      "en": "Kind",
+      "ko": "종류"
+    },
+    {
+      "key": "editor.0350",
+      "en": "Activity",
+      "ko": "활동"
+    },
+    {
+      "key": "editor.0351",
+      "en": "Stat",
+      "ko": "능력치"
+    },
+    {
+      "key": "editor.0352",
+      "en": "Flag",
+      "ko": "플래그"
+    },
+    {
+      "key": "editor.0353",
+      "en": "Item",
+      "ko": "아이템"
+    },
+    {
+      "key": "editor.0354",
+      "en": "Npc",
+      "ko": "NPC"
+    },
+    {
+      "key": "editor.0355",
+      "en": "CharacterDefinition",
+      "ko": "주인공"
+    },
+    {
+      "key": "editor.0356",
+      "en": "ActorDefinition",
+      "ko": "인물"
+    },
+    {
+      "key": "editor.0357",
+      "en": "ActivityDefinition",
+      "ko": "활동"
+    },
+    {
+      "key": "editor.0358",
+      "en": "StatDefinition",
+      "ko": "능력치"
+    },
+    {
+      "key": "editor.0359",
+      "en": "EventDefinition",
+      "ko": "이벤트"
+    },
+    {
+      "key": "editor.0360",
+      "en": "ChoiceDefinition",
+      "ko": "선택지"
+    },
+    {
+      "key": "editor.0361",
+      "en": "EndingDefinition",
+      "ko": "엔딩"
+    },
+    {
+      "key": "editor.0362",
+      "en": "RelationshipDefinition",
+      "ko": "관계"
+    },
+    {
+      "key": "editor.0363",
+      "en": "NpcDefinition",
+      "ko": "NPC"
+    },
+    {
+      "key": "editor.0364",
+      "en": "ItemDefinition",
+      "ko": "아이템"
+    },
+    {
+      "key": "editor.0365",
+      "en": "FlagDefinition",
+      "ko": "플래그"
+    },
+    {
+      "key": "editor.0366",
+      "en": "ModuleDefinition",
+      "ko": "외부 모듈"
+    },
+    {
+      "key": "editor.0367",
+      "en": "AppearanceProfile",
+      "ko": "외형 프로필"
+    },
+    {
+      "key": "editor.0368",
+      "en": "AppearanceRule",
+      "ko": "외형 규칙"
+    },
+    {
+      "key": "editor.0369",
+      "en": "StageSlot",
+      "ko": "무대 슬롯"
+    },
+    {
+      "key": "editor.0370",
+      "en": "PresentationStep",
+      "ko": "이벤트 단계"
+    },
+    {
+      "key": "editor.0371",
+      "en": "GrowthStage",
+      "ko": "성장 단계"
+    },
+    {
+      "key": "editor.0372",
+      "en": "ScheduleDefinition",
+      "ko": "일정"
+    },
+    {
+      "key": "editor.0373",
+      "en": "Reads",
+      "ko": "읽기"
+    },
+    {
+      "key": "editor.0374",
+      "en": "Writes",
+      "ko": "쓰기"
+    },
+    {
+      "key": "editor.0375",
+      "en": "Requires",
+      "ko": "필요"
+    },
+    {
+      "key": "editor.0376",
+      "en": "LeadsTo",
+      "ko": "다음 단계"
+    },
+    {
+      "key": "editor.0377",
+      "en": "Calls",
+      "ko": "호출"
+    },
+    {
+      "key": "editor.0378",
+      "en": "Localizes",
+      "ko": "번역"
+    },
+    {
+      "key": "editor.0379",
+      "en": "Unlocks",
+      "ko": "해금"
+    },
+    {
+      "key": "editor.0380",
+      "en": "EndsWith",
+      "ko": "종료"
+    },
+    {
+      "key": "editor.0381",
+      "en": "Info",
+      "ko": "안내"
+    },
+    {
+      "key": "editor.0382",
+      "en": "Warning",
+      "ko": "경고"
+    },
+    {
+      "key": "editor.0383",
+      "en": "Error",
+      "ko": "오류"
+    },
+    {
+      "key": "editor.0384",
+      "en": "AtLeast",
+      "ko": "이상"
+    },
+    {
+      "key": "editor.0385",
+      "en": "AtMost",
+      "ko": "이하"
+    },
+    {
+      "key": "editor.0386",
+      "en": "Equal",
+      "ko": "같음"
+    },
+    {
+      "key": "editor.0387",
+      "en": "NotEqual",
+      "ko": "다름"
+    },
+    {
+      "key": "editor.0388",
+      "en": "Add",
+      "ko": "더하기"
+    },
+    {
+      "key": "editor.0389",
+      "en": "Set",
+      "ko": "설정"
+    },
+    {
+      "key": "editor.0390",
+      "en": "Replace",
+      "ko": "교체"
+    },
+    {
+      "key": "editor.0391",
+      "en": "Clear",
+      "ko": "비우기"
+    },
+    {
+      "key": "editor.0392",
+      "en": "BehindActors",
+      "ko": "인물 뒤"
+    },
+    {
+      "key": "editor.0393",
+      "en": "InFrontOfActors",
+      "ko": "인물 앞"
+    },
+    {
+      "key": "editor.0394",
+      "en": "Lesson",
+      "ko": "수업"
+    },
+    {
+      "key": "editor.0395",
+      "en": "Work",
+      "ko": "아르바이트"
+    },
+    {
+      "key": "editor.0396",
+      "en": "Rest",
+      "ko": "휴식"
+    },
+    {
+      "key": "editor.0397",
+      "en": "Travel",
+      "ko": "여행"
+    },
+    {
+      "key": "editor.0398",
+      "en": "GameMode",
+      "ko": "외부 게임"
+    },
+    {
+      "key": "editor.0399",
+      "en": "Day",
+      "ko": "날짜"
+    },
+    {
+      "key": "editor.0400",
+      "en": "Age",
+      "ko": "나이"
+    },
+    {
+      "key": "editor.0401",
+      "en": "Relationship",
+      "ko": "관계"
+    },
+    {
+      "key": "editor.0402",
+      "en": "Custom",
+      "ko": "사용자 확장"
+    },
+    {
+      "key": "editor.0403",
+      "en": "Background Change",
+      "ko": "배경 표시 방식"
+    },
+    {
+      "key": "editor.0404",
+      "en": "Actors Change",
+      "ko": "인물 표시 방식"
+    },
+    {
+      "key": "editor.0405",
+      "en": "Images Change",
+      "ko": "이미지 표시 방식"
+    },
+    {
+      "key": "editor.0406",
+      "en": "Background Key",
+      "ko": "배경 리소스 키"
+    },
+    {
+      "key": "editor.0407",
+      "en": "Speaker Actor Id",
+      "ko": "화자"
+    },
+    {
+      "key": "editor.0408",
+      "en": "Next Step Id",
+      "ko": "다음 단계"
+    },
+    {
+      "key": "editor.0409",
+      "en": "False Step Id",
+      "ko": "미충족 시 다음 단계"
+    },
+    {
+      "key": "editor.0410",
+      "en": "Name Key",
+      "ko": "이름·대사 번역 키"
+    },
+    {
+      "key": "editor.0411",
+      "en": "Description Key",
+      "ko": "설명 번역 키"
+    },
+    {
+      "key": "editor.0412",
+      "en": "Actor Id",
+      "ko": "인물"
+    },
+    {
+      "key": "editor.0413",
+      "en": "Subject Id",
+      "ko": "연결 대상"
+    },
+    {
+      "key": "editor.0414",
+      "en": "Profile Id",
+      "ko": "외형 프로필"
+    },
+    {
+      "key": "editor.0415",
+      "en": "Slot Id",
+      "ko": "무대 슬롯"
+    },
+    {
+      "key": "editor.0416",
+      "en": "Module Id",
+      "ko": "외부 모듈"
+    },
+    {
+      "key": "editor.0417",
+      "en": "Resource Key",
+      "ko": "리소스 키"
+    },
+    {
+      "key": "editor.0418",
+      "en": "Starting Age",
+      "ko": "시작 나이"
+    },
+    {
+      "key": "editor.0419",
+      "en": "Fixed Age",
+      "ko": "나이 고정"
+    },
+    {
+      "key": "editor.0420",
+      "en": "Birthday Offset",
+      "ko": "생일 오프셋"
+    },
+    {
+      "key": "editor.0421",
+      "en": "Tags",
+      "ko": "태그"
+    },
+    {
+      "key": "editor.0422",
+      "en": "Images",
+      "ko": "이미지"
+    },
+    {
+      "key": "editor.0423",
+      "en": "Choices",
+      "ko": "선택지"
+    },
+    {
+      "key": "editor.0424",
+      "en": "Target",
+      "ko": "대상"
+    },
+    {
+      "key": "editor.0425",
+      "en": "Body",
+      "ko": "몸·초상화"
+    },
+    {
+      "key": "editor.0426",
+      "en": "Overrides",
+      "ko": "덮어쓰기"
+    },
+    {
+      "key": "editor.0427",
+      "en": "Slots",
+      "ko": "외형 슬롯"
+    },
+    {
+      "key": "editor.0428",
+      "en": "Plane",
+      "ko": "표시 순서"
+    },
+    {
+      "key": "editor.0429",
+      "en": "Opacity",
+      "ko": "불투명도"
+    },
+    {
+      "key": "editor.0430",
+      "en": "Width",
+      "ko": "너비"
+    },
+    {
+      "key": "editor.0431",
+      "en": "Height",
+      "ko": "높이"
+    },
+    {
+      "key": "editor.0432",
+      "en": "X",
+      "ko": "가로 위치"
+    },
+    {
+      "key": "editor.0433",
+      "en": "Y",
+      "ko": "세로 위치"
+    },
+    {
+      "key": "editor.0434",
+      "en": "Starting Money",
+      "ko": "시작 자금"
+    },
+    {
+      "key": "editor.0435",
+      "en": "Days",
+      "ko": "일수"
+    },
+    {
+      "key": "editor.0436",
+      "en": "Minimum Age",
+      "ko": "최소 나이"
+    },
+    {
+      "key": "editor.0437",
+      "en": "Maximum Stack",
+      "ko": "최대 보유 수량"
+    },
+    {
+      "key": "editor.0438",
+      "en": "Once",
+      "ko": "한 번만 실행"
+    },
+    {
+      "key": "editor.0439",
+      "en": "Completed",
+      "ko": "실행 완료"
+    },
+    {
+      "key": "editor.0440",
+      "en": "Waiting for choice",
+      "ko": "선택 대기"
+    },
+    {
+      "key": "editor.0441",
+      "en": "Entry conditions failed",
+      "ko": "시작 조건 미충족"
+    },
+    {
+      "key": "editor.0442",
+      "en": "Budget exceeded",
+      "ko": "실행 한도 초과"
+    },
+    {
+      "key": "editor.0443",
+      "en": "Apply changes before changing the editor language. Continue?",
+      "ko": "제작 도구 언어를 바꾸기 전에 편집 내용을 적용하세요. 계속할까요?"
+    },
+    {
+      "key": "editor.0444",
+      "en": "Current-user pipe: ",
+      "ko": "현재 사용자 파이프: "
+    },
+    {
+      "key": "editor.0445",
+      "en": "Command completed • revision ",
+      "ko": "명령 완료 · 리비전 "
+    },
+    {
+      "key": "editor.0446",
+      "en": "Saved • revision ",
+      "ko": "저장 완료 · 리비전 "
+    },
+    {
+      "key": "editor.0447",
+      "en": "Project / ",
+      "ko": "프로젝트 / "
+    },
+    {
+      "key": "editor.0448",
+      "en": "     •     Revision ",
+      "ko": "     ·     리비전 "
+    },
+    {
+      "key": "editor.0449",
+      "en": "Revision ",
+      "ko": "리비전 "
+    },
+    {
+      "key": "editor.0450",
+      "en": " · content and layout are stored separately",
+      "ko": " · 콘텐츠와 그래프 배치는 별도로 저장됩니다"
+    },
+    {
+      "key": "editor.0451",
+      "en": "Draft · base revision ",
+      "ko": "변경 세트 · 기준 리비전 "
+    },
+    {
+      "key": "editor.0452",
+      "en": " operations",
+      "ko": "개 작업"
+    },
+    {
+      "key": "editor.0453",
+      "en": "Remove from proposal: ",
+      "ko": "변경 세트에서 제외: "
+    },
+    {
+      "key": "editor.0454",
+      "en": "Added: ",
+      "ko": "추가: "
+    },
+    {
+      "key": "editor.0455",
+      "en": "Changed: ",
+      "ko": "변경: "
+    },
+    {
+      "key": "editor.0456",
+      "en": "Removed: ",
+      "ko": "삭제: "
+    },
+    {
+      "key": "editor.0457",
+      "en": "Disconnect ",
+      "ko": "연결 해제: "
+    },
+    {
+      "key": "editor.0458",
+      "en": "Insert dialogue on ",
+      "ko": "이 연결에 대사 삽입: "
+    },
+    {
+      "key": "editor.0459",
+      "en": "Dialogue Block · ",
+      "ko": "대화 블록 · "
+    },
+    {
+      "key": "editor.0460",
+      "en": " lines. Edit the scene here; individual line IDs remain stable.",
+      "ko": "줄 · 이곳에서 장면을 편집합니다. 각 대사의 고유 ID는 유지됩니다."
+    },
+    {
+      "key": "editor.0461",
+      "en": "New ",
+      "ko": "새 "
+    },
+    {
+      "key": "editor.0462",
+      "en": "+ ",
+      "ko": "+ "
+    },
+    {
+      "key": "editor.0463",
+      "en": "+ Add ",
+      "ko": "+ 추가: "
+    },
+    {
+      "key": "editor.0464",
+      "en": "Delete ",
+      "ko": "삭제: "
+    },
+    {
+      "key": "editor.0465",
+      "en": " incoming references:\n",
+      "ko": "개의 참조가 있습니다:\n"
+    },
+    {
+      "key": "editor.0466",
+      "en": "\nStep links will end the event. Other broken references must be repaired before Apply.",
+      "ko": "\n단계 연결은 이벤트 종료로 바뀝니다. 다른 끊어진 참조는 적용 전에 수정해야 합니다."
+    },
+    {
+      "key": "editor.0467",
+      "en": " Text",
+      "ko": " 문구"
+    },
+    {
+      "key": "editor.0468",
+      "en": "Copied ",
+      "ko": "복사됨: "
+    },
+    {
+      "key": "editor.0469",
+      "en": " steps. Paste creates new identities and leaves external connections empty.",
+      "ko": "개 단계 · 붙여넣으면 새 ID를 만들고 외부 연결은 빈 상태로 둡니다."
+    },
+    {
+      "key": "editor.0470",
+      "en": " days  ·  ",
+      "ko": "일 · "
+    },
+    {
+      "key": "editor.0471",
+      "en": " gold",
+      "ko": "골드"
+    },
+    {
+      "key": "editor.0472",
+      "en": "Missing: ",
+      "ko": "누락: "
+    },
+    {
+      "key": "editor.0473",
+      "en": "Exported ",
+      "ko": "내보내기 완료: "
+    },
+    {
+      "key": "editor.0474",
+      "en": "Simulation finished: ",
+      "ko": "시뮬레이션 완료: "
+    },
+    {
+      "key": "editor.0475",
+      "en": " endings, ",
+      "ko": "개 엔딩, "
+    },
+    {
+      "key": "editor.0476",
+      "en": "Age ",
+      "ko": "나이 "
+    },
+    {
+      "key": "editor.0477",
+      "en": "Month ",
+      "ko": "월 "
+    },
+    {
+      "key": "editor.0478",
+      "en": "Day ",
+      "ko": "일 "
+    },
+    {
+      "key": "editor.0479",
+      "en": "Year ",
+      "ko": "연도 "
+    },
+    {
+      "key": "editor.0480",
+      "en": "Money ",
+      "ko": "돈 "
+    },
+    {
+      "key": "editor.0481",
+      "en": "actual ",
+      "ko": "실제 값 "
+    },
+    {
+      "key": "editor.0482",
+      "en": "Stat · ",
+      "ko": "능력치 · "
+    },
+    {
+      "key": "editor.0483",
+      "en": "Flag · ",
+      "ko": "플래그 · "
+    },
+    {
+      "key": "editor.0484",
+      "en": "Relationship · ",
+      "ko": "관계 · "
+    },
+    {
+      "key": "editor.0485",
+      "en": "Actor · ",
+      "ko": "인물 · "
+    },
+    {
+      "key": "editor.0486",
+      "en": "Choose · ",
+      "ko": "선택 · "
+    },
+    {
+      "key": "editor.0487",
+      "en": "Actor / ",
+      "ko": "인물 / "
+    },
+    {
+      "key": "editor.0488",
+      "en": "Character / ",
+      "ko": "주인공 / "
+    },
+    {
+      "key": "editor.0489",
+      "en": "Choice / ",
+      "ko": "선택지 / "
+    },
+    {
+      "key": "editor.0490",
+      "en": "Choice · ",
+      "ko": "선택지 · "
+    },
+    {
+      "key": "editor.0491",
+      "en": "Image · ",
+      "ko": "이미지 · "
+    },
+    {
+      "key": "editor.0492",
+      "en": "Visible actor / ",
+      "ko": "표시 인물 / "
+    },
+    {
+      "key": "editor.0493",
+      "en": "Map location / ",
+      "ko": "맵 위치 / "
+    },
+    {
+      "key": "editor.0494",
+      "en": "Enemy / ",
+      "ko": "적 / "
+    },
+    {
+      "key": "editor.0495",
+      "en": "Encounter / ",
+      "ko": "조우 / "
+    },
+    {
+      "key": "editor.0496",
+      "en": "Flag / ",
+      "ko": "플래그 / "
+    },
+    {
+      "key": "editor.0497",
+      "en": "Protagonist / ",
+      "ko": "주인공 / "
+    },
+    {
+      "key": "editor.0498",
+      "en": "Connected → ",
+      "ko": "연결됨 → "
+    },
+    {
+      "key": "editor.0499",
+      "en": "Drop a module here → ",
+      "ko": "여기에 모듈 놓기 → "
+    },
+    {
+      "key": "editor.0500",
+      "en": "No branch selected",
+      "ko": "분기를 선택하지 않았습니다"
+    },
+    {
+      "key": "editor.0501",
+      "en": "fallback",
+      "ko": "대체 번역"
+    },
+    {
+      "key": "editor.0502",
+      "en": "missing",
+      "ko": "번역 누락"
+    },
+    {
+      "key": "editor.0503",
+      "en": "Age Based",
+      "ko": "나이 기준"
+    },
+    {
+      "key": "editor.0504",
+      "en": "Is Status",
+      "ko": "상태 능력치"
+    },
+    {
+      "key": "editor.0505",
+      "en": "Initially Enabled",
+      "ko": "초기 활성화"
+    },
+    {
+      "key": "editor.0506",
+      "en": "Period Days",
+      "ko": "일정 기간"
+    },
+    {
+      "key": "editor.0507",
+      "en": "Activity Ids",
+      "ko": "활동 목록"
+    },
+    {
+      "key": "editor.0508",
+      "en": "Minimum Relationship",
+      "ko": "최소 관계"
+    },
+    {
+      "key": "editor.0509",
+      "en": "Text Key",
+      "ko": "문구 키"
+    },
+    {
+      "key": "editor.0510",
+      "en": "Scene Path",
+      "ko": "장면 경로"
+    },
+    {
+      "key": "editor.0511",
+      "en": "Allowed Stats",
+      "ko": "허용 능력치"
+    },
+    {
+      "key": "editor.0512",
+      "en": "Allowed Items",
+      "ko": "허용 아이템"
+    },
+    {
+      "key": "editor.0513",
+      "en": "Allowed Npcs",
+      "ko": "허용 NPC"
+    },
+    {
+      "key": "editor.0514",
+      "en": "Allowed Flags",
+      "ko": "허용 플래그"
+    },
+    {
+      "key": "editor.0515",
+      "en": "Max Elapsed Days",
+      "ko": "최대 경과 일수"
+    },
+    {
+      "key": "editor.0516",
+      "en": "Max Total Per Value",
+      "ko": "항목별 최대 변화량"
+    },
+    {
+      "key": "editor.0517",
+      "en": "Maximum Days",
+      "ko": "최대 일수"
+    },
+    {
+      "key": "editor.0518",
+      "en": "Location",
+      "ko": "위치"
+    },
+    {
+      "key": "editor.0519",
+      "en": "LocationDefinition",
+      "ko": "위치"
+    },
+    {
+      "key": "editor.0520",
+      "en": "EncounterDefinition",
+      "ko": "조우"
+    },
+    {
+      "key": "editor.0521",
+      "en": "EnemyDefinition",
+      "ko": "적"
+    },
+    {
+      "key": "editor.0522",
+      "en": "Appearance",
+      "ko": "외형"
+    },
+    {
+      "key": "graph.node.counts",
+      "en": "{0} lines · {1} conditions · {2} effects",
+      "ko": "대사 {0} · 조건 {1} · 효과 {2}"
+    },
+    {
+      "key": "graph.node.media",
+      "en": "Actors {0} · Images {1} · Missing {2}",
+      "ko": "인물 {0} · 이미지 {1} · 번역 누락 {2}"
+    },
+    {
+      "key": "editor.0523",
+      "en": "Unsupported schema version.",
+      "ko": "지원하지 않는 데이터 버전입니다."
+    },
+    {
+      "key": "editor.0524",
+      "en": "Use a stable alphanumeric identifier.",
+      "ko": "영문·숫자로 시작하는 고유 ID를 사용하세요."
+    },
+    {
+      "key": "editor.0525",
+      "en": "Calendar, duration, starting age or money is outside supported limits.",
+      "ko": "달력·게임 기간·시작 나이·자금이 지원 범위를 벗어났습니다."
+    },
+    {
+      "key": "editor.0526",
+      "en": "IDs must be valid and globally unique, including choices and encounters.",
+      "ko": "선택지·조우를 포함한 모든 ID는 유효하고 프로젝트 전체에서 고유해야 합니다."
+    },
+    {
+      "key": "editor.0527",
+      "en": "Name requires a localization key.",
+      "ko": "이름에 번역 키가 필요합니다."
+    },
+    {
+      "key": "editor.0528",
+      "en": "Invalid description key.",
+      "ko": "설명 번역 키가 올바르지 않습니다."
+    },
+    {
+      "key": "editor.0529",
+      "en": "Initial stat must be inside its bounds.",
+      "ko": "능력치 초깃값은 최솟값과 최댓값 사이여야 합니다."
+    },
+    {
+      "key": "editor.0530",
+      "en": "Invalid relationship bounds.",
+      "ko": "관계도 범위가 올바르지 않습니다."
+    },
+    {
+      "key": "editor.0531",
+      "en": "Relationship stage needs a key.",
+      "ko": "관계 단계에 번역 키가 필요합니다."
+    },
+    {
+      "key": "editor.0532",
+      "en": "Item maximum must be positive.",
+      "ko": "아이템 최대 수량은 1 이상이어야 합니다."
+    },
+    {
+      "key": "editor.0533",
+      "en": "Invalid activity duration or economy.",
+      "ko": "활동 기간·비용·수입이 올바르지 않습니다."
+    },
+    {
+      "key": "editor.0534",
+      "en": "Missing module: ",
+      "ko": "모듈을 찾을 수 없습니다: "
+    },
+    {
+      "key": "editor.0535",
+      "en": "No unconditional choice. Event is skipped if every choice is locked.",
+      "ko": "조건 없는 선택지가 없습니다. 모든 선택지가 잠기면 이벤트를 건너뜁니다."
+    },
+    {
+      "key": "editor.0536",
+      "en": "Add an unconditional ending to cover all outcomes.",
+      "ko": "어떤 결과에서도 끝낼 수 있도록 조건 없는 엔딩을 추가하세요."
+    },
+    {
+      "key": "editor.0537",
+      "en": "Ties resolve by ordinal ID; consider explicit priorities.",
+      "ko": "우선순위가 같으면 ID 순으로 결정됩니다. 다른 우선순위를 지정하는 것이 좋습니다."
+    },
+    {
+      "key": "editor.0538",
+      "en": "Growth needs a localized asset key.",
+      "ko": "성장 외형에 현지화 에셋 키가 필요합니다."
+    },
+    {
+      "key": "editor.0539",
+      "en": "Unknown activity: ",
+      "ko": "활동을 찾을 수 없습니다: "
+    },
+    {
+      "key": "editor.0540",
+      "en": "Activities exceed the schedule period or entry limit.",
+      "ko": "활동이 일정 기간 또는 최대 항목 수를 초과합니다."
+    },
+    {
+      "key": "editor.0541",
+      "en": "Invalid module limits.",
+      "ko": "모듈 반환값 제한이 올바르지 않습니다."
+    },
+    {
+      "key": "editor.0542",
+      "en": "Custom Scene adapter requires a scene path.",
+      "ko": "Custom Scene 어댑터에 장면 경로가 필요합니다."
+    },
+    {
+      "key": "editor.0543",
+      "en": "Difficulty cannot be negative.",
+      "ko": "난이도는 0 이상이어야 합니다."
+    },
+    {
+      "key": "editor.0544",
+      "en": "Health must be positive and attack nonnegative.",
+      "ko": "체력은 1 이상, 공격력은 0 이상이어야 합니다."
+    },
+    {
+      "key": "editor.0545",
+      "en": "Unknown location: ",
+      "ko": "위치를 찾을 수 없습니다: "
+    },
+    {
+      "key": "editor.0546",
+      "en": "Unknown encounter: ",
+      "ko": "조우를 찾을 수 없습니다: "
+    },
+    {
+      "key": "editor.0547",
+      "en": "Unknown enemy: ",
+      "ko": "적을 찾을 수 없습니다: "
+    },
+    {
+      "key": "editor.0548",
+      "en": "Invalid or duplicate locale.",
+      "ko": "언어 코드가 올바르지 않거나 중복됩니다."
+    },
+    {
+      "key": "editor.0549",
+      "en": "Default and fallback locales must be enabled.",
+      "ko": "기본 언어와 대체 언어가 지원 언어 목록에 있어야 합니다."
+    },
+    {
+      "key": "editor.0550",
+      "en": "Invalid/duplicate key or unknown locale.",
+      "ko": "키가 올바르지 않거나 중복되었거나, 지원하지 않는 언어입니다."
+    },
+    {
+      "key": "editor.0551",
+      "en": "Translation draft needs human review.",
+      "ko": "번역 초안을 사람이 검토해야 합니다."
+    },
+    {
+      "key": "editor.0552",
+      "en": "Text cannot be null.",
+      "ko": "문구 값이 null일 수 없습니다."
+    },
+    {
+      "key": "editor.0553",
+      "en": "Exceeds suggested character budget; measure the rendered UI.",
+      "ko": "권장 글자 수를 초과합니다. 실제 UI에서 문구 길이를 측정하세요."
+    },
+    {
+      "key": "editor.0554",
+      "en": "Verify shaping, reading order and mirrored layout in the target UI.",
+      "ko": "실제 UI에서 글자 조합·읽기 방향·좌우 반전 배치를 확인하세요."
+    },
+    {
+      "key": "editor.0555",
+      "en": "Missing translation.",
+      "ko": "번역이 누락되었습니다."
+    },
+    {
+      "key": "editor.0556",
+      "en": "Localized asset requires a unique locale/key and an asset GUID.",
+      "ko": "언어별 에셋에 고유한 언어·키 조합과 에셋 GUID가 필요합니다."
+    },
+    {
+      "key": "editor.0557",
+      "en": "No appearance asset for ",
+      "ko": "다음 언어의 외형 에셋이 없습니다: "
+    },
+    {
+      "key": "editor.0558",
+      "en": "Glossary needs a source, target and enabled locale.",
+      "ko": "용어집에 원문·지정 번역·지원 언어가 필요합니다."
+    },
+    {
+      "key": "editor.0559",
+      "en": "Expected term: ",
+      "ko": "지정된 용어: "
+    },
+    {
+      "key": "editor.0560",
+      "en": "Invalid condition ID.",
+      "ko": "조건 ID가 올바르지 않습니다."
+    },
+    {
+      "key": "editor.0561",
+      "en": "Unknown comparison.",
+      "ko": "지원하지 않는 비교 방식입니다."
+    },
+    {
+      "key": "editor.0562",
+      "en": "Custom conditions cannot target an actor.",
+      "ko": "사용자 정의 조건은 인물을 직접 대상으로 지정할 수 없습니다."
+    },
+    {
+      "key": "editor.0563",
+      "en": "Unregistered custom condition: ",
+      "ko": "등록되지 않은 사용자 조건: "
+    },
+    {
+      "key": "editor.0564",
+      "en": "Conjunctive conditions contradict each other or the allowed value range.",
+      "ko": "모두 충족해야 하는 조건끼리 모순되거나 허용 범위를 벗어났습니다."
+    },
+    {
+      "key": "editor.0565",
+      "en": "Too many effects.",
+      "ko": "효과 수가 제한을 초과했습니다."
+    },
+    {
+      "key": "editor.0566",
+      "en": "Invalid effect ID.",
+      "ko": "효과 ID가 올바르지 않습니다."
+    },
+    {
+      "key": "editor.0567",
+      "en": "Unknown operation.",
+      "ko": "지원하지 않는 연산입니다."
+    },
+    {
+      "key": "editor.0568",
+      "en": "Custom effects cannot target an actor.",
+      "ko": "사용자 정의 효과는 인물을 직접 대상으로 지정할 수 없습니다."
+    },
+    {
+      "key": "editor.0569",
+      "en": "Unregistered custom effect: ",
+      "ko": "등록되지 않은 사용자 효과: "
+    },
+    {
+      "key": "editor.0570",
+      "en": "Use activity duration or module elapsed time.",
+      "ko": "시간 경과는 활동 기간 또는 모듈 경과 시간을 사용하세요."
+    },
+    {
+      "key": "editor.0571",
+      "en": "Flags must be zero or one.",
+      "ko": "플래그 값은 0 또는 1이어야 합니다."
+    },
+    {
+      "key": "editor.0572",
+      "en": "Content, condition and effect IDs must be globally unique.",
+      "ko": "콘텐츠·조건·효과 ID는 프로젝트 전체에서 고유해야 합니다."
+    },
+    {
+      "key": "editor.0573",
+      "en": "Appearance slots required.",
+      "ko": "외형 슬롯이 필요합니다."
+    },
+    {
+      "key": "editor.0574",
+      "en": "Invalid appearance key: ",
+      "ko": "잘못된 외형 키: "
+    },
+    {
+      "key": "editor.0575",
+      "en": "Unsupported presentation version.",
+      "ko": "지원하지 않는 연출 데이터 버전입니다."
+    },
+    {
+      "key": "editor.0576",
+      "en": "Presentation content budget exceeded.",
+      "ko": "연출 데이터 수가 지원 한도를 초과했습니다."
+    },
+    {
+      "key": "editor.0577",
+      "en": "Missing appearance profile.",
+      "ko": "외형 프로필을 찾을 수 없습니다."
+    },
+    {
+      "key": "editor.0578",
+      "en": "Subject must be an unambiguous character or NPC reference.",
+      "ko": "연결 대상은 유일하게 식별할 수 있는 주인공 또는 NPC여야 합니다."
+    },
+    {
+      "key": "editor.0579",
+      "en": "Invalid age or birthday offset.",
+      "ko": "나이 또는 생일 오프셋이 올바르지 않습니다."
+    },
+    {
+      "key": "editor.0580",
+      "en": "Invalid actor condition bounds.",
+      "ko": "인물 상태의 범위가 올바르지 않습니다."
+    },
+    {
+      "key": "editor.0581",
+      "en": "A default body/portrait key is required.",
+      "ko": "기본 몸·초상화 리소스 키가 필요합니다."
+    },
+    {
+      "key": "editor.0582",
+      "en": "Unknown actor.",
+      "ko": "인물을 찾을 수 없습니다."
+    },
+    {
+      "key": "editor.0583",
+      "en": "Shared priority: ordinal rule ID breaks ties per slot.",
+      "ko": "우선순위가 같습니다. 슬롯별로 규칙 ID 순으로 결정됩니다."
+    },
+    {
+      "key": "editor.0584",
+      "en": "Stage x/width must be normalized; scale must be in (0,3].",
+      "ko": "무대 위치·너비는 0~1, 배율은 0 초과 3 이하여야 합니다."
+    },
+    {
+      "key": "editor.0585",
+      "en": "Maximum 512 dialogue steps.",
+      "ko": "대사 단계는 최대 512개입니다."
+    },
+    {
+      "key": "editor.0586",
+      "en": "Invalid background key.",
+      "ko": "배경 키가 올바르지 않습니다."
+    },
+    {
+      "key": "editor.0587",
+      "en": "Unknown speaker.",
+      "ko": "화자를 찾을 수 없습니다."
+    },
+    {
+      "key": "editor.0588",
+      "en": "Unknown or duplicate visible actor.",
+      "ko": "표시 인물이 없거나 중복됩니다."
+    },
+    {
+      "key": "editor.0589",
+      "en": "Unknown or occupied stage slot.",
+      "ko": "무대 슬롯이 없거나 이미 사용 중입니다."
+    },
+    {
+      "key": "editor.0590",
+      "en": "Step and ID required.",
+      "ko": "단계와 ID가 필요합니다."
+    },
+    {
+      "key": "editor.0591",
+      "en": "Unknown step kind or stage operation.",
+      "ko": "단계 종류 또는 표시 방식이 올바르지 않습니다."
+    },
+    {
+      "key": "editor.0592",
+      "en": "Maximum 32 images and 32 choices per step.",
+      "ko": "한 단계에 이미지와 선택지를 각각 최대 32개까지 넣을 수 있습니다."
+    },
+    {
+      "key": "editor.0593",
+      "en": "Only Condition steps own branch conditions.",
+      "ko": "분기 조건은 조건 노드에만 설정할 수 있습니다."
+    },
+    {
+      "key": "editor.0594",
+      "en": "Only Effect steps own effects.",
+      "ko": "단계 효과는 효과 노드에만 설정할 수 있습니다."
+    },
+    {
+      "key": "editor.0595",
+      "en": "Condition false output must connect to a step or End.",
+      "ko": "조건 미충족 출력을 다른 단계 또는 종료에 연결하세요."
+    },
+    {
+      "key": "editor.0596",
+      "en": "Null image.",
+      "ko": "이미지 데이터가 없습니다."
+    },
+    {
+      "key": "editor.0597",
+      "en": "Invalid image ID, resource or plane.",
+      "ko": "이미지 ID·리소스·표시 순서가 올바르지 않습니다."
+    },
+    {
+      "key": "editor.0598",
+      "en": "Image rectangle and opacity must be within the normalized stage.",
+      "ko": "이미지 위치·크기·불투명도는 정규화된 무대 범위 안이어야 합니다."
+    },
+    {
+      "key": "editor.0599",
+      "en": "Choice steps require an unconditional fallback option.",
+      "ko": "선택지 노드에 조건 없는 기본 선택지가 필요합니다."
+    },
+    {
+      "key": "editor.0600",
+      "en": "Only Choice steps may contain choices.",
+      "ko": "선택지 목록은 선택지 노드에만 설정할 수 있습니다."
+    },
+    {
+      "key": "editor.0601",
+      "en": "Missing next step: ",
+      "ko": "다음 단계를 찾을 수 없습니다: "
+    },
+    {
+      "key": "editor.0602",
+      "en": "Missing default next step.",
+      "ko": "기본 다음 단계를 찾을 수 없습니다."
+    },
+    {
+      "key": "editor.0603",
+      "en": "Event sequence contains a cycle.",
+      "ko": "이벤트 흐름에 순환 연결이 있습니다."
+    },
+    {
+      "key": "editor.0604",
+      "en": "No path from the event entry reaches this step.",
+      "ko": "이벤트 시작점에서 이 단계로 이어지는 경로가 없습니다."
+    },
+    {
+      "key": "editor.0605",
+      "en": "Use a Choice step for branching; legacy terminal choices end the event.",
+      "ko": "분기에는 선택지 노드를 사용하세요. 기존 마지막 선택지는 이벤트를 종료합니다."
+    },
+    {
+      "key": "editor.0606",
+      "en": "Branching events with terminal choices require an unconditional terminal fallback.",
+      "ko": "마지막 선택지가 있는 분기 이벤트에는 조건 없는 마지막 선택지가 필요합니다."
+    },
+    {
+      "key": "editor.0607",
+      "en": "Project is required.",
+      "ko": "프로젝트가 필요합니다."
+    },
+    {
+      "key": "editor.0608",
+      "en": "Malformed or null content: ",
+      "ko": "잘못되었거나 비어 있는 콘텐츠: "
+    },
+    {
+      "key": "editor.0609",
+      "en": "GUID does not resolve: ",
+      "ko": "에셋 GUID를 찾을 수 없습니다: "
+    },
+    {
+      "key": "editor.0610",
+      "en": "Conditions ",
+      "ko": "조건 "
+    },
+    {
+      "key": "editor.0611",
+      "en": "Effects ",
+      "ko": "효과 "
+    },
+    {
+      "key": "editor.0612",
+      "en": "Tags ",
+      "ko": "태그 "
+    },
+    {
+      "key": "editor.0613",
+      "en": "Choices ",
+      "ko": "선택지 "
+    },
+    {
+      "key": "editor.0614",
+      "en": "Actors ",
+      "ko": "인물 "
+    },
+    {
+      "key": "editor.0615",
+      "en": "Images ",
+      "ko": "이미지 "
+    },
+    {
+      "key": "editor.0616",
+      "en": "Stat ·",
+      "ko": "능력치 ·"
+    },
+    {
+      "key": "editor.0617",
+      "en": "Flag ·",
+      "ko": "플래그 ·"
+    },
+    {
+      "key": "editor.0618",
+      "en": "Event",
+      "ko": "이벤트"
+    },
+    {
+      "key": "editor.0619",
+      "en": "Ending",
+      "ko": "엔딩"
+    },
+    {
+      "key": "editor.0620",
+      "en": "Module",
+      "ko": "외부 모듈"
+    },
+    {
+      "key": "editor.0621",
+      "en": "ko",
+      "ko": "한국어"
+    },
+    {
+      "key": "editor.0622",
+      "en": "en",
+      "ko": "영어"
+    },
+    {
+      "key": "editor.0623",
+      "en": "ja",
+      "ko": "일본어"
+    },
+    {
+      "key": "editor.0624",
+      "en": "Unknown event.",
+      "ko": "이벤트를 찾을 수 없습니다."
+    },
+    {
+      "key": "editor.0625",
+      "en": "Stable node ID required.",
+      "ko": "노드에 고유 ID가 필요합니다."
+    },
+    {
+      "key": "editor.0626",
+      "en": "Node required.",
+      "ko": "노드가 필요합니다."
+    },
+    {
+      "key": "editor.0627",
+      "en": "Choice required.",
+      "ko": "선택지가 필요합니다."
+    },
+    {
+      "key": "editor.0628",
+      "en": "Unknown output port.",
+      "ko": "출력 포트를 찾을 수 없습니다."
+    },
+    {
+      "key": "editor.0629",
+      "en": "Select an executable node.",
+      "ko": "실행 가능한 노드를 선택하세요."
+    },
+    {
+      "key": "editor.0630",
+      "en": "Entry requires a step.",
+      "ko": "시작점을 이벤트 단계에 연결하세요."
+    },
+    {
+      "key": "editor.0631",
+      "en": "Review deletion impact before deleting referenced content.",
+      "ko": "참조 중인 콘텐츠를 삭제하기 전에 영향을 확인하세요."
+    },
+    {
+      "key": "editor.0632",
+      "en": "Node is not reachable from entry.",
+      "ko": "시작점에서 해당 노드에 도달할 수 없습니다."
+    },
+    {"key":"editor.workbench.ux.1","en":"Click to open. Add nodes with + Node in an event flow.","ko":"클릭해서 여세요. 노드는 이벤트 흐름의 + 노드로 추가합니다."},
+    {"key":"editor.workbench.ux.2","en":"All content","ko":"모든 콘텐츠"},
+    {"key":"editor.workbench.ux.3","en":"Event flows","ko":"이벤트 흐름"},
+    {"key":"editor.workbench.ux.4","en":"Properties only","ko":"속성 편집 항목"},
+    {"key":"editor.workbench.ux.5","en":"Open flow","ko":"흐름 열기"},
+    {"key":"editor.workbench.ux.6","en":"Edit properties","ko":"속성 편집"},
+    {"key":"editor.workbench.ux.7","en":"Click to open; items cannot be dragged onto the graph.","ko":"클릭해서 여세요. 이 목록은 그래프에 끌어 넣는 팔레트가 아닙니다."},
+    {"key":"editor.workbench.ux.8","en":"Favorite","ko":"즐겨찾기 등록"},
+    {"key":"editor.workbench.ux.9","en":"Event flow","ko":"이벤트 흐름"},
+    {"key":"editor.workbench.ux.10","en":"Zoom out","ko":"축소"},
+    {"key":"editor.workbench.ux.11","en":"Zoom in","ko":"확대"},
+    {"key":"editor.workbench.ux.12","en":"Fit all","ko":"전체 보기"},
+    {"key":"editor.workbench.ux.13","en":"Wheel: zoom · Middle-drag: pan · Connect: output, then Input · Drag titles: arrange","ko":"휠: 확대·축소 · 가운데 버튼 드래그: 화면 이동 · 연결: 출력 다음 입력 클릭 · 제목 드래그: 배치"},
+    {"key":"editor.workbench.ux.14","en":"Select content","ko":"콘텐츠를 선택하세요"},
+    {"key":"editor.workbench.ux.15","en":"This content has no event flow.","ko":"이 콘텐츠에는 이벤트 흐름이 없습니다."},
+    {"key":"editor.workbench.ux.16","en":"Edit its properties in the Inspector. References shows where it is used. Graphs show event execution, not every content type.","ko":"오른쪽에서 속성을 편집하고 참조에서 사용처를 확인하세요. 그래프는 이벤트의 실행 순서를 보여줍니다."},
+    {"key":"editor.workbench.ux.17","en":"Show references","ko":"참조 보기"},
+    {"key":"editor.workbench.ux.18","en":"Browse event flows","ko":"이벤트 흐름 찾기"},
+    {"key":"editor.workbench.ux.19","en":"Select an event flow to run a trace.","ko":"실행 기록을 보려면 이벤트 흐름을 선택하세요."}
+  ,{"en":"Automatic link","ko":"자동 연결","key":"editor.pin.fixed"},{"en":"Automatic entry/exit link. This connection is determined by the event structure.","ko":"이벤트 구조에 따라 자동으로 정해지는 시작/종료 연결입니다.","key":"editor.pin.fixedhelp"},{"key":"editor.pin.inputlabel","en":"Input","ko":"입력"},{"ko":"연결된 입력: 이 입력을 유지하고 다른 출력으로 끕니다. 빈 캔버스에 놓으면 검색창을 엽니다. 검색창을 닫으면 연결 해제, 드래그 중 Esc는 취소입니다.","key":"editor.endpoint.input","en":"Connected input: keep this input and drag to a different output. Drop on empty canvas to search. Close search to disconnect; Esc during drag cancels."},{"ko":"연결된 출력: 이 출력을 유지하고 다른 입력으로 끕니다. 빈 캔버스에 놓으면 검색창을 엽니다. 검색창을 닫으면 연결 해제, 드래그 중 Esc는 취소입니다.","key":"editor.endpoint.output","en":"Connected output: keep this output and drag to a different input. Drop on empty canvas to search. Close search to disconnect; Esc during drag cancels."},{"ko":"빈 입력: 출력으로 끌어 새 연결을 만듭니다.","key":"editor.endpoint.emptyinput","en":"Empty input: drag to an output to create a connection."},{"ko":"빈 출력: 입력으로 끌어 새 연결을 만듭니다.","key":"editor.endpoint.emptyoutput","en":"Empty output: drag to an input to create a connection."},{"ko":"잡은 핸들 고정 · 출력 → 입력 · 입력 → 출력 · 빈 캔버스: 검색 · 검색창 닫기: 연결 해제","key":"editor.endpoint.help","en":"Keep grabbed handle · Output → input · Input → output · Empty canvas: search · Close search: disconnect"},
+    {"key": "editor.saveux.0", "en": "Save", "ko": "저장"},
+    {"key": "editor.saveux.1", "en": "Save all content edits, including the fields you are editing. Ctrl/Cmd+S.", "ko": "현재 입력 중인 내용을 포함해 모든 콘텐츠 수정을 저장합니다. Ctrl/Cmd+S."},
+    {"key": "editor.saveux.2", "en": "No project selected", "ko": "프로젝트를 선택하세요"},
+    {"key": "editor.saveux.3", "en": "Unsaved content · Save before closing", "ko": "저장하지 않은 수정 있음 · 닫기 전에 저장하세요"},
+    {"key": "editor.saveux.4", "en": "Content saved · Layout saves automatically", "ko": "콘텐츠 저장 완료 · 그래프 배치는 자동 저장"},
+    {"key": "editor.saveux.5", "en": "Preview updated. Content is not saved yet. Click Save or press Ctrl/Cmd+S.", "ko": "미리보기에 반영했습니다. 아직 저장되지 않았습니다. 저장 버튼 또는 Ctrl/Cmd+S를 누르세요."},
+    {"key": "editor.saveux.6", "en": "Not saved. Fix the errors in Problems, then Save again. Your edits are retained.", "ko": "저장하지 못했습니다. 문제 탭의 오류를 고친 후 다시 저장하세요. 수정 내용은 유지됩니다."},
+    {"key": "editor.saveux.7", "en": "Saved to project asset. Undo/Redo is available.", "ko": "프로젝트 파일에 저장했습니다. 실행 취소·다시 실행이 가능합니다."},
+    {"key": "editor.saveux.8", "en": "Update preview", "ko": "미리보기에 반영"},
+    {"key": "editor.saveux.9", "en": "Revert fields", "ko": "입력 되돌리기"},
+    {"key": "editor.saveux.10", "en": "Save writes all content edits to the project asset. Selecting another node keeps your edits in the preview; it does not save them.", "ko": "저장을 누르면 모든 콘텐츠 수정이 프로젝트 파일에 저장됩니다. 다른 노드를 선택해도 수정은 유지되지만, 자동으로 저장되지는 않습니다."},
+    {"key": "editor.saveux.11", "en": "These content edits are not saved yet. Save writes them to the project asset.", "ko": "아직 저장하지 않은 콘텐츠 수정입니다. 저장을 누르면 프로젝트 파일에 기록됩니다."},
+    {"key": "editor.saveux.12", "en": "Discard all unsaved edits", "ko": "저장하지 않은 수정 모두 버리기"},
+    {"key": "editor.saveux.13", "en": "Discard unsaved edits?", "ko": "저장하지 않은 수정을 버릴까요?"},
+    {"key": "editor.saveux.14", "en": "All content edits since the last save will be lost. Saved graph layout is kept.", "ko": "마지막 저장 이후의 모든 콘텐츠 수정을 버립니다. 저장된 그래프 배치는 유지됩니다."},
+    {"key": "editor.nodesearch.0", "en": "Add to this flow", "ko": "이 흐름에 추가"},
+    {"key": "editor.nodesearch.1", "en": "Close", "ko": "닫기"},
+    {"key": "editor.nodesearch.2", "en": "Search nodes or existing content", "ko": "노드 종류·기존 콘텐츠 검색"},
+    {"key": "editor.nodesearch.3", "en": "No matching nodes.", "ko": "검색 결과가 없습니다."},
+    {"key": "editor.nodesearch.4", "en": "More results available. Refine your search.", "ko": "결과가 더 있습니다. 검색어를 구체적으로 입력하세요."},
+    {"key": "editor.nodesearch.5", "en": "Add / find node…", "ko": "노드 추가·검색…"},
+    {"key": "editor.nodesearch.6", "en": "Find / add…", "ko": "검색·추가…"},
+    {"key": "editor.nodesearch.7", "en": "New", "ko": "새로 만들기"},
+    {"key": "editor.nodesearch.8", "en": "Create a new node in this event", "ko": "현재 이벤트에 새 노드 만들기"},
+    {"key": "editor.nodesearch.9", "en": "Copy", "ko": "독립 복사"},
+    {"key": "editor.nodesearch.10", "en": "Call shared flow", "ko": "공통 흐름 호출"},
+    {"key": "editor.nodesearch.11", "en": "Share content", "ko": "내용 공유"},
+    {"key": "editor.nodesearch.12", "en": "New reusable flow", "ko": "새 공통 흐름 만들기"},
+    {"key": "editor.nodesearch.13", "en": "Create a flow that runs only when called", "ko": "호출할 때만 실행하는 흐름 만들기"},
+    {"key": "editor.nodesearch.14", "en": "Shared Flow", "ko": "공통 흐름"},
+    {"key": "editor.nodesearch.15", "en": "Shared content follows its original. Connections here belong to this use. Edit the original to change all uses.", "ko": "내용은 원본을 따르고, 연결은 이 사용처에만 적용됩니다. 원본을 편집하면 모든 사용처의 내용이 바뀝니다."},
+    {"key": "editor.nodesearch.16", "en": "Edit original", "ko": "원본 편집"},
+    {"key": "editor.nodesearch.17", "en": "Show shared uses", "ko": "공유 사용처 보기"},
+    {"key": "editor.nodesearch.18", "en": "Call Only", "ko": "호출할 때만 실행"},
+    {"key": "editor.nodesearch.19", "en": "Shared content is missing: ", "ko": "공유 원본을 찾을 수 없습니다: "},
+    {"key": "editor.nodesearch.20", "en": "Shared flow is missing: ", "ko": "공통 흐름을 찾을 수 없습니다: "},
+    {"key": "editor.nodesearch.21", "en": "Shared flow calls are recursive: ", "ko": "공통 흐름 호출이 순환합니다: "},{"key":"editor.graph.minimap","en":"Minimap","ko":"미니맵"},{"key":"editor.graph.minimap.help","en":"Minimap: click or drag to navigate","ko":"미니맵: 클릭하거나 드래그해 이동합니다"},{"key":"editor.graph.entry.required","en":"Connect Start to a node or End.","ko":"시작 출력을 노드 또는 종료에 연결하세요."},
+    {"key": "editor.usability.701", "en": "Flow / properties", "ko": "흐름 / 속성"},
+    {"key": "editor.usability.702", "en": "Read-only references. Click a card to explore its neighbors. Lines show usage, not execution order.", "ko": "읽기 전용 참조입니다. 카드를 눌러 연결된 콘텐츠를 탐색하세요. 선은 실행 순서가 아닌 사용 관계입니다."},
+    {"key": "editor.usability.703", "en": "Up to 60 direct references. Select a neighbor to continue exploring.", "ko": "직접 참조를 최대 60개 표시합니다. 연결된 카드를 선택해 계속 탐색하세요."},
+    {"key": "editor.usability.704", "en": "Missing", "ko": "누락"},
+    {"key": "editor.usability.705", "en": "Draft", "ko": "초안"},
+    {"key": "editor.usability.706", "en": "Needs review", "ko": "검토 필요"},
+    {"key": "editor.usability.707", "en": "Reviewed", "ko": "검토 완료"},
+    {"key": "editor.usability.708", "en": "Mark as draft", "ko": "초안으로 표시"},
+    {"key": "editor.usability.709", "en": "Mark reviewed", "ko": "검토 완료로 표시"},
+    {"key": "editor.usability.710", "en": "Play from Start", "ko": "시작부터 실행"},
+    {"key": "editor.usability.711", "en": "Previous step", "ko": "이전 단계"},
+    {"key": "editor.usability.712", "en": "Auto play", "ko": "자동 재생"},
+    {"key": "editor.usability.713", "en": "Pause", "ko": "일시 정지"},
+    {"key": "editor.usability.714", "en": "Next step", "ko": "다음 단계"},
+    {"key": "editor.usability.715", "en": "Focus current step", "ko": "현재 단계 보기"},
+    {"key": "editor.usability.716", "en": "Time per simulated step", "ko": "시뮬레이션 단계당 재생 시간"},
+    {"key": "editor.usability.717", "en": "Actual", "ko": "실제 값"},
+    {"key": "editor.usability.718", "en": "Simulation replay", "ko": "시뮬레이션 재생"},
+    {"key": "editor.usability.719", "en": "Choose what happens next", "ko": "다음 행동을 선택하세요"},
+    {"key": "editor.usability.720", "en": "Run from Start or selection. The current step, condition results and choices appear here and on the graph.", "ko": "시작 또는 선택한 노드부터 실행하세요. 현재 단계, 조건 결과와 선택지가 이 패널과 그래프에 표시됩니다."},
+    {"key": "editor.usability.721", "en": "Preview only. These values never change your game data or saved game.", "ko": "테스트 전용 상태입니다. 게임 콘텐츠와 플레이 세이브에는 반영되지 않습니다."},
+    {"key": "editor.usability.722", "en": "Reset to initial state (no active event)", "ko": "초기 상태로 되돌리기 (진행 중 이벤트 없음)"},
+    {"key": "editor.usability.723", "en": "Clear event history", "ko": "이벤트 이력 지우기"},
+    {"key": "editor.usability.724", "en": "Save preset…", "ko": "프리셋 저장…"},
+    {"key": "editor.usability.725", "en": "Load preset…", "ko": "프리셋 불러오기…"},
+    {"key": "editor.usability.726", "en": "Seen events", "ko": "발생한 이벤트"},
+    {"key": "editor.usability.727", "en": "Test state changed. Run again to see the result.", "ko": "테스트 상태가 변경되었습니다. 다시 실행해 결과를 확인하세요."},
+    {"key": "editor.usability.728", "en": "Use the playback panel beneath the graph to step, play or choose. Detailed results are listed below.", "ko": "그래프 아래 재생 패널에서 단계 진행, 자동 재생, 선택지 선택을 할 수 있습니다. 아래는 상세 기록입니다."},
+    { "key": "editor.usability.review.count", "en": "Missing / draft / needs review (first 200)", "ko": "누락 / 초안 / 검토 필요 (최대 200개 표시)" },
+    {"key":"editor.appearance.scale","en":"Size multiplier (0 = inherit, 1 = original)","ko":"크기 배율 (0 = 유지, 1 = 원래 크기)"},
+    {"key":"editor.appearance.scale.help","en":"Scales all actor layers together around the body image's bottom. Higher priority wins; 0 keeps the previous size.","ko":"몸 이미지의 아래쪽을 기준으로 모든 레이어를 함께 확대합니다. 우선순위가 높은 규칙을 적용하며, 0이면 이전 크기를 유지합니다."},
+    {"key": "graph.detail.732", "en": "Edit", "ko": "편집"},
+    {"key": "graph.detail.735", "en": "Off", "ko": "꺼짐"},
+    {"key": "graph.detail.736", "en": "On", "ko": "켜짐"},
+    {"key": "graph.detail.737", "en": "Always available", "ko": "항상 선택 가능"},
+    {"key": "graph.detail.738", "en": "All conditions must match", "ko": "모든 조건을 충족해야 함"},
+    {"key": "graph.detail.739", "en": "Required value", "ko": "기준값"},
+    {"key": "graph.detail.740", "en": "No direct effects", "ko": "직접 효과 없음"},
+    {"key": "graph.detail.741", "en": "Applied before following the outgoing connection", "ko": "다음 연결로 이동하기 전에 적용"},
+    {"key": "graph.detail.742", "en": "Select a Presentation Skin to preview images", "ko": "이미지를 보려면 Presentation Skin을 선택하세요"},
+    {"key": "graph.detail.743", "en": "Image unavailable in the selected skin", "ko": "선택한 스킨에 이미지가 없습니다"},
+    {"key": "graph.detail.744", "en": "Keep previous state", "ko": "이전 상태 유지"},
+    {"key": "graph.detail.745", "en": "Appearance depends on the current game state", "ko": "외형은 현재 게임 상태에 따라 결정됩니다"},
+    {"key": "graph.detail.746", "en": "Expand details", "ko": "상세 펼치기"},
+    {"key": "graph.detail.747", "en": "Collapse details", "ko": "상세 접기"},
+    {"key": "graph.detail.748", "en": "Entry conditions", "ko": "진입 조건"},
+    {"key": "graph.detail.749", "en": "On entry", "ko": "시작 시 효과"},
+    {"key": "graph.detail.750", "en": "Shared flow", "ko": "공유 흐름"},
+    {"key": "graph.detail.751", "en": "Shared content", "ko": "공유 콘텐츠"},
+    {"key": "graph.detail.752", "en": "Returns here before following the outgoing connection", "ko": "호출이 끝나면 이곳으로 돌아와 다음 연결로 이동"},
+    {"key": "graph.detail.753", "en": "Narration", "ko": "내레이션"},
+    {"key": "graph.detail.754", "en": "Conditions and effects", "ko": "조건 및 효과"},
+    {"key": "graph.detail.755", "en": "Choice conditions", "ko": "선택 조건"},
+    {"key": "graph.detail.756", "en": "On choosing", "ko": "선택 시 효과"},
+    {"key": "graph.detail.757", "en": "Not met", "ko": "미충족"},
+    {"key": "graph.detail.758", "en": "Met", "ko": "충족"},
+    {"key": "graph.detail.759", "en": "Unconnected", "ko": "미연결"},
+    {"key": "rules.stage3.0", "en": "Timed modifiers", "ko": "기간 보정"},
+    {"key": "rules.stage3.1", "en": "Evaluation", "ko": "시험·평가"},
+    {"key": "rules.stage3.2", "en": "Enabled", "ko": "사용"},
+    {"key": "rules.stage3.3", "en": "Score stat", "ko": "점수 능력치"},
+    {"key": "rules.stage3.4", "en": "Passing score", "ko": "통과 점수"},
+    {"key": "rules.stage3.5", "en": "Qualification flag", "ko": "취득 자격 (선택)"},
+    {"key": "rules.stage3.6", "en": "Permanent qualification", "ko": "영구 자격"},
+    {"key": "rules.stage3.7", "en": "Activity (empty = all)", "ko": "적용 활동 (비어 있으면 전체)"},
+    {"key": "rules.stage3.8", "en": "Bonus per additive stat effect", "ko": "능력치 증가 효과당 보정량"},
+    {"key": "rules.stage3.9", "en": "Conditions • all groups must match", "ko": "조건 • 모든 묶음 충족"},
+    {"key": "rules.stage3.10", "en": "OR group (optional)", "ko": "OR 묶음 (선택)"},
+    {"key": "rules.stage3.11", "en": "Any Group", "ko": "OR 묶음 (선택)"},
+    {"key": "rules.stage3.12", "en": "RecordBest", "ko": "최고 기록"},
+    {"key": "rules.stage3.13", "en": "RecordTotal", "ko": "누적 점수"},
+    {"key": "rules.stage3.14", "en": "RecordAttempts", "ko": "평가 시도 횟수"},
+    {"key": "rules.stage3.15", "en": "RecordPasses", "ko": "통과 횟수"},
+    {"key": "rules.stage3.16", "en": "ModifierDays", "ko": "보정 남은 일수"},
+    {"key": "rules.stage3.17", "en": "Empty OR group: required condition. Same group name: at least one alternative must match.", "ko": "OR 묶음이 비어 있으면 필수 조건입니다. 같은 묶음 이름의 조건은 하나 이상 충족하면 됩니다."},
+    {"key": "rules.stage3.18", "en": "Score is captured before activity effects. Each check records best, total, attempts and passes. A pass grants the selected permanent flag.", "ko": "효과 적용 전 능력치를 점수로 평가합니다. 판정마다 최고·합계·시도·통과를 기록하며, 통과하면 선택한 영구 자격을 부여합니다."},
+    {"key": "rules.stage3.19", "en": "Activate with ModifierDays: Set game days. Reapplying replaces the remaining duration; 0 removes it. Only additive activity stat effects are adjusted.", "ko": "효과의 ModifierDays에 Set으로 게임 일수를 지정합니다. 재적용은 기간을 교체하며 0은 해제합니다. 활동의 능력치 Add 효과만 보정합니다."}
+  ]
+}

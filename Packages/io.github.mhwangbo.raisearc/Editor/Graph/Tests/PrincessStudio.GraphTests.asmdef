@@ -1,0 +1,1 @@
+{"name":"PrincessStudio.GraphTests","references":["PrincessStudio.Core","PrincessStudio.Unity","PrincessStudio.Editor","PrincessStudio.Editor.Graph"],"includePlatforms":["Editor"],"optionalUnityReferences":["TestAssemblies"]}

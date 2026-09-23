@@ -1,0 +1,85 @@
+.room { -unity-font: url("project://database/Assets/PrincessStudio/Samples/NativeUI/NotoSansKR-Regular.otf"); flex-grow: 1; background-color: #d8e3d6; color: #20392e; font-size: 17px; -unity-font-style: bold; }
+.room-background { position: absolute; width: 100%; height: 100%; opacity: 0.9; background-size: cover; background-position: center; background-repeat: no-repeat; }
+.hud { flex-direction: row; align-items: center; padding: 8px 24px; background-color: #faf9f1; min-height: 62px; flex-shrink: 0; border-bottom-width: 1px; border-bottom-color: #c3cebd; }
+.character-name { font-size: 26px; min-width: 145px; color: #244a37; }
+.hud-stat { flex-direction: row; align-items: center; margin-right: 26px; }
+.hud-stat > Label { margin-right: 8px; }
+.hud-value { font-size: 22px; }
+.caption { font-size: 12px; color: #4d6657; }
+.spacer { flex-grow: 1; }
+.room Button { padding: 9px 16px; margin: 3px; color: #244431; background-color: #edf1e6; border-width: 1px; border-color: #a6baa2; border-radius: 6px; white-space: normal; -unity-font-style: bold; }
+.room Button:hover { background-color: #dce8d4; border-color: #44634b; }
+.room Button:disabled { opacity: 1; color: #667363; background-color: #e7e9e0; border-color: #c7cec1; }
+.room .primary { background-color: #244c38; color: #ffffff; border-color: #244c38; min-height: 40px; }
+.room .primary:hover { background-color: #38644a; color: white; }
+.room .primary:disabled { background-color: #d7dfcf; color: #4d604e; border-color: #afbfaa; }
+.room .quiet { background-color: transparent; }
+.status { padding: 5px 24px; white-space: normal; font-size: 14px; min-height: 30px; flex-shrink: 0; color: #2e4a39; background-color: #eef2e5; border-bottom-width: 1px; border-bottom-color: #c3cebd; }
+.screen-content { flex-grow: 1; min-height: 0; overflow: hidden; }
+.character { position: absolute; left: 7%; top: 2%; bottom: -1%; width: 47%; -unity-background-scale-mode: scale-to-fit; }
+.room-actions { position: absolute; right: 7%; top: 14%; width: 35%; max-width: 430px; padding: 28px; border-radius: 10px; border-width: 1px; border-color: #c5cdb9; background-color: rgba(251, 250, 241, 0.97); }
+.eyebrow { font-size: 12px; color: #547249; margin-bottom: 12px; }
+.room-title { font-size: 32px; color: #244c38; white-space: normal; margin-bottom: 14px; }
+.subtitle { font-size: 18px; white-space: normal; margin-bottom: 23px; color: #3f5947; }
+.room-actions > Button { margin: 4px 0; min-height: 46px; }
+.overlay { position: absolute; left: 0; right: 0; top: 0; bottom: 0; align-items: center; justify-content: center; background-color: rgba(19, 39, 28, 0.42); }
+.plan-sheet { width: 96%; max-width: 1250px; height: 98%; padding: 10px 18px; border-radius: 9px; background-color: #faf9f1; }
+.header, .footer { flex-direction: row; align-items: center; flex-shrink: 0; }
+.header { min-height: 38px; }
+.title { font-size: 23px; margin-right: 20px; }
+.plan-status { font-size: 14px; color: #436344; }
+.instruction { margin: 3px 0 9px; font-size: 14px; white-space: normal; flex-shrink: 0; color: #425b47; }
+.section-label { height: 27px; font-size: 13px; color: #4a624e; flex-shrink: 0; padding-left: 6px; }
+.plan-body { flex-direction: row; flex-grow: 1; min-height: 0; }
+.activity-column { width: 27%; min-width: 245px; max-width: 320px; margin-right: 18px; }
+.calendar-column { flex-grow: 1; min-width: 0; }
+.activity-scroll, .calendar-scroll { flex-grow: 1; flex-basis: 0; min-height: 0; }
+.activity-list { flex-direction: column; flex-shrink: 0; }
+.room .activity-card { align-items: stretch; margin: 0 4px 8px 0; padding: 10px 12px; min-height: 96px; background-color: #f0f3e9; }
+.activity-image { display: none; }
+.activity-copy { flex-grow: 1; }
+.card-title { font-size: 19px; color: #21482f; }
+.description { white-space: normal; font-size: 14px; margin: 3px 0 8px; color: #3e5646; }
+.card-facts { flex-direction: row; font-size: 12px; color: #4b624d; }
+.card-facts > Label { margin-right: 8px; }
+.fact-value { color: #263e2b; }
+.calendar-head { flex-direction: row; height: 27px; flex-shrink: 0; margin-right: 14px; }
+.calendar-head > Label { width: 33.33%; -unity-text-align: middle-center; font-size: 14px; color: #3f5946; }
+.slot-list { flex-direction: row; flex-wrap: wrap; }
+.slot-list > .raisearc-item { width: 33.33%; }
+.room .slot-button { height: 29px; min-height: 29px; flex-direction: row; align-items: center; margin: 1px 2px; padding: 1px 9px; background-color: #f1f2e9; border-color: #c2cdb7; }
+.slot-period { display: none; }
+.slot-date { width: 22px; color: #506949; font-size: 13px; visibility: hidden; }
+.raisearc-day-start .slot-date { visibility: visible; }
+.slot-activity { font-size: 16px; flex-grow: 1; -unity-text-align: middle-center; }
+.room .raisearc-placed .slot-button { background-color: #e2ecd9; color: #25402e; }
+.room .raisearc-selected .slot-button { background-color: #2f563c; color: white; border-color: #183b28; }
+.raisearc-selected .slot-date { color: #f2f5e9; }
+.room .raisearc-locked .slot-button { opacity: 1; color: #25402e; background-color: #e2ecd9; }
+.room .raisearc-current .slot-button { border-color: #927028; border-width: 2px; background-color: #f8edc8; color: #493c1e; }
+.room .raisearc-problem .slot-button { border-color: #9c3830; }
+.footer { padding-top: 7px; }
+.reason { white-space: normal; font-size: 12px; color: #684c23; min-height: 20px; flex-shrink: 0; margin-top: 2px; }
+.confirmed-action { display: none; }
+.raisearc-confirmed .confirmed-action { display: flex; }
+.raisearc-confirmed .draft-action { display: none; }
+.raisearc-confirmed .room-actions #open-plan { background-color: #edf1e6; color: #244431; border-color: #a6baa2; }
+.dialogue-overlay { justify-content: flex-end; padding: 18px 0; background-color: rgba(19, 39, 28, 0.2); }
+.dialogue { width: 87%; max-width: 1110px; max-height: 100%; padding: 22px 26px; border-radius: 9px; background-color: #faf9f1; border-width: 1px; border-color: #738963; }
+.dialogue-scroll { flex-shrink: 1; min-height: 0; }
+.speaker { font-size: 16px; color: #496c3d; }
+.dialogue-text { font-size: 24px; white-space: normal; margin: 6px 0 18px; color: #213c2b; }
+.choice-list { flex-direction: column; }
+.room .choice { min-height: 45px; margin: 4px 0; -unity-text-align: middle-left; padding-left: 18px; background-color: #e3edd9; font-size: 18px; color: #213e2b; }
+.room .choice:hover { background-color: #315b3f; color: white; }
+.continue-action { align-self: flex-end; min-width: 165px; flex-shrink: 0; }
+.raisearc-choices .continue-action { display: none; }
+.ending { position: absolute; top: 24%; left: 24%; right: 24%; padding: 32px; background-color: #faf9f1; border-radius: 10px; }
+.raisearc-hidden { display: none; }
+#raisearc-configuration-error { background-color: #fff0ed; color: #922f23; padding: 24px; white-space: normal; }
+
+
+.raisearc-confirmed .activity-column, .raisearc-confirmed .instruction, .raisearc-confirmed .reason { display: none; }
+.raisearc-locked .slot-date, .raisearc-current .slot-date { color: #493c1e; }
+
+.raisearc-choices #plan-panel, .raisearc-choices .room-actions { visibility: hidden; }

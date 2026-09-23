@@ -1,0 +1,15 @@
+{
+  "name": "io.github.mhwangbo.raisearc",
+  "version": "0.1.0-preview.0",
+  "displayName": "RaiseArc",
+  "description": "Unity tools for building raising games.",
+  "unity": "6000.6",
+  "dependencies": {
+    "com.unity.addressables": "2.11.2",
+    "com.unity.localization": "1.5.13",
+    "com.unity.ugui": "2.6.0"
+  },
+  "author": {
+    "name": "Mi Hwangbo"
+  }
+}

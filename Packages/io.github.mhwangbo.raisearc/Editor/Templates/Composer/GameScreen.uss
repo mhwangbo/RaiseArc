@@ -1,0 +1,28 @@
+.game-shell {
+    flex-grow: 1;
+    padding: 24px;
+    background-color: #171322;
+    color: #f0e9f5;
+    font-size: 18px;
+}
+.game-header { flex-direction: row; align-items: center; margin-bottom: 18px; flex-shrink: 0; }
+.game-title { flex-grow: 1; font-size: 28px; -unity-font-style: bold; }
+.game-language { width: 140px; margin-left: 12px; }
+.game-language .unity-base-popup-field__input { background-color: #463650; border-color: #695371; padding: 8px; }
+.game-language .unity-base-popup-field__text { color: #fff3df; }
+.game-body { flex-direction: row; flex-grow: 1; min-height: 0; }
+.game-sidebar { width: 250px; flex-shrink: 0; margin-right: 20px; padding: 20px; background-color: #242032; border-radius: 12px; }
+.game-main { flex-grow: 1; min-width: 0; }
+.game-stage { flex-grow: 1; min-height: 140px; overflow: hidden; border-radius: 12px; }
+.game-story { min-height: 105px; max-height: 200px; margin-top: 14px; padding: 18px; background-color: #292237; border-radius: 12px; }
+.game-actions { max-height: 240px; min-height: 80px; margin-top: 12px; }
+.game-actions > .unity-scroll-view__content-viewport > .unity-scroll-view__content-container { flex-direction: row; flex-wrap: wrap; }
+.game-actions > Button { flex-grow: 1; min-width: 180px; margin-right: 8px; }
+.game-toolbar { margin-top: 24px; }
+.game-shell Button { background-color: #463650; color: #fff3df; border-radius: 7px; padding: 8px 14px; border-width: 1px; border-color: #695371; }
+.game-shell Button:hover { background-color: #624a6e; }
+.game-shell Button:disabled { opacity: 0.4; }
+.game-shell Label { white-space: normal; }
+.game-shell .unity-progress-bar__progress { background-color: #a084b6; }
+.game-shell .unity-progress-bar__background { background-color: #393145; }
+.game-shell .unity-progress-bar { height: 26px; margin-bottom: 16px; }

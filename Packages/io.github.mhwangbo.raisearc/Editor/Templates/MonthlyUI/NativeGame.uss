@@ -1,0 +1,71 @@
+.month-room { -unity-font: url("project://database/Assets/PrincessStudio/Samples/NativeUI/NotoSansKR-Regular.otf"); flex-grow: 1; color: #263b43; font-size: 16px; background-color: #d8e5e5; }
+.month-background { position: absolute; width: 100%; height: 100%; opacity: 0.55; }
+.month-hud { flex-direction: row; align-items: center; min-height: 62px; padding: 7px 24px; background-color: #f8fbf8; border-bottom-width: 1px; border-bottom-color: #b9d1cf; }
+.brand { font-size: 24px; color: #194b50; margin-right: 26px; }
+.caption { font-size: 12px; color: #426368; margin-right: 6px; }
+.value { font-size: 21px; margin-right: 24px; }
+.spacer { flex-grow: 1; }
+.month-room Button { margin: 3px; padding: 8px 13px; border-width: 1px; border-color: #a7c5c4; border-radius: 5px; background-color: #eaf3f1; color: #1d454c; -unity-font-style: bold; white-space: normal; }
+.month-room Button:hover { background-color: #d8eae7; }
+.month-room Button:disabled { opacity: 1; color: #687a7d; background-color: #e3e9e8; }
+.month-room .primary { color: white; background-color: #17636a; border-color: #17636a; min-height: 43px; }
+.month-room .primary:hover { background-color: #267b82; }
+.month-room .quiet { background-color: #f8fbf8; }
+.status { min-height: 31px; padding: 5px 24px; background-color: #e9f2ef; color: #2e555a; font-size: 14px; }
+.month-content { flex-grow: 1; min-height: 0; overflow: hidden; }
+.character { position: absolute; left: 6%; top: 3%; width: 45%; height: 96%; -unity-background-scale-mode: scale-to-fit; }
+.intro-card { position: absolute; top: 12%; right: 6%; width: 37%; max-width: 460px; padding: 26px; background-color: #f8fbf8; border-width: 1px; border-color: #bdd2cf; border-radius: 8px; }
+.intro-card > Button { margin: 5px 0; }
+.eyebrow { font-size: 12px; color: #35787b; margin-bottom: 10px; }
+.intro-title { font-size: 31px; color: #16575e; white-space: normal; margin-bottom: 12px; }
+.intro-copy { font-size: 18px; white-space: normal; margin-bottom: 16px; }
+.overlay { position: absolute; left: 0; right: 0; top: 0; bottom: 0; align-items: center; justify-content: center; background-color: rgba(18, 44, 47, 0.43); }
+.plan-sheet { width: 97%; max-width: 1320px; height: 98%; padding: 13px 18px; background-color: #f8fbf8; border-radius: 8px; }
+.header, .footer { flex-direction: row; align-items: center; flex-shrink: 0; }
+.title { font-size: 24px; margin-right: 20px; }
+.plan-status { font-size: 15px; color: #356c70; }
+.instruction { margin: 5px 0 12px; font-size: 14px; white-space: normal; }
+.plan-body { flex-direction: row; flex-grow: 1; min-height: 0; }
+.activity-column { width: 25%; min-width: 225px; max-width: 310px; margin-right: 13px; }
+.calendar-column { flex-grow: 1; min-width: 0; }
+.section-label { min-height: 30px; color: #3e7174; font-size: 13px; }
+.activity-scroll, .calendar-scroll { flex-grow: 1; flex-basis: 0; min-height: 0; }
+.activity-list { flex-direction: column; }
+.month-room .activity-card { min-height: 99px; margin: 0 4px 7px 0; padding: 9px; background-color: #eaf3f1; }
+.activity-image { display: none; }
+.card-title { font-size: 19px; color: #174e54; }
+.description { white-space: normal; font-size: 14px; color: #416267; margin: 4px 0; }
+.card-facts { flex-direction: row; font-size: 12px; }
+.card-facts > Label { margin-right: 7px; }
+.slot-list { flex-direction: row; flex-wrap: wrap; }
+.slot-list > .raisearc-item { width: 14.2857%; }
+.month-room .slot-button { height: 76px; min-height: 76px; margin: 2px; padding: 5px; align-items: flex-start; }
+.slot-date { font-size: 17px; color: #396a6d; }
+.slot-activity { font-size: 13px; white-space: normal; -unity-text-align: middle-center; align-self: stretch; flex-grow: 1; }
+.month-room .raisearc-placed .slot-button { background-color: #d6ece8; }
+.month-room .raisearc-selected .slot-button { color: white; background-color: #17636a; }
+.raisearc-selected .slot-date { color: white; }
+.month-room .raisearc-current .slot-button { border-width: 2px; border-color: #b47128; background-color: #f5e8cb; }
+.month-room .raisearc-confirmed .raisearc-selected .slot-button { color: #1d454c; background-color: #d6ece8; }
+.month-room .raisearc-confirmed .raisearc-current .slot-button { color: #493c1e; background-color: #f5e8cb; }
+.raisearc-confirmed .raisearc-selected .slot-date { color: #396a6d; }
+.raisearc-confirmed .raisearc-current .slot-date { color: #493c1e; }
+.month-room .raisearc-problem .slot-button { border-width: 2px; border-color: #a63837; }
+.footer { padding-top: 9px; }
+.reason { font-size: 12px; color: #7c5528; min-height: 18px; }
+.confirmed-action { display: none; }
+.raisearc-confirmed .confirmed-action { display: flex; }
+.raisearc-confirmed .draft-action, .raisearc-confirmed .activity-column, .raisearc-confirmed .instruction { display: none; }
+.dialogue-overlay { justify-content: flex-end; padding-bottom: 22px; background-color: rgba(18, 44, 47, 0.2); }
+.dialogue-sheet { width: 86%; max-width: 1000px; max-height: 95%; padding: 22px; background-color: #f8fbf8; border-width: 1px; border-color: #9dbcb9; border-radius: 8px; }
+.dialogue-scroll { min-height: 0; }
+.speaker { color: #3b7b7b; font-size: 16px; }
+.dialogue-text { font-size: 23px; white-space: normal; margin: 7px 0 16px; }
+.choice-list { flex-direction: column; }
+.month-room .choice { min-height: 43px; margin: 4px 0; font-size: 18px; }
+.continue-action { align-self: flex-end; min-width: 150px; }
+.raisearc-choices .continue-action { display: none; }
+.raisearc-choices #plan-panel, .raisearc-choices .intro-card { visibility: hidden; }
+.ending { position: absolute; top: 24%; left: 25%; right: 25%; padding: 28px; background-color: #f8fbf8; border-radius: 8px; }
+.raisearc-hidden { display: none; }
+#raisearc-configuration-error { padding: 20px; color: #963c34; background-color: #fff0ed; white-space: normal; }

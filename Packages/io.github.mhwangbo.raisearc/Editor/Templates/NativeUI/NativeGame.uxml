@@ -1,0 +1,56 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="NativeGame.uss" />
+    <ui:VisualElement name="room" class="room">
+        <ui:Image name="background" class="room-background" scale-mode="ScaleAndCrop" picking-mode="Ignore" />
+        <ui:VisualElement class="hud">
+            <ui:Label name="character-name" text="Elara" class="character-name" />
+            <ui:VisualElement class="hud-stat"><ui:Label name="day-label" text="DAY" class="caption" /><ui:Label name="day" text="0" class="hud-value" /><ui:Label name="period" text="Morning" /></ui:VisualElement>
+            <ui:VisualElement class="hud-stat"><ui:Label name="money-label" text="MONEY" class="caption" /><ui:Label name="money" text="60" class="hud-value" /></ui:VisualElement>
+            <ui:VisualElement class="hud-stat"><ui:Label name="wisdom-label" text="WISDOM" class="caption" /><ui:Label name="wisdom" text="10" class="hud-value" /></ui:VisualElement>
+            <ui:VisualElement class="spacer" />
+            <ui:Button name="save" text="Save" class="quiet" /><ui:Button name="load" text="Load" class="quiet" /><ui:Button name="restart" text="Restart" class="quiet" />
+        </ui:VisualElement>
+        <ui:Label name="status" text="Draft" class="status" />
+        <ui:VisualElement name="screen-content" class="screen-content">
+            <ui:Image name="character" class="character" picking-mode="Ignore" />
+            <ui:VisualElement class="room-actions">
+                <ui:Label name="room-kicker" text="YOUR NEXT CHAPTER" class="eyebrow" />
+                <ui:Label name="room-title" text="A week of possibilities" class="room-title" />
+                <ui:Label name="room-description" text="Make room for learning, work and a little rest." class="subtitle" />
+                <ui:Button name="open-plan" text="Plan the week" class="primary" />
+                <ui:Button name="run-next" text="Begin next activity" class="primary confirmed-action" />
+            </ui:VisualElement>
+            <ui:VisualElement name="plan-panel" class="overlay raisearc-hidden">
+                <ui:VisualElement class="plan-sheet">
+                    <ui:VisualElement class="header"><ui:Label name="plan-title" text="Weekly plan" class="title" /><ui:Label name="plan-status" text="Draft 0/21" class="plan-status" /><ui:VisualElement class="spacer" /><ui:Button name="close-plan" text="Back to garden" class="quiet" /></ui:VisualElement>
+                    <ui:Label name="plan-instruction" text="Choose a time slot, then an activity." class="instruction" />
+                    <ui:VisualElement class="plan-body">
+                        <ui:VisualElement class="activity-column">
+                            <ui:Label name="activities-title" text="ACTIVITIES" class="section-label" />
+                            <ui:ScrollView name="activity-scroll" class="activity-scroll" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Auto"><ui:VisualElement name="activities" class="activity-list" /></ui:ScrollView>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="calendar-column">
+                            <ui:VisualElement class="calendar-head"><ui:Label name="morning-title" text="Morning" /><ui:Label name="afternoon-title" text="Afternoon" /><ui:Label name="evening-title" text="Evening" /></ui:VisualElement>
+                            <ui:ScrollView name="calendar-scroll" class="calendar-scroll" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Auto"><ui:VisualElement name="slots" class="slot-list" /></ui:ScrollView>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="footer">
+                        <ui:Button name="clear-slot" text="Clear slot" class="draft-action quiet" /><ui:Button name="copy-day" text="Copy day →" class="draft-action quiet" /><ui:Button name="new-plan" text="New week" class="quiet" />
+                        <ui:VisualElement class="spacer" /><ui:Button name="confirm" text="Confirm week" class="primary draft-action" /><ui:Button name="plan-run-next" text="Begin next activity" class="primary confirmed-action" />
+                    </ui:VisualElement>
+                    <ui:Label name="confirm-reason" class="reason" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="dialogue-panel" class="overlay dialogue-overlay raisearc-hidden">
+                <ui:VisualElement class="dialogue">
+                    <ui:ScrollView class="dialogue-scroll" horizontal-scroller-visibility="Hidden">
+                        <ui:Label name="speaker" class="speaker" /><ui:Label name="dialogue" class="dialogue-text" />
+                        <ui:VisualElement name="choices" class="choice-list" />
+                    </ui:ScrollView>
+                    <ui:Button name="continue" text="Continue →" class="primary continue-action" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="ending-panel" class="ending raisearc-hidden"><ui:Label name="ending-title" text="A NEW CHAPTER" class="eyebrow" /><ui:Label name="ending" class="room-title" /></ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

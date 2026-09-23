@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:VisualElement name="studio" class="studio">
+        <ui:VisualElement class="studio-header">
+            <ui:VisualElement><ui:Label text="LIFE SIMULATION AUTHORING" class="eyebrow"/><ui:Label text="RaiseArc" class="brand"/></ui:VisualElement>
+            <ui:VisualElement class="spacer"/>
+            <ui:Label text="Create a life. Shape a story." class="subtitle"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="toolbar" class="toolbar"/>
+        <ui:VisualElement class="studio-body"><ui:ScrollView name="navigation" class="navigation" mode="Vertical" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Auto"/><ui:VisualElement name="content" class="content-pane"/></ui:VisualElement>
+        <ui:Label name="status" text="Ready" class="status"/>
+    </ui:VisualElement>
+</ui:UXML>

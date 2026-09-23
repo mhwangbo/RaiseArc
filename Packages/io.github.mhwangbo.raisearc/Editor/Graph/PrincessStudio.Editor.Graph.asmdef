@@ -1,0 +1,1 @@
+{"name":"PrincessStudio.Editor.Graph","rootNamespace":"PrincessStudio.Editor.Graph","references":["PrincessStudio.Core","PrincessStudio.Unity","PrincessStudio.Editor"],"includePlatforms":["Editor"]}
