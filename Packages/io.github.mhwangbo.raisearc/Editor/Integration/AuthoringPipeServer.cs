@@ -24,6 +24,7 @@ namespace PrincessStudio.Editor
         private static readonly ConcurrentQueue<Request> requests = new ConcurrentQueue<Request>();
         private static CancellationTokenSource cancellation;
         private static NamedPipeServerStream pipe;
+        private static Task serving;
         private static GameProjectAsset target;
         public static string LastError
         {
@@ -52,18 +53,24 @@ namespace PrincessStudio.Editor
                 PipeName = "princess-studio-" + BitConverter.ToString(hash.ComputeHash(Encoding.UTF8.GetBytes(Path.GetFullPath(Application.dataPath).ToLowerInvariant()))).Replace("-", "").Substring(0, 16).ToLowerInvariant();
             cancellation = new CancellationTokenSource();
             var token = cancellation.Token;
-            _ = Serve(token);
+            serving = Serve(token);
         }
         public static void Stop()
         {
-            cancellation?.Cancel();
-            pipe?.Dispose();
-            pipe = null;
-            cancellation?.Dispose();
-            cancellation = null;
-            target = null;
+            var source = cancellation;
+            var connection = pipe;
+            var task = serving;
+            source?.Cancel();
             while (requests.TryDequeue(out var request))
                 request.completion.TrySetCanceled();
+            connection?.Dispose();
+            pipe = null;
+            cancellation = null;
+            serving = null;
+            target = null;
+            if (task != null && !task.Wait(TimeSpan.FromSeconds(5)))
+                throw new InvalidOperationException("MCP pipe did not stop within five seconds.");
+            source?.Dispose();
         }
         private static async Task Serve(CancellationToken token)
         {

@@ -1,14 +1,18 @@
 using System;
+using System.Collections;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using NUnit.Framework;
 using PrincessStudio.Core;
 using PrincessStudio.Unity;
 using RaiseArc.Analysis;
 using RaiseArc.Core;
 using RaiseArc.Unity;
+using RaiseArc.UI;
 using UnityEngine;
+using UnityEngine.TestTools;
 using UnityEngine.UIElements;
 using UnityEditor.UIElements;
 
@@ -16,6 +20,36 @@ namespace RaiseArc.Editor.Tests
 {
     public sealed class TimePlanTests
     {
+        [UnityTest] public IEnumerator ContinuousRunCanRetryAfterResumeThrows()
+        {
+            yield return new EnterPlayMode();
+            var p = Weekly(); p.events.Clear(); p.time.planningDays = 1;
+            var asset = ScriptableObject.CreateInstance<GameProjectAsset>(); asset.Write(p);
+            var owner = new GameObject("RaiseArc plan retry regression");
+            var game = owner.AddComponent<RaiseArcGame>();
+            try
+            {
+                game.Configure(asset, null); game.Initialize();
+                typeof(RaiseArcGame).GetField("planFeedbackSeconds", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(game, 0f);
+                var activity = p.activities[0].id;
+                for (var i = 0; i < game.Host.Plan.capacity; i++) game.Host.PlacePlanActivity(i, activity);
+                game.Host.ConfirmPlan();
+                Action injected = () => throw new InvalidOperationException("Injected plan continuation exception");
+                game.Host.Changed += injected;
+                LogAssert.Expect(LogType.Exception, new Regex("InvalidOperationException: Injected plan continuation exception"));
+                game.RunPlan();
+                yield return null; yield return null;
+                game.Host.Changed -= injected;
+                Assert.That(game.IsRunningPlan, Is.False, "An exception must release the continuous-run handle.");
+                Assert.That(game.Host.ScheduleCursor, Is.LessThan(game.Host.Schedule.Count), "The remaining confirmed plan must be retained.");
+                game.RunPlan();
+                for (var i = 0; i < 12 && game.IsRunningPlan; i++) yield return null;
+                Assert.That(game.IsRunningPlan, Is.False);
+                Assert.That(game.Host.ScheduleCursor, Is.EqualTo(game.Host.Schedule.Count));
+            }
+            finally { UnityEngine.Object.Destroy(owner); UnityEngine.Object.Destroy(asset); }
+            yield return new ExitPlayMode();
+        }
         [Test] public void UnsavedTimeRulesSurviveUndoRefreshAndRejectProjectSwitch()
         {
             var first = ScriptableObject.CreateInstance<GameProjectAsset>(); first.Write(Weekly());

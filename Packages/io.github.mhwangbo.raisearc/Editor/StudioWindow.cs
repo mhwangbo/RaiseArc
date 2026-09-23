@@ -203,9 +203,9 @@ namespace PrincessStudio.Editor
             }
             catch (Exception e) { Notify(e.Message); Debug.LogWarning("[RaiseArc] " + e.Message); }
         }
-        private void Mutate(Action action)
+        private void Mutate(Action action, Action onSaved = null)
         {
-            Safe(() => { if (asset.Read().revision != service.Revision) throw new InvalidOperationException("Project changed externally. Refresh before applying this draft."); action(); Undo.RecordObject(asset, "Edit RaiseArc project"); asset.Write(service.Snapshot()); EditorUtility.SetDirty(asset); AssetDatabase.SaveAssetIfDirty(asset); RaiseArc.Editor.RaiseArcVoiceField.Sync(asset); preview = null; Notify("Saved • revision " + service.Revision); Render(); });
+            Safe(() => { if (asset.Read().revision != service.Revision) throw new InvalidOperationException("Project changed externally. Refresh before applying this draft."); action(); Undo.RecordObject(asset, "Edit RaiseArc project"); asset.Write(service.Snapshot()); EditorUtility.SetDirty(asset); AssetDatabase.SaveAssetIfDirty(asset); onSaved?.Invoke(); RaiseArc.Editor.RaiseArcVoiceField.Sync(asset); preview = null; Notify("Saved • revision " + service.Revision); Render(); });
         }
         private void NewProject()
         {
@@ -311,7 +311,7 @@ namespace PrincessStudio.Editor
         {
             if (string.IsNullOrEmpty(overviewDraftJson)) { base.SaveChanges(); return; }
             var draft = codec.FromJson(overviewDraftJson, asset.CreateExtensions());
-            Mutate(() => { service.Replace(draft, draft.revision); overviewDraftJson = ""; base.SaveChanges(); });
+            Mutate(() => service.Replace(draft, draft.revision), () => { overviewDraftJson = ""; base.SaveChanges(); });
         }
         public override void DiscardChanges()
         {

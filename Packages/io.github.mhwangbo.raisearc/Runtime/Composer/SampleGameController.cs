@@ -87,7 +87,7 @@ namespace PrincessStudio.Samples
             if (screenDefinition.compositionPreview)
             {
                 composedScreen.Draw(root, screenDefinition, host, planningRehearsal, LocalizationSettings.SelectedLocale.Identifier.Code,
-                    defaultPortrait, defaultBackground, save: () => host.Save(planningRehearsal == null ? "weekly-plan" : "planning-rehearsal"), load: () => host.Load(planningRehearsal == null ? "weekly-plan" : "planning-rehearsal"),
+                    defaultPortrait, defaultBackground, save: () => host.Save(planningRehearsal == null ? "weekly-plan" : "planning-rehearsal"), load: () => LoadAndClearDraft(planningRehearsal == null ? "weekly-plan" : "planning-rehearsal"),
                     statName: id => host.Text(project.stats.Find(s => s.id == id).nameKey, LocalizationSettings.SelectedLocale.Identifier.Code),
                     skin: presentationSkin, eventBody: panel => {
                         if (host.Wait == SessionWait.Ended) { var ending = project.endings.Find(e => e.id == host.State.EndingId); panel.Add(Label(ending?.nameKey ?? "ui.ending")); if (ending != null) panel.Add(Label(ending.descriptionKey)); }
@@ -151,9 +151,14 @@ namespace PrincessStudio.Samples
                 DrawActivities(scroll);
             }
             scroll.Add(Action("ui.save", () => { host.Save("slot1"); message = "ui.saved"; Draw(); }));
-            scroll.Add(Action("ui.load", () => { voice.Stop(); host.Load("slot1"); message = "ui.loaded"; Draw(); }));
+            scroll.Add(Action("ui.load", () => { voice.Stop(); LoadAndClearDraft("slot1"); message = "ui.loaded"; Draw(); }));
             scroll.Add(Action("ui.restart", () => { voice.Stop(); plannedActivities.Clear(); host.Restart(1); message = ""; Draw(); }));
             AddVoiceControls(scroll);
+        }
+        private void LoadAndClearDraft(string slot)
+        {
+            host.Load(slot);
+            plannedActivities.Clear();
         }
         private Button ActivityButton(ActivityDefinition activity)
         {

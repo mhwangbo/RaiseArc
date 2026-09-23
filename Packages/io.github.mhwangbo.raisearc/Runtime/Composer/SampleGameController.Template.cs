@@ -82,7 +82,7 @@ namespace PrincessStudio.Samples
             var save = Action("ui.save", () => { host.Save("slot1"); message = "ui.saved"; Draw(); });
             save.SetEnabled(host.CanSave); toolbar.Add(save);
             if (!host.CanSave) toolbar.Add(new Label(Local("Finish or cancel the module before saving.", "외부 게임을 완료하거나 취소한 뒤 저장하세요.")));
-            toolbar.Add(Action("ui.load", () => { voice.Stop(); host.Load("slot1"); message = "ui.loaded"; Draw(); }));
+            toolbar.Add(Action("ui.load", () => { voice.Stop(); LoadAndClearDraft("slot1"); message = "ui.loaded"; Draw(); }));
             toolbar.Add(Action("ui.restart", () => { voice.Stop(); plannedActivities.Clear(); host.Restart(1); message = ""; Draw(); }));
             if (screenDefinition.showVoiceControls) AddVoiceControls(toolbar);
             ApplyScreenLayout(shell);
