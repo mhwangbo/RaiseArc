@@ -11,7 +11,6 @@ namespace PrincessStudio.Editor
 {
     public static class SampleSceneBuilder
     {
-        [MenuItem("Window/RaiseArc/Create playable sample scenes")]
         public static void Create()
         {
             // Use serialized type names to keep the distribution's editor independent of optional sample assemblies.

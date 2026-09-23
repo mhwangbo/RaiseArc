@@ -76,7 +76,7 @@ namespace PrincessStudio.Editor
         }
         public static void ApplyFont(VisualElement root)
         {
-            if (font == null) font = AssetDatabase.LoadAssetAtPath<Font>("Assets/PrincessStudio/Samples/Fonts/NotoSansKR.ttf");
+            if (font == null) font = AssetDatabase.LoadAssetAtPath<Font>("Packages/io.github.mhwangbo.raisearc/Editor/Templates/NativeUI/NotoSansKR-Regular.otf");
             if (font != null) root.style.unityFont = font;
         }
         public static bool Dialog(string title, string message, string ok, string cancel = "") =>

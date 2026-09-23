@@ -11,15 +11,6 @@ namespace PrincessStudio.Editor
 {
     public sealed partial class StudioWindow
     {
-        [MenuItem("Window/RaiseArc/Open presentation demo")]
-        private static void OpenPresentationDemo()
-        {
-            var window = GetWindow<StudioWindow>();
-            window.asset = AssetDatabase.LoadAssetAtPath<GameProjectAsset>("Assets/PrincessStudio/Samples/Presentation/PresentationDemo.asset");
-            window.screenSkin = AssetDatabase.LoadAssetAtPath<PresentationSkin>("Assets/PrincessStudio/Samples/Presentation/DemoSkin.asset");
-            window.page = "Game screen";
-            window.Show(); window.Reload();
-        }
         private void DrawGameScreen(ProjectDefinition p)
         {
             var scroll = new ScrollView(); content.Add(scroll); scroll.style.flexGrow = 1;

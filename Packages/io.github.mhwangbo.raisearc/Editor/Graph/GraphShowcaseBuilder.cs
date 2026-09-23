@@ -12,7 +12,6 @@ namespace PrincessStudio.Editor.Graph
     {
         public const string AssetPath = "Assets/PrincessStudio/Samples/Showcase/RoyalEvening.asset";
         public const string EventId = "royal-evening";
-        [MenuItem("Window/RaiseArc/왕실 초대 그래프 샘플 만들기")]
         public static void OpenSample() { StudioText.Language = "ko"; GraphWorkbenchWindow.Open(AssetDatabase.LoadAssetAtPath<GameProjectAsset>(AssetPath) ?? Create()); }
         public static GameProjectAsset Create()
         {

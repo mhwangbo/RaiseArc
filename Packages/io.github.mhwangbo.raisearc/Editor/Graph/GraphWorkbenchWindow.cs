@@ -49,7 +49,7 @@ namespace PrincessStudio.Editor.Graph
         private readonly UnityProjectCodec codec = new UnityProjectCodec();
         private string clipboard = "";
         [MenuItem("Window/RaiseArc/Open Graph Workbench")]
-        public static void OpenMenu() => Open(Selection.activeObject as GameProjectAsset ?? AssetDatabase.LoadAssetAtPath<GameProjectAsset>("Assets/PrincessStudio/Samples/Presentation/PresentationDemo.asset"));
+        public static void OpenMenu() => Open(Selection.activeObject as GameProjectAsset);
         [MenuItem("Window/RaiseArc/그래프 워크벤치 (한국어)")]
         public static void OpenKorean() { StudioText.Language = "ko"; OpenMenu(); GetWindow<GraphWorkbenchWindow>().CreateGUI(); }
         public static void Open(GameProjectAsset project)
@@ -155,7 +155,6 @@ namespace PrincessStudio.Editor.Graph
             api = new AuthoringService(asset.Read(), codec, asset.CreateExtensions()); changes = api.BeginChangeSet(); preview = null; project = api.Snapshot();
             draftJson = JsonUtility.ToJson(changes);
             if (!project.locales.Contains(locale)) locale = project.defaultLocale;
-            if (previewSkin == null) previewSkin = AssetDatabase.LoadAssetAtPath<PresentationSkin>("Assets/PrincessStudio/Samples/Presentation/DemoSkin.asset");
             var guid = AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(asset));
             if (!AssetDatabase.IsValidFolder("Assets/PrincessStudioWorkbench"))
                 AssetDatabase.CreateFolder("Assets", "PrincessStudioWorkbench");

@@ -9,7 +9,6 @@ namespace PrincessStudio.Editor
     public static class PackageRelease
     {
         public const string CandidateVersion = "0.3.0-preview.2-nativeui.2";
-        [MenuItem("Window/RaiseArc/Export distribution package")]
         public static void Export()
         {
             var path = EditorUtility.SaveFilePanel("Export RaiseArc", "", "RaiseArc-" + CandidateVersion + ".unitypackage", "unitypackage");

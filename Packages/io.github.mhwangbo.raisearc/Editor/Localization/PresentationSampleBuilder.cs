@@ -14,7 +14,6 @@ namespace PrincessStudio.Editor.Localization
     public static class PresentationSampleBuilder
     {
         public const string Root = "Assets/PrincessStudio/Samples/Presentation";
-        [MenuItem("Window/RaiseArc/Create presentation demo")]
         public static void Create()
         {
             if (!Application.isBatchMode && !EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) return;

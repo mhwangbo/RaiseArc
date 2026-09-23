@@ -7,7 +7,6 @@ namespace RaiseArc.Editor
 {
     public static class SimulationExample
     {
-        [MenuItem("Window/RaiseArc/Samples/Create Simulation Example")]
         public static void Create()
         {
             var project = new UnityProjectCodec().FromJson(File.ReadAllText("Assets/PrincessStudio/Samples/Data/SimulationExample.json"));
