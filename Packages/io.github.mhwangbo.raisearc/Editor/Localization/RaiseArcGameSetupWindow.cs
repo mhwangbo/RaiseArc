@@ -90,7 +90,7 @@ namespace RaiseArc.Editor
             ImageField(scroll, T("Replace character (optional)", "캐릭터 교체 (선택)"), character, x => character = x);
             Check(scroll, "Fill background (crop edges)", "배경을 채우기 (가장자리 잘림)", screenDraft.fillBackground, x => screenDraft.fillBackground = x);
             var scale = new Slider(T("Character size", "캐릭터 크기"), .25f, 2) { value = screenDraft.portraitScale }; scale.RegisterValueChangedCallback(e => screenDraft.portraitScale = e.newValue); scroll.Add(scale);
-            scroll.Add(new HelpBox(T("No images selected? The first screen uses the included original starter art. Replacements are copied; source import settings stay unchanged. Empty image fields keep existing images. Full actor staging remains available in Studio.", "처음에 이미지를 고르지 않으면 포함된 기본 그림을 씁니다. 교체 이미지는 복사하며 원본 임포트 설정은 바꾸지 않습니다. 빈 이미지 칸은 기존 그림을 유지합니다. 고급 인물 연출은 Studio에서 계속 편집할 수 있습니다."), HelpBoxMessageType.Info));
+            scroll.Add(new HelpBox(T("No images selected? The first screen creates editable solid-color placeholder images in your game's Assets folder. Replacements are copied; source import settings stay unchanged. Empty image fields keep existing images. Full actor staging remains available in Studio.", "처음에 이미지를 고르지 않으면 게임의 Assets 폴더에 편집 가능한 단색 임시 이미지를 만듭니다. 교체 이미지는 복사하며 원본 임포트 설정은 바꾸지 않습니다. 빈 이미지 칸은 기존 그림을 유지합니다. 고급 인물 연출은 Studio에서 계속 편집할 수 있습니다."), HelpBoxMessageType.Info));
             var activityImages = new Foldout { text = T("Activity images", "활동 이미지") }; scroll.Add(activityImages);
             if (p.activities.Count > 0)
             {

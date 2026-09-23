@@ -19,12 +19,7 @@ namespace RaiseArc.Editor
         private static void ValidateLocalizationOwnership(GameProjectAsset asset)
         {
             var id = asset.Read().id;
-            var root = "Assets/PrincessStudioContent/Localization/" + id + "/";
-            var strings = LocalizationEditorSettings.GetStringTableCollection("Princess." + id);
-            var assets = LocalizationEditorSettings.GetAssetTableCollection("Princess." + id + ".Assets");
-            foreach (var collection in new UnityEngine.Object[] { strings, assets })
-                if (collection != null && !AssetDatabase.GetAssetPath(collection).StartsWith(root, StringComparison.Ordinal))
-                    throw new InvalidOperationException(T("This project's localization collection is managed elsewhere. Use Studio Localization to synchronize it first.", "이 프로젝트의 현지화 테이블은 다른 위치에서 관리됩니다. 먼저 Studio 현지화에서 연결을 확인하세요."));
+            LocalizationTableBridge.ValidateOwnership(id, "Assets/PrincessStudioContent/Localization/" + id);
         }
         private static void SyncOwnedLocalization(GameProjectAsset asset)
         {

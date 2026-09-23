@@ -91,7 +91,7 @@ namespace PrincessStudio.Samples
                     statName: id => host.Text(project.stats.Find(s => s.id == id).nameKey, LocalizationSettings.SelectedLocale.Identifier.Code),
                     skin: presentationSkin, eventBody: panel => {
                         if (host.Wait == SessionWait.Ended) { var ending = project.endings.Find(e => e.id == host.State.EndingId); panel.Add(Label(ending?.nameKey ?? "ui.ending")); if (ending != null) panel.Add(Label(ending.descriptionKey)); }
-                        else { var ev = project.events.Find(e => e.id == host.State.PendingEventId); if (ev != null) DrawEventSequence(panel, panel, ev); }
+                        else { var ev = playbackEvents.Find(e => e.id == host.State.PendingEventId); if (ev != null) DrawEventSequence(panel, panel, ev); }
                     });
                 return;
             }

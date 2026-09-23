@@ -135,7 +135,10 @@ namespace RaiseArc.Editor
             var replay = job.replay;
             body.Clear();
             Line(T("Actual runtime input replay", "실제 런타임 입력 재현"), true);
-            Line(job.status + " · " + job.error + " · " + T("Preserved replay result", "보존된 재현 결과") + ": " + job.artifactId);
+            Line(job.status + " · " + job.error);
+            Line(string.IsNullOrEmpty(job.artifactId)
+                ? T("Replay result was not preserved.", "재현 결과가 보존되지 않았습니다.")
+                : T("Preserved replay result", "보존된 재현 결과") + ": " + job.artifactId);
             Line(T("Goal selected", "목표 엔딩 선택") + ": " + replay.goalReached + " · " + replay.endingId);
             Line(T("Same recorded states", "기록된 상태와 일치") + ": " + replay.sameStates + " · " + replay.reason);
             foreach (var step in replay.path) Line($"{step.depth}. {step.input?.kind} {step.input?.id} · day {step.state.day} · money {step.state.money} · {step.reason}");

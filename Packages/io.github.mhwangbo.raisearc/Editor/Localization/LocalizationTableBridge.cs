@@ -25,6 +25,7 @@ namespace PrincessStudio.Editor
         {
             var p = asset.Read();
             var root = "Assets/PrincessStudioContent/Localization/" + p.id;
+            ValidateOwnership(p.id, root);
             Directory.CreateDirectory(root);
             AssetDatabase.Refresh();
             var settings = LocalizationEditorSettings.ActiveLocalizationSettings;
@@ -124,6 +125,20 @@ namespace PrincessStudio.Editor
             LocalizationEditorSettings.EditorEvents.RaiseCollectionModified(null, strings);
             LocalizationEditorSettings.EditorEvents.RaiseCollectionModified(null, assets);
             AssetDatabase.SaveAssets();
+        }
+
+        public static void ValidateOwnership(string projectId, string root)
+        {
+            var prefix = root.TrimEnd('/') + "/";
+            var strings = LocalizationEditorSettings.GetStringTableCollection("Princess." + projectId);
+            var assets = LocalizationEditorSettings.GetAssetTableCollection("Princess." + projectId + ".Assets");
+            foreach (var collection in new UnityEngine.Object[] { strings, assets })
+            {
+                if (collection == null) continue;
+                var path = AssetDatabase.GetAssetPath(collection);
+                if (!path.StartsWith(prefix, StringComparison.Ordinal))
+                    throw new InvalidOperationException("RaiseArc localization collection belongs to another folder: " + path);
+            }
         }
     }
 }

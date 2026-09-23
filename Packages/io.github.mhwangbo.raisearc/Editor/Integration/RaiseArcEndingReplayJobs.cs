@@ -63,10 +63,25 @@ namespace RaiseArc.Editor
         {
             job.steps.Dispose(); job.clock.Stop(); job.status = status;
             if (status != "Completed") job.replay.sameStates = false;
-            job.artifactId = Guid.NewGuid().ToString("N");
-            Directory.CreateDirectory("RaiseArcAnalysisResults");
-            using (var writer = new StreamWriter(new FileStream("RaiseArcAnalysisResults/" + job.artifactId + ".replay.json", FileMode.CreateNew)))
-                writer.Write(JsonUtility.ToJson(job));
+            var artifactId = Guid.NewGuid().ToString("N");
+            var directory = "RaiseArcAnalysisResults";
+            var destination = Path.Combine(directory, artifactId + ".replay.json");
+            var temporary = destination + ".tmp";
+            try
+            {
+                Directory.CreateDirectory(directory);
+                job.artifactId = artifactId;
+                File.WriteAllText(temporary, JsonUtility.ToJson(job));
+                File.Move(temporary, destination);
+            }
+            catch (Exception ex)
+            {
+                job.artifactId = "";
+                job.status = "Error";
+                job.replay.sameStates = false;
+                job.error = string.IsNullOrEmpty(job.error) ? "Replay result could not be preserved: " + ex.Message : job.error + "; replay result could not be preserved: " + ex.Message;
+                try { if (File.Exists(temporary)) File.Delete(temporary); } catch (Exception) { }
+            }
         }
     }
 }
