@@ -17,6 +17,16 @@ namespace PrincessStudio.Core
         private ModuleContext pendingModule;
         public StateSnapshot State => cachedSnapshot ?? (cachedSnapshot = new StateSnapshot(state, project));
         public bool HasPendingModule => pendingModule != null;
+        internal bool PendingPresentationIsChoice
+        {
+            get
+            {
+                var currentEvent = events.Find(x => x.id == state.PendingEventId);
+                var step = currentEvent?.presentation.Find(x => x.id == state.PresentationStepId);
+                if (step == null) throw new InvalidOperationException("Pending presentation step is missing.");
+                return step.kind == PresentationStepKind.Choice;
+            }
+        }
         internal RaiseArc.Analysis.RuntimeObservations Observations { get => rules.Observations; set => rules.Observations = value; }
 
         /// <param name="definition">An owned, frozen copy. Use GameFactory to construct from mutable authoring data.</param>

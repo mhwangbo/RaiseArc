@@ -39,7 +39,7 @@ namespace PrincessStudio.Core
                             break;
                         if (state.PendingEventId.Length > 0)
                         {
-                            if (state.PresentationStepId.Length > 0 && project.events.Find(x => x.id == state.PendingEventId).presentation.Find(x => x.id == state.PresentationStepId).kind != PresentationStepKind.Choice)
+                            if (state.PresentationStepId.Length > 0 && !session.PendingPresentationIsChoice)
                             {
                                 session.AdvancePresentation(state.PresentationStepId);
                                 result.steps++;
