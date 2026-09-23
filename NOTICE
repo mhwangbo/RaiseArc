@@ -1,0 +1,12 @@
+RaiseArc
+Copyright 2026 Mi Hwangbo
+
+Original RaiseArc source and documentation are licensed under the Apache License,
+Version 2.0. See LICENSE.
+
+The included Noto Sans KR font retains its SIL Open Font License 1.1 and
+copyright notice. See Packages/io.github.mhwangbo.raisearc/Editor/Templates/NativeUI/Font-LICENSE.txt
+and Packages/io.github.mhwangbo.raisearc/Third Party Notices.md.
+
+External Unity packages retain their respective licenses and are not
+relicensed or redistributed by this notice.
