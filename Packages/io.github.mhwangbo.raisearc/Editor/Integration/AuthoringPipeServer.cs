@@ -34,6 +34,7 @@ namespace PrincessStudio.Editor
             get; private set;
         }
         public static bool IsRunning => cancellation != null && string.IsNullOrEmpty(LastError);
+        public static bool IsTarget(GameProjectAsset project) => ReferenceEquals(target, project);
         static AuthoringPipeServer()
         {
             AssemblyReloadEvents.beforeAssemblyReload += Stop;

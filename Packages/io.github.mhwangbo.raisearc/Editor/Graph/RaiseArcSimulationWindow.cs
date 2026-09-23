@@ -59,7 +59,7 @@ namespace RaiseArc.Editor
             refreshTimer?.Pause();
             rootVisualElement.Clear();
             rootVisualElement.AddToClassList("workbench"); rootVisualElement.AddToClassList("simulation");
-            var sheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/PrincessStudio/Editor/Graph/Workbench.uss");
+            var sheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Packages/io.github.mhwangbo.raisearc/Editor/Graph/Workbench.uss");
             if (sheet != null && !rootVisualElement.styleSheets.Contains(sheet)) rootVisualElement.styleSheets.Add(sheet);
             rootVisualElement.style.paddingLeft = rootVisualElement.style.paddingRight = 12;
             var title = new Label(T("Simulation Explorer · experimental", "시뮬레이션 탐색기 · 실험 기능")); title.style.fontSize = 21; title.AddToClassList("workbench-brand"); rootVisualElement.Add(title);

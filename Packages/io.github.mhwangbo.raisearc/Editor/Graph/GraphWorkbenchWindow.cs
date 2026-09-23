@@ -78,7 +78,7 @@ namespace PrincessStudio.Editor.Graph
         {
             var root = rootVisualElement; root.Clear(); root.AddToClassList("workbench");
             StudioText.ApplyFont(root);
-            var sheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/PrincessStudio/Editor/Graph/Workbench.uss"); if (sheet != null) root.styleSheets.Add(sheet);
+            var sheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Packages/io.github.mhwangbo.raisearc/Editor/Graph/Workbench.uss"); if (sheet != null) root.styleSheets.Add(sheet);
             var masthead = new VisualElement(); masthead.AddToClassList("workbench-masthead");
             var brand = new Label("RaiseArc"); brand.AddToClassList("workbench-brand"); masthead.Add(brand);
             var subtitle = new Label(StudioText.T("Graph Workbench")); subtitle.AddToClassList("workbench-product"); masthead.Add(subtitle); root.Add(masthead);

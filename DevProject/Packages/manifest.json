@@ -1,4 +1,5 @@
 {
+  "testables": ["io.github.mhwangbo.raisearc"],
   "dependencies": {
     "io.github.mhwangbo.raisearc": "file:../../Packages/io.github.mhwangbo.raisearc",
     "com.unity.test-framework": "1.8.0",

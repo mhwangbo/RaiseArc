@@ -54,7 +54,7 @@ namespace PrincessStudio.Editor
                 var path = EditorUtility.SaveFilePanelInProject("Create game screen", "GameScreen", "prefab", "The current project, skin and localization will be connected automatically.");
                 if (string.IsNullOrEmpty(path)) return;
                 var type = AppDomain.CurrentDomain.GetAssemblies().Select(a => a.GetType("PrincessStudio.Editor.Localization.GameScreenPrefabBuilder")).FirstOrDefault(t => t != null);
-                if (type == null) throw new InvalidOperationException("Install Unity Localization and create the presentation sample first.");
+                if (type == null) throw new InvalidOperationException("Create a basic game screen for this project first.");
                 type.GetMethod("Export").Invoke(null, new object[] { asset, skin, path });
                 Notify("Game screen prefab created. Drag it into your scene and enter Play Mode.");
             }), true));

@@ -140,7 +140,7 @@ namespace PrincessStudio.Editor
             connection.Add(Button("Refresh project", Reload));
             content.Add(connection);
             if (AuthoringPipeServer.IsRunning)
-                content.Add(StyledLabel("Current-user pipe: " + AuthoringPipeServer.PipeName, "notice"));
+                content.Add(StyledLabel("Current-user pipe: " + AuthoringPipeServer.PipeName + " · Project: " + AssetDatabase.GetAssetPath(asset), "notice"));
             content.Add(StyledLabel("Paste a structured command from your LLM client. Changes use the same authoring service and Unity Undo as this editor.", "subtitle"));
             var input = new TextField { multiline = true, value = "{\n  \"operation\": \"ValidateProject\"\n}" };
             input.AddToClassList("code-input");

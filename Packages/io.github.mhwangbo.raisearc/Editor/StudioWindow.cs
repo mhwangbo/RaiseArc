@@ -44,13 +44,18 @@ namespace PrincessStudio.Editor
         {
             Open();
             var w = GetWindow<StudioWindow>();
-            w.asset = project;
+            w.SetProject(project);
             w.Reload();
             return w;
         }
         public static StudioWindow OpenProject(GameProjectAsset project, string startPage)
         {
             var window = OpenProject(project); window.page = startPage; window.Render(); return window;
+        }
+        private void SetProject(GameProjectAsset project)
+        {
+            if (!AuthoringPipeServer.IsTarget(project)) AuthoringPipeServer.Stop();
+            asset = project;
         }
         public void CreateGUI()
         {
@@ -76,10 +81,10 @@ namespace PrincessStudio.Editor
             toolbar.Add(StudioText.LanguagePicker(CreateGUI, () => LeaveOverview() && StudioText.Dialog(StudioText.T("Language"), StudioText.T("Apply changes before changing the editor language. Continue?"), StudioText.T("Continue"), StudioText.T("Cancel"))));
             var picker = new ObjectField { objectType = typeof(GameProjectAsset), allowSceneObjects = false, value = asset };
             picker.style.width = 250;
-            picker.RegisterValueChangedCallback(e => { if (!LeaveOverview()) { picker.SetValueWithoutNotify(asset); return; } asset = e.newValue as GameProjectAsset; Reload(); });
+            picker.RegisterValueChangedCallback(e => { if (!LeaveOverview()) { picker.SetValueWithoutNotify(asset); return; } SetProject(e.newValue as GameProjectAsset); Reload(); });
             toolbar.Add(picker);
             toolbar.Add(Button("New project", NewProject));
-            toolbar.Add(Button("Open sample", OpenSample));
+            toolbar.Add(Button("Create editable example", OpenSample));
             toolbar.Add(Button("Import JSON", ImportJson));
             toolbar.Add(Button("Export JSON", ExportJson));
             toolbar.Add(Button("Graph Workbench", () =>
@@ -127,7 +132,7 @@ namespace PrincessStudio.Editor
             {
                 Heading("Your next story starts here", "Build characters, schedules and branching lives from one workspace.");
                 content.Add(Button("Create a project", NewProject, true));
-                content.Add(Button("Explore the included sample", OpenSample));
+                content.Add(Button("Create editable example", OpenSample));
                 return;
             }
             var project = service.Snapshot();
@@ -208,7 +213,7 @@ namespace PrincessStudio.Editor
             var path = EditorUtility.SaveFilePanelInProject("Create RaiseArc project", "GameProject", "asset", "Choose where to save your game data.");
             if (path.Length == 0)
                 return;
-            asset = CreateInstance<GameProjectAsset>();
+            SetProject(CreateInstance<GameProjectAsset>());
             AssetDatabase.CreateAsset(asset, path);
             AssetDatabase.SaveAssets();
             CreateGUI();
@@ -218,18 +223,14 @@ namespace PrincessStudio.Editor
             if (!LeaveOverview()) return;
             Safe(() =>
             {
-                var guids = AssetDatabase.FindAssets("SampleProject t:TextAsset", new[] { "Assets/PrincessStudio" });
-                if (guids.Length == 0)
-                    throw new FileNotFoundException("SampleProject.json was not found.");
-                var source = AssetDatabase.LoadAssetAtPath<TextAsset>(AssetDatabase.GUIDToAssetPath(guids[0]));
-                var path = EditorUtility.SaveFilePanelInProject("Copy sample project", "MyRaiseArcGame", "asset", "A separate editable project will be created.");
+                var path = EditorUtility.SaveFilePanelInProject("Create editable example", "MyRaiseArcGame", "asset", "A separate editable project will be created.");
                 if (path.Length == 0)
                     return;
                 var created = CreateInstance<GameProjectAsset>();
-                created.Write(codec.FromJson(source.text));
+                created.Write(RaiseArc.Editor.EndingTestExample.Definition());
                 AssetDatabase.CreateAsset(created, path);
                 AssetDatabase.SaveAssets();
-                asset = created;
+                SetProject(created);
                 CreateGUI();
             });
         }

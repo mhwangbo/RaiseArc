@@ -17,4 +17,6 @@
 *.sln
 *.unitypackage
 *.log
+/*-test.xml
+/*-test-*.xml
 *.tmp
