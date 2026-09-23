@@ -1,4 +1,4 @@
-.room { -unity-font: url("project://database/Assets/PrincessStudio/Samples/NativeUI/NotoSansKR-Regular.otf"); flex-grow: 1; background-color: #d8e3d6; color: #20392e; font-size: 17px; -unity-font-style: bold; }
+.room { -unity-font: url("project://database/Packages/io.github.mhwangbo.raisearc/Editor/Templates/NativeUI/NotoSansKR-Regular.otf"); flex-grow: 1; background-color: #d8e3d6; color: #20392e; font-size: 17px; -unity-font-style: bold; }
 .room-background { position: absolute; width: 100%; height: 100%; opacity: 0.9; background-size: cover; background-position: center; background-repeat: no-repeat; }
 .hud { flex-direction: row; align-items: center; padding: 8px 24px; background-color: #faf9f1; min-height: 62px; flex-shrink: 0; border-bottom-width: 1px; border-bottom-color: #c3cebd; }
 .character-name { font-size: 26px; min-width: 145px; color: #244a37; }
