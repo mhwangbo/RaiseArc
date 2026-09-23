@@ -15,6 +15,7 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
+          fetch-depth: 0
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: '22.14.0'
@@ -22,6 +23,10 @@ jobs:
           cache-dependency-path: website/package-lock.json
       - name: Check candidate file scope and GUIDs
         run: node Tools/check_candidate.cjs
+      - name: Check committed file hashes and history patterns
+        run: |
+          python3 Tools/commit_inventory.py --check
+          python3 Tools/prepush_scan.py
       - name: Install docs dependencies
         working-directory: website
         run: npm ci --no-audit --no-fund

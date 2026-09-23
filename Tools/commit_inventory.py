@@ -2,6 +2,7 @@
 
 import hashlib
 import subprocess
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -70,7 +71,12 @@ def git(*args: str) -> bytes:
 
 
 def write_tsv(path: Path, rows: list[tuple[str, ...]]) -> None:
-    path.write_text("".join("\t".join(row) + "\n" for row in rows), encoding="utf-8", newline="\n")
+    content = "".join("\t".join(row) + "\n" for row in rows)
+    if "--check" in sys.argv:
+        if path.read_text(encoding="utf-8") != content:
+            raise SystemExit(f"Committed inventory differs: {path.relative_to(ROOT)}")
+    else:
+        path.write_text(content, encoding="utf-8", newline="\n")
 
 
 def main() -> None:
