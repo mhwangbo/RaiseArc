@@ -5,11 +5,11 @@ title: Installation
 
 ## Before you start
 
-Install Unity 6000.6.0f1 with Windows Build Support through Unity Hub. Create a new Unity 2D project. The private Git candidate below resolved and compiled in a fresh consumer project; the full authoring and player walkthrough is still under validation.
+Install Unity 6000.6.0f1 with Windows Build Support through Unity Hub. Create a new Unity 2D project. The fixed Git package below resolved, compiled, and passed the representative authoring and Windows player checks in a clean consumer project.
 
 1. In Unity, open **Window → Package Management → Package Manager**.
 2. Select **+ → Install package from git URL**.
-3. Enter `https://github.com/mhwangbo/RaiseArc.git?path=/Packages/io.github.mhwangbo.raisearc#22a1c1f0226949acbb0f052ab2013749061ca565`. This repository is private and requires access. Use a newer commit only after its installation has been checked.
+3. Enter `https://github.com/mhwangbo/RaiseArc.git?path=/Packages/io.github.mhwangbo.raisearc#5e1cd6355a81dc679db41162bf5062cb66ad97af`. This exact product commit was installed and checked. Review changes before selecting a newer commit.
 4. Wait for package resolution. Confirm that **RaiseArc** appears and that the Console has no red compile errors.
 5. Open **Window → RaiseArc** to see authoring tools. MCP is optional and is not needed for this check.
 
